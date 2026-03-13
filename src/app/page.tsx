@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect, Suspense } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,11 +8,27 @@ import Experience from "../components/ui/Experience";
 import MyWork from "../components/ui/MyWork";
 import TechStack from "../components/ui/TechStack";
 import Footer from "../components/ui/Footer";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 
 gsap.registerPlugin(ScrollTrigger);
 
+function MobileModel() {
+  const { scene } = useGLTF("/models/robot-mobile.glb");
+  return <primitive object={scene} scale={1.5} position={[0, -1, 0]} />;
+}
+useGLTF.preload("/models/robot-mobile.glb");
+
 export default function Home() {
   const mainRef = useRef<HTMLElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const SplineViewer = 'spline-viewer' as any;
 
@@ -46,10 +62,30 @@ export default function Home() {
         <div className="relative w-full bg-black">
           {/* Canvas sticky to viewport while inside wrapper */}
           <div className="sticky top-0 h-screen w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
-            <SplineViewer
-              style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
-              url="https://prod.spline.design/TqvDZBittdclJ07m/scene.splinecode"
-            ></SplineViewer>
+            {isMobile ? (
+              <Canvas
+                camera={{ position: [0, 0, 6] }}
+                dpr={[1, 1.5]}
+                className="w-full h-screen"
+                style={{ position: 'absolute', top: 0, left: 0, outline: 'none' }}
+              >
+                <ambientLight intensity={0.6} />
+                <directionalLight position={[10, 10, 10]} intensity={1.2} />
+                <Suspense fallback={null}>
+                  <MobileModel />
+                </Suspense>
+                <OrbitControls
+                  enableZoom={false}
+                  autoRotate
+                  autoRotateSpeed={2}
+                />
+              </Canvas>
+            ) : (
+              <SplineViewer
+                style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
+                url="https://prod.spline.design/TqvDZBittdclJ07m/scene.splinecode"
+              ></SplineViewer>
+            )}
 
             {/* Parche para tapar el logo de Spline */}
             <div className="absolute bottom-0 right-0 w-48 h-16 bg-black z-50 pointer-events-none"></div>
