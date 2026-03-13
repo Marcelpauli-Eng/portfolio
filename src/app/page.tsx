@@ -60,19 +60,19 @@ export default function Home() {
 
             {/* Hero Section */}
             <section className="hero-section h-[150vh] w-full relative pointer-events-none transform-gpu will-change-transform">
-              <div className="absolute inset-0 w-full h-screen z-10 flex justify-between items-center px-16 pt-24 pointer-events-none">
+              <div className="absolute inset-0 w-full h-screen z-10 flex flex-col md:flex-row justify-center md:justify-between items-center px-6 md:px-16 pt-24 pointer-events-none gap-10 md:gap-0">
                 {/* Bloque Izquierdo */}
-                <div className="hero-text-container overflow-hidden">
-                  <h1 className="hero-text font-black text-6xl text-white">
-                    <span className="block text-2xl font-normal mb-2">Hello! I'm</span>
+                <div className="hero-text-container overflow-hidden text-center md:text-left">
+                  <h1 className="hero-text font-black text-6xl md:text-8xl text-white">
+                    <span className="block text-2xl md:text-4xl font-normal mb-2">Hello! I'm</span>
                     MARCEL
                   </h1>
                 </div>
 
                 {/* Bloque Derecho */}
-                <div className="hero-text-container overflow-hidden text-right">
-                  <h2 className="hero-text font-black text-6xl text-white">
-                    <span className="block text-2xl font-normal mb-2">A Creative</span>
+                <div className="hero-text-container overflow-hidden text-center md:text-right">
+                  <h2 className="hero-text font-black text-5xl md:text-6xl text-white">
+                    <span className="block text-xl md:text-2xl font-normal mb-2">A Creative</span>
                     <span className="text-purple-600">DESIGNER</span><br />
                     DEVELOPER
                   </h2>

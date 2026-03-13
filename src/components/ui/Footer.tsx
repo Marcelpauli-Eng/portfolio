@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="w-full bg-black text-white px-8 py-10 md:py-16 relative z-20">
+        <footer className="w-full bg-black text-white px-5 md:px-8 py-10 md:py-16 relative z-20">
             {/* Título Fino y Minimalista */}
-            <h1 className="text-4xl md:text-5xl font-thin tracking-widest mb-12 uppercase">
+            <h1 className="text-5xl md:text-5xl font-thin tracking-widest mb-12 flex items-center gap-4">
                 CONTACT
             </h1>
 
             {/* Estructura del Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
                 {/* Columna 1 (Email & Location) */}
                 <div>
                     <div className="mb-10">
