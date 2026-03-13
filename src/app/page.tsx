@@ -44,11 +44,22 @@ export default function Home() {
 
         {/* Sticky Wrapper for Hero & About */}
         <div className="relative w-full bg-black">
-          {/* Canvas sticky to viewport while inside wrapper */}
-          <div className="sticky top-0 h-screen w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
+          {/* Desktop Canvas sticky to viewport */}
+          <div className="hidden md:block sticky top-0 h-screen w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
             <SplineViewer
               style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
               url="https://prod.spline.design/TqvDZBittdclJ07m/scene.splinecode"
+            ></SplineViewer>
+
+            {/* Parche para tapar el logo de Spline */}
+            <div className="absolute bottom-0 right-0 w-48 h-16 bg-black z-50 pointer-events-none"></div>
+          </div>
+
+          {/* Mobile Canvas sticky to viewport */}
+          <div className="block md:hidden sticky top-0 h-screen w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
+            <SplineViewer
+              style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
+              url="https://prod.spline.design/UAlme9QYjwmAscj7/scene.splinecode"
             ></SplineViewer>
 
             {/* Parche para tapar el logo de Spline */}
