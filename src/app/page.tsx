@@ -1,65 +1,113 @@
-import Image from "next/image";
+"use client";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Experience from "../components/ui/Experience";
+import MyWork from "../components/ui/MyWork";
+import TechStack from "../components/ui/TechStack";
+import Footer from "../components/ui/Footer";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  const mainRef = useRef<HTMLElement>(null);
+
+  const SplineViewer = 'spline-viewer' as any;
+
+  useGSAP(() => {
+    // 3. Hero Text Reveal Animation on Scroll
+    gsap.fromTo(
+      ".hero-text",
+      { yPercent: 100 },
+      {
+        yPercent: 0,
+        duration: 1.2,
+        stagger: 0.1,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top", // Trigger exactly when scrolling starts
+          toggleActions: "play none none reverse",
+        }
+      }
+    );
+
+  }, { scope: mainRef });
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+
+      {/* 2. Page Content Overlaid (z-10 and up) */}
+      <main ref={mainRef} className="relative w-full z-10 pointer-events-none">
+
+        {/* Sticky Wrapper for Hero & About */}
+        <div className="relative w-full bg-black">
+          {/* Canvas sticky to viewport while inside wrapper */}
+          <div className="sticky top-0 h-screen w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
+            <SplineViewer
+              style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
+              url="https://prod.spline.design/TqvDZBittdclJ07m/scene.splinecode"
+            ></SplineViewer>
+
+            {/* Parche para tapar el logo de Spline */}
+            <div className="absolute bottom-0 right-0 w-48 h-16 bg-black z-50 pointer-events-none"></div>
+          </div>
+
+          {/* Scrolling content pushed up to overlap the sticky canvas */}
+          <div className="relative z-10 flex flex-col w-full -mt-[100vh]">
+
+            {/* Hero Section */}
+            <section className="hero-section h-[150vh] w-full relative pointer-events-none transform-gpu will-change-transform">
+              <div className="absolute inset-0 w-full h-screen z-10 flex justify-between items-center px-16 pt-24 pointer-events-none">
+                {/* Bloque Izquierdo */}
+                <div className="hero-text-container overflow-hidden">
+                  <h1 className="hero-text font-black text-6xl text-white">
+                    <span className="block text-2xl font-normal mb-2">Hello! I'm</span>
+                    MARCEL
+                  </h1>
+                </div>
+
+                {/* Bloque Derecho */}
+                <div className="hero-text-container overflow-hidden text-right">
+                  <h2 className="hero-text font-black text-6xl text-white">
+                    <span className="block text-2xl font-normal mb-2">A Creative</span>
+                    <span className="text-purple-600">DESIGNER</span><br />
+                    DEVELOPER
+                  </h2>
+                </div>
+              </div>
+            </section>
+
+            {/* About Section - We add extra padding here to keep the canvas sticky longer */}
+            <section className="min-h-[150vh] w-full flex items-center justify-end px-10 md:px-20 pointer-events-auto bg-gradient-to-b from-transparent via-black/80 to-black pb-32">
+              <div className="w-full max-w-2xl text-right">
+                <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white mb-6">
+                  About <span className="text-brand">Me</span>
+                </h2>
+                <p className="text-xl md:text-2xl text-zinc-300 font-medium leading-relaxed">
+                  I bridge the gap between design and engineering, creating interactive experiences that push the boundaries of the web. Focused on fluid animations, 3D worlds, and performance.
+                </p>
+              </div>
+            </section>
+
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        {/* My Career & Experience */}
+        <Experience />
+
+        {/* Horizontal Scroll My Work */}
+        <MyWork />
+
+        {/* 3D Interactive Tech Stack */}
+        <TechStack />
+
       </main>
-    </div>
+
+      {/* Footer */}
+      <Footer />
+    </>
   );
 }

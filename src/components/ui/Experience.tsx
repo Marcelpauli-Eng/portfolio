@@ -1,0 +1,138 @@
+"use client";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const experiences = [
+    {
+        role: "Senior web developer",
+        company: "Blue Cube Digital",
+        year: "2017",
+        desc: "Developed and managed web projects, including frontend/backend, CMS dashboards, and responsive, accessible web pages with PHP, MySQL, and JavaScript.",
+    },
+    {
+        role: "Associate Solution Leader",
+        company: "Brane Enterprises",
+        year: "2020",
+        desc: "Built web features, product prototypes, and reusable components/microservices, implemented UI improvements and 3D UI interface compatible with Typescript.",
+    },
+    {
+        role: "Freelance & Upskilling",
+        company: "Freelance",
+        year: "NOW",
+        desc: "During this period, I worked as a freelancer for various clients, providing 3D and web services, while actively upskilling also in multiple areas increasing my Techstack.",
+    },
+];
+
+export default function Experience() {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        // 1. Line & Glowing Dot Animation (Shooting Star Effect)
+        const lineTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".timeline-container",
+                start: "top center",
+                end: "bottom center",
+                scrub: 1,
+            },
+        });
+
+        // Animate the line drawing down
+        lineTl.fromTo(
+            ".glowing-line",
+            { scaleY: 0 },
+            { scaleY: 1, transformOrigin: "top center", ease: "none" },
+            0
+        );
+
+        // Animate the dot moving down with the line
+        lineTl.fromTo(
+            ".glowing-dot",
+            { top: "0%" },
+            { top: "100%", ease: "none" },
+            0
+        );
+
+        // 2. Rows Appearance Animation
+        const rows = gsap.utils.toArray<HTMLElement>(".experience-row");
+        rows.forEach((row) => {
+            gsap.fromTo(
+                row,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: row,
+                        start: "top center+=100",
+                        toggleActions: "play none none reverse",
+                    },
+                }
+            );
+        });
+    }, { scope: containerRef });
+
+    return (
+        <section ref={containerRef} className="relative w-full min-h-screen bg-black pointer-events-auto py-32 px-6 overflow-hidden text-white">
+            <div className="max-w-6xl mx-auto relative flex flex-col items-center">
+
+                {/* Title */}
+                <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-32 z-10 text-center">
+                    My career & <span className="text-purple-600">experience</span>
+                </h3>
+
+                {/* Timeline Structure */}
+                <div className="timeline-container relative w-full flex flex-col gap-24">
+
+                    {/* Background Track Line */}
+                    <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[2px] bg-zinc-800 z-0 rounded-full"></div>
+
+                    {/* Glowing Animated Line */}
+                    <div className="glowing-line absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[2px] bg-gradient-to-b from-transparent via-purple-500 to-purple-400 z-10 origin-top"></div>
+
+                    {/* Glowing Animated Dot (Meteor) */}
+                    <div className="glowing-dot absolute left-1/2 -translate-x-1/2 -top-2 w-4 h-4 rounded-full bg-purple-300 shadow-[0_0_20px_6px_rgba(168,85,247,0.8)] z-20"></div>
+
+                    {/* Content Rows */}
+                    {experiences.map((exp, idx) => (
+                        <div key={idx} className="experience-row relative z-30 grid grid-cols-[1fr_auto_1fr] gap-8 items-center w-full">
+
+                            {/* Left Column: Role & Company */}
+                            <div className="text-right">
+                                <h4 className="text-2xl md:text-3xl font-bold text-white mb-1 group flex flex-col items-end">
+                                    {exp.role.split(" / ")[0] || exp.role}
+                                </h4>
+                                <p className="text-lg md:text-xl font-medium text-purple-400">
+                                    {exp.company}
+                                </p>
+                            </div>
+
+                            {/* Center Column: Year overlapping the line */}
+                            <div className="flex justify-center items-center w-24">
+                                <div className="bg-black border-2 border-purple-500 text-white font-bold py-2 px-4 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.4)] relative z-10 w-full text-center">
+                                    {exp.year}
+                                </div>
+                            </div>
+
+                            {/* Right Column: Description */}
+                            <div className="text-left">
+                                <p className="text-base md:text-lg text-zinc-400 leading-relaxed font-light">
+                                    {exp.desc}
+                                </p>
+                            </div>
+
+                        </div>
+                    ))}
+
+                </div>
+            </div>
+        </section>
+    );
+}
