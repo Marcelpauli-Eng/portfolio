@@ -4,34 +4,37 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-    {
-        num: "01",
-        name: "NinjaBet Odds",
-        category: "Web Development",
-        tools: ["React", "Typescript", "Tailwind, Zustand"],
-        desc: "A comprehensive oddsmatcher with real-time data filtering, dynamic search, and optimized api ingestion for instantaneous updates.",
-    },
-    {
-        num: "02",
-        name: "Fendi Clone",
-        category: "3D Modeling",
-        tools: ["Blender", "Substance Painter", "Three.js"],
-        desc: "A high-performance interactive 3D store with seamless checkout, dynamic cart animations, and a customized premium user flow.",
-    },
-    {
-        num: "03",
-        name: "3D Portfolio",
-        category: "Creative Development",
-        tools: ["Three.js", "React Three Fiber", "GSAP"],
-        desc: "Interactive 3D web experience for creative artists with custom shaders, immersive scrolling mechanics, and premium micro-interactions.",
-    },
-];
-
 export default function MyWork() {
+    const { t } = useLanguage();
+
+    const projects = [
+        {
+            num: "01",
+            name: "NinjaBet Odds",
+            category: "Web Development",
+            tools: ["React", "Typescript", "Tailwind, Zustand"],
+            desc: t("work.1.desc"),
+        },
+        {
+            num: "02",
+            name: "Fendi Clone",
+            category: "3D Modeling",
+            tools: ["Blender", "Substance Painter", "Three.js"],
+            desc: t("work.2.desc"),
+        },
+        {
+            num: "03",
+            name: "3D Portfolio",
+            category: "Creative Development",
+            tools: ["Three.js", "React Three Fiber", "GSAP"],
+            desc: t("work.3.desc"),
+        },
+    ];
+
     const sectionRef = useRef<HTMLElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
 
@@ -60,7 +63,7 @@ export default function MyWork() {
             {/* Título Absoluto */}
             <div className="absolute top-10 left-10 md:top-20 md:left-20 z-20 pointer-events-none">
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">
-                    My <span className="text-purple-500">Work</span>
+                    {t("work.title.1")} <span className="text-purple-500">{t("work.title.2")}</span>
                 </h2>
             </div>
 
@@ -90,7 +93,7 @@ export default function MyWork() {
                                 </p>
 
                                 <div className="mb-4">
-                                    <h5 className="text-sm font-semibold text-zinc-400 uppercase tracking-widest mb-2">Tools & features</h5>
+                                    <h5 className="text-sm font-semibold text-zinc-400 uppercase tracking-widest mb-2">{t("work.tools_features")}</h5>
                                     <p className="text-sm md:text-base text-zinc-300 font-medium">
                                         {proj.tools.join(", ")}
                                     </p>
@@ -102,7 +105,7 @@ export default function MyWork() {
                         <div className="w-full md:w-1/2 h-full flex justify-center items-center z-10 p-10">
                             <div className="w-2/3 h-2/3 max-h-[600px] bg-zinc-900 rounded-lg border border-purple-500/20 shadow-[0_0_30px_rgba(168,85,247,0.1)] flex items-center justify-center overflow-hidden relative">
                                 <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/10 to-transparent"></div>
-                                <span className="text-zinc-600 font-bold uppercase tracking-widest text-center px-4">Image / Mockup Placeholder</span>
+                                <span className="text-zinc-600 font-bold uppercase tracking-widest text-center px-4">{t("work.placeholder")}</span>
                             </div>
                         </div>
 

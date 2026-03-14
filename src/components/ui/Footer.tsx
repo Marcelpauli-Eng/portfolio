@@ -1,11 +1,14 @@
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+    const { t } = useLanguage();
+
     return (
         <footer className="w-full bg-black text-white px-5 md:px-8 py-10 md:py-16 relative z-20">
             {/* Título Fino y Minimalista */}
             <h1 className="text-5xl md:text-5xl font-thin tracking-widest mb-12 flex items-center gap-4">
-                CONTACT
+                {t("footer.contact")}
             </h1>
 
             {/* Estructura del Grid */}
@@ -14,7 +17,7 @@ export default function Footer() {
                 <div>
                     <div className="mb-10">
                         <p className="text-xs md:text-sm text-gray-400 mb-2 font-light uppercase tracking-widest">
-                            Email
+                            {t("footer.email")}
                         </p>
                         <a
                             href="mailto:connect@marcel.dev"
@@ -26,16 +29,16 @@ export default function Footer() {
 
                     <div>
                         <p className="text-xs md:text-sm text-gray-400 mb-2 font-light uppercase tracking-widest">
-                            Location
+                            {t("footer.location")}
                         </p>
-                        <p className="text-sm md:text-base font-light">Barcelona, Spain</p>
+                        <p className="text-sm md:text-base font-light">{t("footer.location_value")}</p>
                     </div>
                 </div>
 
                 {/* Columna 2 (Social Links) */}
                 <div>
                     <p className="text-xs md:text-sm text-gray-400 mb-6 font-light uppercase tracking-widest">
-                        Social
+                        {t("footer.social")}
                     </p>
                     <ul className="flex flex-col w-full max-w-[200px]">
                         <li>
@@ -97,7 +100,7 @@ export default function Footer() {
                 <div className="flex flex-col md:items-end justify-between h-full min-h-[150px]">
                     <div className="text-left md:text-right">
                         <p className="text-xs md:text-sm font-light text-gray-400 leading-relaxed">
-                            Designed and Developed by <br className="hidden md:block" />
+                            {t("footer.credits")} <br className="hidden md:block" />
                             <span className="text-purple-400 font-light">
                                 Marcel Pauli Lara
                             </span>

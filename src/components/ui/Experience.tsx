@@ -4,31 +4,34 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const experiences = [
-    {
-        role: "Senior web developer",
-        company: "Blue Cube Digital",
-        year: "2017",
-        desc: "Developed and managed web projects, including frontend/backend, CMS dashboards, and responsive, accessible web pages with PHP, MySQL, and JavaScript.",
-    },
-    {
-        role: "Associate Solution Leader",
-        company: "Brane Enterprises",
-        year: "2020",
-        desc: "Built web features, product prototypes, and reusable components/microservices, implemented UI improvements and 3D UI interface compatible with Typescript.",
-    },
-    {
-        role: "Freelance & Upskilling",
-        company: "Freelance",
-        year: "NOW",
-        desc: "During this period, I worked as a freelancer for various clients, providing 3D and web services, while actively upskilling also in multiple areas increasing my Techstack.",
-    },
-];
-
 export default function Experience() {
+    const { t } = useLanguage();
+
+    const experiences = [
+        {
+            role: t("exp.1.role"),
+            company: t("exp.1.company"),
+            year: "2018",
+            desc: t("exp.1.desc"),
+        },
+        {
+            role: t("exp.2.role"),
+            company: t("exp.2.company"),
+            year: "2020",
+            desc: t("exp.2.desc"),
+        },
+        {
+            role: t("exp.3.role"),
+            company: t("exp.3.company"),
+            year: "NOW",
+            desc: t("exp.3.desc"),
+        },
+    ];
+
     const containerRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
@@ -85,7 +88,7 @@ export default function Experience() {
 
                 {/* Title */}
                 <h3 className="text-3xl md:text-6xl font-black uppercase tracking-tighter mb-16 md:mb-32 z-10 text-center">
-                    My career & <span className="text-purple-600">experience</span>
+                    {t("exp.title.1")} <span className="text-purple-600">{t("exp.title.2")}</span>
                 </h3>
 
                 {/* Timeline Structure */}

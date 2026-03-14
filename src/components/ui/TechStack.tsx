@@ -103,7 +103,11 @@ function TechBall({ position, textureUrl }: { position: [number, number, number]
     );
 }
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function TechStack() {
+    const { t } = useLanguage();
+
     // Generate random balls using the available tech configs
     const balls = useMemo(() => {
         return Array.from({ length: 15 }).map((_, i) => {
@@ -126,7 +130,7 @@ export default function TechStack() {
             {/* Background Graphic Text */}
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-0">
                 <h2 className="text-[15vw] leading-none font-black text-[#222] text-center uppercase tracking-tighter">
-                    MY TECH<br />STACK
+                    {t("tech.title.1")}<br />{t("tech.title.2")}
                 </h2>
             </div>
 
@@ -160,10 +164,10 @@ export default function TechStack() {
             {/* Foreground Information */}
             <div className="absolute bottom-10 left-10 md:bottom-20 md:left-20 z-20 pointer-events-none">
                 <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tighter uppercase">
-                    Interact <span className="text-purple-500">with them</span>
+                    {t("tech.interact.1")} <span className="text-purple-500">{t("tech.interact.2")}</span>
                 </h3>
                 <p className="text-zinc-400 mt-2 font-medium max-w-xs">
-                    Hover to bump the physics objects.
+                    {t("tech.bump")}
                 </p>
             </div>
 
