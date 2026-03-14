@@ -98,7 +98,7 @@ export default function Home() {
                   About <span className="text-brand">Me</span>
                 </h2>
                 <p className="text-xl md:text-2xl text-zinc-300 font-medium leading-relaxed">
-                  I bridge the gap between design and engineering, creating interactive experiences that push the boundaries of the web. Focused on fluid animations, 3D worlds, and performance.
+                  I’m a Computer Engineering student and developer passionate about turning ideas into real businesses. When I’m not designing software architectures or writing code, you’ll find me outdoors, playing sports, or skiing. I love combining solid engineering with an entrepreneurial mindset to build digital products that are both beautiful and functional.
                 </p>
               </div>
             </section>
