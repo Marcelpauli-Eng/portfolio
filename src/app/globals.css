@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #7c6aff;
-  --color-accent-hover: #6b5ae0;
+  --color-accent: #ff0000;
+  --color-accent-hover: #cc0000;
 
-  --color-bg: #0a0a0a;
-  --color-fg: #f0f0f0;
+  --color-bg: #ffffff;
+  --color-fg: #ff0000;
 }
 
 /* Base styles for a dark theme and smooth scrolling */
@@ -14,6 +14,7 @@
   html,
   body {
     @apply bg-[var(--color-bg)] text-[var(--color-fg)];
+    background-image: radial-gradient(circle at center, transparent 0%, rgba(255, 0, 0, 0.03) 100%);
     overscroll-behavior: none;
   }
 
@@ -49,4 +50,14 @@ spline-viewer {
 
 spline-viewer::part(logo) {
   display: none !important;
+}
+
+.text-white-shadow {
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.selection\:bg-red-500 ::selection {
+  background-color: #ff0000;
+  color: white;
 }

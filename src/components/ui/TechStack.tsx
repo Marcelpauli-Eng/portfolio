@@ -125,11 +125,11 @@ export default function TechStack() {
     }, []);
 
     return (
-        <section className="relative w-full h-screen bg-black overflow-hidden flex flex-col items-center justify-center pointer-events-auto">
+        <section className="relative w-full h-screen bg-[var(--color-bg)] overflow-hidden flex flex-col items-center justify-center pointer-events-auto">
 
             {/* Background Graphic Text */}
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-0">
-                <h2 className="text-[15vw] leading-none font-black text-[#222] text-center uppercase tracking-tighter">
+                <h2 className="text-[15vw] leading-none font-black text-red-500/5 text-center uppercase tracking-tighter">
                     {t("tech.title.1")}<br />{t("tech.title.2")}
                 </h2>
             </div>
@@ -163,10 +163,10 @@ export default function TechStack() {
 
             {/* Foreground Information */}
             <div className="absolute bottom-10 left-10 md:bottom-20 md:left-20 z-20 pointer-events-none">
-                <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tighter uppercase">
-                    {t("tech.interact.1")} <span className="text-purple-500">{t("tech.interact.2")}</span>
-                </h3>
-                <p className="text-zinc-400 mt-2 font-medium max-w-xs">
+                <h2 className="text-4xl md:text-7xl font-bold tracking-tight text-red-600 mb-2">
+                    {t("tech.interact.1")} <span className="text-white-shadow">{t("tech.interact.2")}</span>
+                </h2>
+                <p className="text-red-500 mt-2 font-medium max-w-xs">
                     {t("tech.bump")}
                 </p>
             </div>

@@ -83,25 +83,25 @@ export default function Experience() {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="relative w-full min-h-screen bg-black pointer-events-auto py-32 px-6 overflow-hidden text-white">
+        <section ref={containerRef} className="relative w-full min-h-screen bg-[var(--color-bg)] pointer-events-auto py-32 px-6 overflow-hidden text-white">
             <div className="max-w-6xl mx-auto relative flex flex-col items-center">
 
-                {/* Title */}
-                <h3 className="text-3xl md:text-6xl font-black uppercase tracking-tighter mb-16 md:mb-32 z-10 text-center">
-                    {t("exp.title.1")} <span className="text-purple-600">{t("exp.title.2")}</span>
-                </h3>
+                {/* Title (Stronger) */}
+                <h2 className="text-5xl md:text-9xl font-black uppercase tracking-tighter mb-20 text-red-600 text-center w-full">
+                    <span className="text-white-shadow">{t("exp.title.1")}</span> <span className="text-red-700">{t("exp.title.2")}</span>
+                </h2>
 
                 {/* Timeline Structure */}
                 <div className="timeline-container relative w-full flex flex-col gap-16 md:gap-24 pl-4 md:pl-0">
 
                     {/* Background Track Line */}
-                    <div className="absolute top-0 bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 w-[2px] bg-zinc-800 z-0 rounded-full"></div>
+                    <div className="absolute top-0 bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 w-[2px] bg-red-100 z-0 rounded-full"></div>
 
-                    {/* Glowing Animated Line */}
-                    <div className="glowing-line absolute top-0 bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 w-[2px] bg-gradient-to-b from-transparent via-purple-500 to-purple-400 z-10 origin-top"></div>
+                    {/* Main vertical line */}
+                    <div className="glowing-line absolute top-0 bottom-0 left-0 md:left-1/2 md:-translate-x-1/2 w-[2px] bg-gradient-to-b from-transparent via-red-600 to-red-300 z-10 origin-top"></div>
 
-                    {/* Glowing Animated Dot (Meteor) */}
-                    <div className="glowing-dot absolute left-0 md:left-1/2 -translate-x-1/2 -top-2 w-4 h-4 rounded-full bg-purple-300 shadow-[0_0_20px_6px_rgba(168,85,247,0.8)] z-20"></div>
+                    {/* Animated white dot at start */}
+                    <div className="glowing-dot absolute left-0 md:left-1/2 -translate-x-1/2 -top-2 w-4 h-4 rounded-full bg-red-600 shadow-[0_0_20px_6px_rgba(255,0,0,0.4)] z-20"></div>
 
                     {/* Content Rows */}
                     {experiences.map((exp, idx) => (
@@ -109,27 +109,27 @@ export default function Experience() {
 
                             {/* Left Column: Role & Company */}
                             <div className="flex flex-col md:block md:text-right pt-2 md:pt-0">
-                                <h4 className="text-xl md:text-3xl font-bold text-white group flex flex-col md:items-end">
-                                    {exp.role.split(" / ")[0] || exp.role}
-                                </h4>
-                                <p className="text-sm md:text-xl font-medium text-purple-400 mt-1">
+                                <h3 className="text-2xl md:text-5xl font-black uppercase text-red-600 group flex flex-col md:items-end">
                                     {exp.company}
+                                </h3>
+                                <p className="text-sm md:text-xl font-medium text-red-500 mt-1">
+                                    {exp.role}
                                 </p>
                             </div>
 
                             {/* Center Column / Mobile Year */}
                             <div className="flex flex-col md:items-center md:justify-center w-full md:w-24">
-                                <div className="hidden md:block bg-black border-2 border-purple-500 text-white font-bold py-2 px-4 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.4)] relative z-10 w-full text-center">
+                                <div className="hidden md:block bg-white border-2 border-red-600 text-red-600 font-bold py-2 px-4 rounded-full shadow-[0_0_15px_rgba(255,0,0,0.2)] relative z-10 w-full text-center">
                                     {exp.year}
                                 </div>
-                                <div className="md:hidden text-3xl md:text-5xl font-light text-gray-400 mt-2 mb-2">
+                                <div className="md:hidden text-3xl md:text-5xl font-light text-red-600 mt-2 mb-2">
                                     {exp.year}
                                 </div>
                             </div>
 
                             {/* Right Column: Description */}
                             <div className="text-left">
-                                <p className="text-sm md:text-lg text-gray-300 md:text-zinc-400 leading-relaxed font-light">
+                                <p className="text-sm md:text-lg text-red-700 leading-relaxed font-normal">
                                     {exp.desc}
                                 </p>
                             </div>
