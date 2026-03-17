@@ -61,7 +61,7 @@ export default function Home() {
           </div>
 
           {/* Mobile Canvas sticky to viewport */}
-          <div className="block md:hidden sticky top-0 h-[60vh] md:h-screen w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
+          <div className="block md:hidden sticky top-0 h-screen w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
             <SplineViewer
               style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
               // url="https://prod.spline.design/UAlme9QYjwmAscj7/scene.splinecode" // Mobile Robot
@@ -69,14 +69,14 @@ export default function Home() {
             ></SplineViewer>
 
             {/* Parche para tapar el logo de Spline */}
-            <div className="absolute bottom-0 right-0 w-48 h-16 bg-[var(--color-bg)] z-50 pointer-events-none"></div>
+            <div className="absolute bottom-0 right-0 w-48 h-16 bg-white z-50 pointer-events-none"></div>
           </div>
 
           {/* Scrolling content pushed up to overlap the sticky canvas */}
           <div className="relative z-10 flex flex-col w-full -mt-[100vh]">
 
             {/* Hero Section */}
-            <section className="hero-section h-[70vh] md:h-[150vh] w-full relative pointer-events-none transform-gpu will-change-transform">
+            <section className="hero-section h-screen md:h-[150vh] w-full relative pointer-events-none transform-gpu will-change-transform">
               <div className="absolute inset-0 w-full h-full md:h-screen z-10 flex flex-col md:flex-row justify-center md:justify-between items-center px-6 md:px-16 pt-16 md:pt-24 pointer-events-none gap-6 md:gap-0">
                 {/* Bloque Izquierdo */}
                 <div className="hero-text-container overflow-hidden text-center md:text-left">

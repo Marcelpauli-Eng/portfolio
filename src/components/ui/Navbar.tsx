@@ -1,13 +1,40 @@
 "use client";
 
 import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "@/context/LanguageContext";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
     const { t, language, toggleLanguage } = useLanguage();
+    const navRef = useRef<HTMLElement>(null);
+
+    useGSAP(() => {
+        const nav = navRef.current;
+        if (!nav) return;
+
+        gsap.fromTo(nav,
+            { yPercent: -100, opacity: 0 },
+            {
+                yPercent: 0,
+                opacity: 1,
+                duration: 0.5,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "100 top", // Start after scrolling 100px
+                    toggleActions: "play none none reverse",
+                }
+            }
+        );
+    }, []);
 
     return (
-        <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-6 md:px-10 py-5 z-[999] bg-white/10 backdrop-blur-md text-red-600 font-medium text-sm border-b border-red-50">
+        <nav ref={navRef} className="fixed top-0 left-0 w-full flex items-center justify-between px-6 md:px-10 py-5 z-[999] bg-white/10 backdrop-blur-md text-red-600 font-medium text-sm border-b border-red-50">
 
             {/* 1. Bloque Izquierdo (Logo/Dominio) */}
             <div className="z-10">
