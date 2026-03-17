@@ -113,7 +113,7 @@ export default function Home() {
 
           {/* Mobile Canvas sticky to viewport */}
           <div className="block md:hidden sticky top-0 h-screen w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
-            <div className="absolute inset-0 w-full h-full scale-[0.8] translate-y-[-15%] flex items-center justify-center">
+            <div className="absolute inset-0 w-full h-full scale-[0.55] translate-y-[5%] flex items-center justify-center">
               <SplineViewer
                 style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
                 // url="https://prod.spline.design/UAlme9QYjwmAscj7/scene.splinecode" // Mobile Robot
@@ -123,7 +123,7 @@ export default function Home() {
             </div>
 
             {/* Parche para tapar el logo de Spline */}
-            <div className="absolute bottom-0 right-0 w-48 h-16 bg-white z-50 pointer-events-none"></div>
+            <div className="absolute bottom-4 right-4 w-56 h-20 bg-white z-[99999] pointer-events-none rounded-2xl shadow-sm"></div>
           </div>
 
           {/* Scrolling content pushed up to overlap the sticky canvas */}
