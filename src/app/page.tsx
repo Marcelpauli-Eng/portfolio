@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,6 +11,48 @@ import Footer from "../components/ui/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
+
+function RotatingText() {
+  const words = ["Bienvenido", "Este es mi portfolio"];
+  const [index, setIndex] = useState(0);
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!textRef.current) return;
+
+    // 1. Animación de ENTRADA
+    gsap.fromTo(textRef.current,
+      { y: 10, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power2.out" }
+    );
+
+    // 2. Programar la SALIDA y el CAMBIO después de 20 segundos
+    const timeout = setTimeout(() => {
+      gsap.to(textRef.current, {
+        y: -10,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.in",
+        onComplete: () => {
+          setIndex((prev) => (prev + 1) % words.length);
+        }
+      });
+    }, 5000); // 5 segundos de espera
+
+    return () => clearTimeout(timeout);
+  }, [index]);
+
+  return (
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+      <div
+        ref={textRef}
+        className="text-sm md:text-base font-light text-red-600 tracking-[0.2em] select-none text-center px-4"
+      >
+        {words[index]}
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   const mainRef = useRef<HTMLElement>(null);
@@ -29,8 +71,15 @@ export default function Home() {
         stagger: 0.1,
         ease: "power4.out",
         scrollTrigger: {
-          trigger: "body",
-          start: "top top", // Trigger exactly when scrolling starts
+          trigger: ".hero-section",
+          start: "top top",
+          end: "bottom top",
+          snap: {
+            snapTo: 1, // Snap to the end of the hero section
+            duration: 0.8,
+            delay: 0.1,
+            ease: "power2.inOut"
+          },
           toggleActions: "play none none reverse",
         }
       }
@@ -56,17 +105,22 @@ export default function Home() {
               url="https://prod.spline.design/ClRmpVReraPy47Mn/scene.splinecode"
             ></SplineViewer>
 
+            <RotatingText />
+
             {/* Parche para tapar el logo de Spline */}
             <div className="absolute bottom-0 right-0 w-48 h-16 bg-white z-50 pointer-events-none"></div>
           </div>
 
           {/* Mobile Canvas sticky to viewport */}
           <div className="block md:hidden sticky top-0 h-screen w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
-            <SplineViewer
-              style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
-              // url="https://prod.spline.design/UAlme9QYjwmAscj7/scene.splinecode" // Mobile Robot
-              url="https://prod.spline.design/ClRmpVReraPy47Mn/scene.splinecode"
-            ></SplineViewer>
+            <div className="absolute inset-0 w-full h-full scale-[0.8] translate-y-[-15%] flex items-center justify-center">
+              <SplineViewer
+                style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
+                // url="https://prod.spline.design/UAlme9QYjwmAscj7/scene.splinecode" // Mobile Robot
+                url="https://prod.spline.design/ClRmpVReraPy47Mn/scene.splinecode"
+              ></SplineViewer>
+              <RotatingText />
+            </div>
 
             {/* Parche para tapar el logo de Spline */}
             <div className="absolute bottom-0 right-0 w-48 h-16 bg-white z-50 pointer-events-none"></div>
