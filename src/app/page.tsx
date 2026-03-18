@@ -113,12 +113,12 @@ export default function Home() {
 
           {/* Mobile Canvas sticky to viewport */}
           <div className="block md:hidden sticky top-0 h-[100dvh] w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
-            <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 z-0 pointer-events-auto flex items-center justify-center overflow-hidden">
               {/* 
-                En móvil: Forzamos un ancho y alto de 120vw para que el canvas sea un cuadrado grande. 
-                Al ser un cuadrado, Spline no recorta los lados de la esfera. 
+                En móvil: Forzamos un ancho y alto de 150vw para que el canvas sea gigante. 
+                pointer-events-auto permite interacción táctil completa.
               */}
-              <div className="w-[124vw] h-[124vw] flex items-center justify-center origin-center">
+              <div className="w-[150vw] h-[150vw] flex items-center justify-center origin-center">
                 <SplineViewer
                   style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
                   // url="https://prod.spline.design/UAlme9QYjwmAscj7/scene.splinecode" // Mobile Robot
@@ -126,30 +126,33 @@ export default function Home() {
                 ></SplineViewer>
                 <RotatingText />
               </div>
+              {/* Parche dinámico en el fondo para tapar logo de Spline */}
+              <div className="absolute bottom-0 w-full h-24 bg-white z-20 pointer-events-none"></div>
             </div>
-
-            {/* Parche para tapar el logo de Spline */}
-            <div className="absolute bottom-4 right-4 w-56 h-20 bg-white z-[99999] pointer-events-none rounded-2xl shadow-sm"></div>
           </div>
 
           {/* Scrolling content pushed up to overlap the sticky canvas */}
           <div className="relative z-10 flex flex-col w-full -mt-[100dvh] md:-mt-[100vh]">
 
             {/* Hero Section */}
-            <section className="hero-section relative w-full h-[100dvh] md:h-[150vh] flex flex-col justify-between overflow-hidden pointer-events-none transform-gpu will-change-transform">
-              <div className="absolute inset-0 w-full h-[100dvh] md:h-[100dvh] z-10 flex flex-col md:flex-row justify-center md:justify-between items-center px-6 md:px-16 pt-16 md:pt-24 pointer-events-none gap-6 md:gap-0">
+            <section className="hero-section relative w-full min-h-[120dvh] md:h-[150vh] flex flex-col justify-start md:justify-between overflow-hidden pointer-events-none transform-gpu will-change-transform">
+              {/* 
+                En móvil: relative con mt-[85vh] para empujar el texto hacia abajo y dejar la esfera libre.
+                En escritorio: absolute posicionado normalmente.
+              */}
+              <div className="relative md:absolute md:inset-0 w-full md:h-[100dvh] z-10 flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between px-6 md:px-16 mt-[85vh] md:mt-0 pt-0 md:pt-24 pointer-events-none gap-10 md:gap-0">
                 {/* Bloque Izquierdo */}
                 <div className="hero-text-container overflow-hidden text-center md:text-left">
-                  <h1 className="hero-text font-black text-6xl md:text-8xl text-red-600">
-                    <span className="block text-2xl md:text-4xl font-normal mb-2 text-red-500">{t("hero.hello")}</span>
+                  <h1 className="hero-text font-bold text-4xl md:text-8xl text-red-600">
+                    <span className="block text-xl md:text-4xl font-normal mb-1 md:mb-2 text-red-500">{t("hero.hello")}</span>
                     <span className="text-white-shadow">{t("hero.name")}</span>
                   </h1>
                 </div>
 
                 {/* Bloque Derecho */}
                 <div className="hero-text-container overflow-hidden text-center md:text-right">
-                  <h2 className="hero-text font-black text-5xl md:text-6xl text-red-600">
-                    <span className="block text-xl md:text-2xl font-normal mb-2 text-red-500">{t("hero.creative")}</span>
+                  <h2 className="hero-text font-bold text-3xl md:text-6xl text-red-600">
+                    <span className="block text-lg md:text-2xl font-normal mb-1 md:mb-2 text-red-500">{t("hero.creative")}</span>
                     <span className="text-white-shadow">{t("hero.designer")}</span><br />
                     {t("hero.developer")}
                   </h2>
