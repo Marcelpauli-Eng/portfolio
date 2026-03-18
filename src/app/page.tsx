@@ -13,7 +13,11 @@ import { useLanguage } from "@/context/LanguageContext";
 gsap.registerPlugin(ScrollTrigger);
 
 function RotatingText() {
-  const words = ["Bienvenido", "Este es mi portfolio"];
+  const words = [
+    "Bienvenido a mi portfolio!",
+    "Soy Marcel.",
+    "Soy desarrollador web y diseñador."
+  ];
   const [index, setIndex] = useState(0);
   const textRef = useRef<HTMLDivElement>(null);
 
