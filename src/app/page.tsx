@@ -139,12 +139,12 @@ export default function Home() {
           <div className="relative z-10 flex flex-col w-full -mt-[100dvh] md:-mt-[100vh]">
 
             {/* Hero Section */}
-            <section className="hero-section relative w-full min-h-[120dvh] md:h-[150vh] flex flex-col justify-start md:justify-between overflow-hidden pointer-events-none transform-gpu will-change-transform">
+            <section className="hero-section relative w-full h-[100dvh] md:h-[150vh] flex flex-col justify-start md:justify-between overflow-hidden pointer-events-none transform-gpu will-change-transform">
               {/* 
-                En móvil: relative con mt-[85vh] para empujar el texto hacia abajo y dejar la esfera libre.
+                En móvil: Solo se muestra la esfera.
                 En escritorio: absolute posicionado normalmente.
               */}
-              <div className="relative md:absolute md:inset-0 w-full md:h-[100dvh] z-10 flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between px-6 md:px-16 mt-[85vh] md:mt-0 pt-0 md:pt-24 pointer-events-none gap-10 md:gap-0">
+              <div className="hidden md:absolute md:inset-0 w-full md:h-[100dvh] z-10 md:flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between px-6 md:px-16 mt-[85vh] md:mt-0 pt-0 md:pt-24 pointer-events-none gap-10 md:gap-0">
                 {/* Bloque Izquierdo */}
                 <div className="hero-text-container overflow-hidden text-center md:text-left">
                   <h1 className="hero-text font-bold text-4xl md:text-8xl text-red-600">
