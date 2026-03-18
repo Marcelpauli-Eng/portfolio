@@ -114,7 +114,11 @@ export default function Home() {
           {/* Mobile Canvas sticky to viewport */}
           <div className="block md:hidden sticky top-0 h-[100dvh] w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
             <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
-              <div className="w-full h-[100dvh] scale-[1.05] origin-center flex items-center justify-center">
+              {/* 
+                En móvil: Forzamos un ancho y alto de 120vw para que el canvas sea un cuadrado grande. 
+                Al ser un cuadrado, Spline no recorta los lados de la esfera. 
+              */}
+              <div className="w-[124vw] h-[124vw] flex items-center justify-center origin-center">
                 <SplineViewer
                   style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
                   // url="https://prod.spline.design/UAlme9QYjwmAscj7/scene.splinecode" // Mobile Robot
