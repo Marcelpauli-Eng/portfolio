@@ -129,20 +129,26 @@ export default function Home() {
           <div className="relative z-10 flex flex-col w-full -mt-[100dvh] md:-mt-[100vh]">
 
             {/* Hero Section */}
-            <section className="hero-section relative w-full min-h-[100dvh] md:h-[150vh] flex flex-col justify-start md:justify-between overflow-hidden pointer-events-none transform-gpu will-change-transform">
-              <div className="relative z-10 w-full min-h-[100dvh] flex flex-col items-center justify-end pb-32 text-center md:items-start md:justify-center md:pb-0 md:text-left pointer-events-none px-6 md:px-16">
-                <div className="hero-text-container overflow-hidden">
-                  <p className="hero-text text-lg md:text-3xl text-red-500 font-light mb-2">{t("hero.hello")}</p>
-                </div>
-                <div className="hero-text-container overflow-hidden">
-                  <h1 className="hero-text text-5xl md:text-8xl font-black text-red-600 tracking-tighter leading-none mb-6">
-                    <span className="text-white-shadow uppercase">{t("hero.name")}</span>
-                  </h1>
-                </div>
-                <div className="hero-text-container overflow-hidden">
-                  <p className="hero-text text-sm md:text-2xl text-red-500 font-medium tracking-[0.2em] uppercase">
-                    {t("hero.creative")} <span className="text-red-600 font-bold">{t("hero.designer")}</span> {t("hero.developer")}
-                  </p>
+            <section className="hero-section relative w-full pointer-events-none transform-gpu will-change-transform">
+              <div className="relative z-10 w-full pointer-events-none">
+                {/* Espaciador: Ocupa toda la primera pantalla para que solo se vea el 3D en móvil */}
+                <div className="h-[100dvh] md:hidden w-full"></div>
+
+                {/* Contenedor del texto: Aparece en la SEGUNDA pantalla al hacer scroll en móvil */}
+                <div className="min-h-[100dvh] flex flex-col items-center justify-start pt-16 px-6 pb-32 text-center bg-white/60 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none transition-all duration-500 md:items-start md:justify-center md:pt-0 md:px-16 md:text-left">
+                  <div className="hero-text-container overflow-hidden mt-6 md:mt-0">
+                    <p className="hero-text text-lg md:text-3xl text-red-500 font-light mb-2">{t("hero.hello")}</p>
+                  </div>
+                  <div className="hero-text-container overflow-hidden">
+                    <h1 className="hero-text text-5xl md:text-8xl font-black text-red-600 tracking-tighter leading-none mb-6">
+                      <span className="text-white-shadow uppercase">{t("hero.name")}</span>
+                    </h1>
+                  </div>
+                  <div className="hero-text-container overflow-hidden">
+                    <p className="hero-text text-sm md:text-2xl text-red-500 font-medium tracking-[0.2em] uppercase">
+                      {t("hero.creative")} <span className="text-red-600 font-bold">{t("hero.designer")}</span> {t("hero.developer")}
+                    </p>
+                  </div>
                 </div>
               </div>
             </section>
