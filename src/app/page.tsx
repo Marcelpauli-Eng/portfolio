@@ -111,44 +111,51 @@ export default function Home() {
             <div className="absolute bottom-0 right-0 w-48 h-16 bg-white z-50 pointer-events-none"></div>
           </div>
 
-          {/* Mobile Canvas fixed to viewport */}
-          <div className="block md:hidden fixed inset-0 z-0 pointer-events-auto flex items-center justify-center overflow-hidden">
-            <div className="w-[150vw] h-[150vw] flex items-center justify-center origin-center">
-              <SplineViewer
-                style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
-                // url="https://prod.spline.design/UAlme9QYjwmAscj7/scene.splinecode" // Mobile Robot
-                url="https://prod.spline.design/ClRmpVReraPy47Mn/scene.splinecode"
-              ></SplineViewer>
-              <RotatingText />
+          {/* Mobile Canvas sticky to viewport */}
+          <div className="block md:hidden sticky top-0 h-[100dvh] w-full z-0 overflow-hidden pointer-events-auto relative transform-gpu will-change-transform">
+            <div className="absolute inset-0 z-0 pointer-events-auto flex items-center justify-center overflow-hidden">
+              {/* 
+                En móvil: Forzamos un ancho y alto de 150vw para que el canvas sea gigante. 
+                pointer-events-auto permite interacción táctil completa.
+              */}
+              <div className="w-[150vw] h-[150vw] flex items-center justify-center origin-center">
+                <SplineViewer
+                  style={{ width: '100%', height: '100%', backgroundColor: 'transparent' }}
+                  // url="https://prod.spline.design/UAlme9QYjwmAscj7/scene.splinecode" // Mobile Robot
+                  url="https://prod.spline.design/ClRmpVReraPy47Mn/scene.splinecode"
+                ></SplineViewer>
+                <RotatingText />
+              </div>
+              {/* Parche dinámico en el fondo para tapar logo de Spline */}
+              <div className="absolute bottom-0 w-full h-24 bg-white z-20 pointer-events-none"></div>
             </div>
-            {/* Parche FIJO blanco en la parte baja de la pantalla */}
-            <div className="absolute bottom-0 left-0 w-full h-20 bg-white z-[99999] pointer-events-none md:hidden"></div>
           </div>
 
           {/* Scrolling content pushed up to overlap the sticky canvas */}
           <div className="relative z-10 flex flex-col w-full -mt-[100dvh] md:-mt-[100vh]">
 
             {/* Hero Section */}
-            <section className="hero-section relative w-full pointer-events-none transform-gpu will-change-transform">
-              <div className="relative z-10 w-full pointer-events-none">
-                {/* Espaciador: Ocupa toda la primera pantalla para que solo se vea el 3D en móvil */}
-                <div className="h-[100dvh] md:hidden w-full"></div>
+            <section className="hero-section relative w-full min-h-[120dvh] md:h-[150vh] flex flex-col justify-start md:justify-between overflow-hidden pointer-events-none transform-gpu will-change-transform">
+              {/* 
+                En móvil: relative con mt-[85vh] para empujar el texto hacia abajo y dejar la esfera libre.
+                En escritorio: absolute posicionado normalmente.
+              */}
+              <div className="relative md:absolute md:inset-0 w-full md:h-[100dvh] z-10 flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between px-6 md:px-16 mt-[85vh] md:mt-0 pt-0 md:pt-24 pointer-events-none gap-10 md:gap-0">
+                {/* Bloque Izquierdo */}
+                <div className="hero-text-container overflow-hidden text-center md:text-left">
+                  <h1 className="hero-text font-bold text-4xl md:text-8xl text-red-600">
+                    <span className="block text-xl md:text-4xl font-normal mb-1 md:mb-2 text-red-500">{t("hero.hello")}</span>
+                    <span className="text-white-shadow">{t("hero.name")}</span>
+                  </h1>
+                </div>
 
-                {/* Contenedor del texto: Aparece en la SEGUNDA pantalla al hacer scroll en móvil */}
-                <div className="min-h-[100dvh] flex flex-col items-center justify-start pt-16 px-6 pb-32 text-center bg-white/60 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none transition-all duration-500 md:items-start md:justify-center md:pt-0 md:px-16 md:text-left">
-                  <div className="hero-text-container overflow-hidden mt-6 md:mt-0">
-                    <p className="hero-text text-lg md:text-3xl text-red-500 font-light mb-2">{t("hero.hello")}</p>
-                  </div>
-                  <div className="hero-text-container overflow-hidden">
-                    <h1 className="hero-text text-5xl md:text-8xl font-black text-red-600 tracking-tighter leading-none mb-6">
-                      <span className="text-white-shadow uppercase">{t("hero.name")}</span>
-                    </h1>
-                  </div>
-                  <div className="hero-text-container overflow-hidden">
-                    <p className="hero-text text-sm md:text-2xl text-red-500 font-medium tracking-[0.2em] uppercase">
-                      {t("hero.creative")} <span className="text-red-600 font-bold">{t("hero.designer")}</span> {t("hero.developer")}
-                    </p>
-                  </div>
+                {/* Bloque Derecho */}
+                <div className="hero-text-container overflow-hidden text-center md:text-right">
+                  <h2 className="hero-text font-bold text-3xl md:text-6xl text-red-600">
+                    <span className="block text-lg md:text-2xl font-normal mb-1 md:mb-2 text-red-500">{t("hero.creative")}</span>
+                    <span className="text-white-shadow">{t("hero.designer")}</span><br />
+                    {t("hero.developer")}
+                  </h2>
                 </div>
               </div>
             </section>
