@@ -26,6 +26,15 @@ const translations = {
         "about.heading.2": "Me",
         "about.desc": "I’m a Computer Engineering student and developer passionate about turning ideas into real businesses. When I’m not designing software architectures or writing code, you’ll find me outdoors, playing sports, or skiing. I love combining solid engineering with an entrepreneurial mindset to build digital products that are both beautiful and functional.",
 
+        "about.card1.title": "From idea to actual architecture.",
+        "about.card1.desc": "I'm a Computer Engineering student, full-stack developer, and business builder. I love combining solid engineering with an entrepreneurial mindset to create premium digital products.",
+        "about.card2.title": "Tech Stack",
+        "about.card3.title": "Beyond the code",
+        "about.card3.desc": "When I'm not compiling kernels or designing databases, you'll find me doing CrossFit, playing Padel, or working as a ski instructor. 🏋️‍♂️🏂",
+        "about.card4.title": "Philosophy & Projects",
+        "about.card4.desc": "I actively build real-world businesses, developing scalable platforms and marketplaces like Learn and Go and platforms like NinjaBet.",
+        "about.card4.btn": "View My Work",
+
         "exp.title.1": "My career &",
         "exp.title.2": "experience",
 
@@ -79,6 +88,15 @@ const translations = {
         "about.heading.1": "Sobre",
         "about.heading.2": "Mí",
         "about.desc": "Soy un estudiante de Ingeniería Informática y desarrollador apasionado por convertir ideas en negocios reales. Cuando no estoy diseñando arquitecturas de software o escribiendo código, me encontrarás al aire libre, haciendo deporte o esquiando. Me encanta combinar una ingeniería sólida con una mentalidad emprendedora para construir productos digitales que sean tanto hermosos como funcionales.",
+
+        "about.card1.title": "De la idea a la arquitectura real.",
+        "about.card1.desc": "Soy estudiante de Ingeniería Informática, desarrollador full-stack y creador de negocios. Me apasiona combinar ingeniería robusta con visión emprendedora para construir productos digitales funcionales.",
+        "about.card2.title": "Tech Stack",
+        "about.card3.title": "Más allá del código",
+        "about.card3.desc": "Cuando no compilo kernels o diseño bases de datos, me encontrarás haciendo CrossFit, jugando a pádel o como instructor de esquí. 🏋️‍♂️🏂",
+        "about.card4.title": "Filosofía y Proyectos",
+        "about.card4.desc": "Construyo negocios iterativos del mundo real activamente, desarrollando plataformas escalables y marketplaces como Learn and Go y NinjaBet.",
+        "about.card4.btn": "Ver Proyectos",
 
         "exp.title.1": "Mi carrera y",
         "exp.title.2": "experiencia",
