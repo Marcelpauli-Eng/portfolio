@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -60,4 +61,11 @@ spline-viewer::part(logo) {
 .selection\:bg-red-500 ::selection {
   background-color: #ff0000;
   color: white;
+}
+
+.text-outline-red {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 2px #ef4444;
 }

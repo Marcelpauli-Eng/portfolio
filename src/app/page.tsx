@@ -140,32 +140,11 @@ export default function Home() {
 
             {/* Hero Section */}
             <section className="hero-section relative w-full h-[100dvh] lg:h-[150vh] flex flex-col justify-start lg:justify-between overflow-hidden pointer-events-none transform-gpu will-change-transform">
-              {/* 
-                En móvil: Solo se muestra la esfera.
-                En escritorio: absolute posicionado normalmente.
-              */}
-              <div className="hidden lg:absolute lg:inset-0 w-full lg:h-[100dvh] z-10 lg:flex flex-col lg:flex-row items-center lg:items-center justify-center lg:justify-between px-6 lg:px-16 mt-[85vh] lg:mt-0 pt-0 lg:pt-24 pointer-events-none gap-10 lg:gap-0">
-                {/* Bloque Izquierdo */}
-                <div className="hero-text-container overflow-hidden text-center lg:text-left">
-                  <h1 className="hero-text font-bold text-4xl lg:text-8xl text-red-600">
-                    <span className="block text-xl lg:text-4xl font-normal mb-1 lg:mb-2 text-red-500">{t("hero.hello")}</span>
-                    <span className="text-white-shadow">{t("hero.name")}</span>
-                  </h1>
-                </div>
-
-                {/* Bloque Derecho */}
-                <div className="hero-text-container overflow-hidden text-center lg:text-right">
-                  <h2 className="hero-text font-bold text-3xl lg:text-6xl text-red-600">
-                    <span className="block text-lg lg:text-2xl font-normal mb-1 lg:mb-2 text-red-500">{t("hero.creative")}</span>
-                    <span className="text-white-shadow">{t("hero.designer")}</span><br />
-                    {t("hero.developer")}
-                  </h2>
-                </div>
-              </div>
+              {/* Hero Desktop Text Container - Temporarily Removed per User Request */}
             </section>
 
             {/* About Section - Bento Grid */}
-            <section className="min-h-screen w-full flex flex-col items-center justify-center pointer-events-auto bg-gradient-to-b from-transparent via-[var(--color-bg)]/80 to-[var(--color-bg)] py-20 md:py-32 relative z-20">
+            <section className="min-h-screen w-full flex flex-col items-center justify-center pointer-events-auto bg-transparent pt-32 lg:pt-48 pb-20 md:pb-32 relative z-20">
 
               <div className="text-center mb-12">
                 <h2 className="text-sm font-bold tracking-[0.2em] text-red-500 uppercase">
@@ -176,24 +155,23 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full mx-auto px-6">
 
                 {/* Card 1: Bio Principal */}
-                <div className="col-span-1 md:col-span-2 lg:col-span-2 flex flex-col justify-center bg-zinc-50/80 md:bg-white/60 backdrop-blur-md border border-zinc-200/50 rounded-[2rem] p-6 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-                  <h2 className="text-3xl lg:text-5xl font-black text-zinc-900 tracking-tight">
+                <div className="col-span-1 md:col-span-2 lg:col-span-2 flex flex-col justify-center bg-white border-2 border-red-500 rounded-[2rem] p-6 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                  <h2 className="text-outline-red text-4xl lg:text-6xl tracking-tight leading-none mb-4">
                     {t("about.card1.title")}
                   </h2>
-                  <p className="text-zinc-600 text-lg lg:text-xl font-light leading-relaxed mt-4">
+                  <p className="text-zinc-700 text-lg lg:text-xl font-light leading-relaxed">
                     {t("about.card1.desc")}
                   </p>
                 </div>
 
                 {/* Card 2: Tech Stack */}
-                <div className="col-span-1 md:col-span-1 lg:col-span-1 flex flex-col items-center justify-center bg-zinc-900 border border-zinc-800 rounded-[2rem] p-6 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 overflow-hidden relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="col-span-1 md:col-span-1 lg:col-span-1 flex flex-col items-center justify-center bg-white border-2 border-red-500 rounded-[2rem] p-6 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 overflow-hidden relative group">
                   <h3 className="tracking-widest uppercase text-xs font-bold text-red-500 text-center w-full z-10">
                     {t("about.card2.title")}
                   </h3>
                   <div className="flex flex-wrap justify-center gap-2 mt-6 z-10 w-full">
                     {["React", "Next.js", "Spline 3D", "TailwindCSS", "SQL", "Python", "C"].map((tech) => (
-                      <span key={tech} className="bg-zinc-800/80 text-zinc-200 text-xs font-medium px-3 py-1.5 rounded-full border border-zinc-700/50 backdrop-blur-sm">
+                      <span key={tech} className="bg-white border border-red-400 text-red-500 rounded-full px-4 py-1 text-sm font-medium">
                         {tech}
                       </span>
                     ))}
@@ -201,22 +179,22 @@ export default function Home() {
                 </div>
 
                 {/* Card 3: Vida Off-Screen */}
-                <div className="col-span-1 md:col-span-1 lg:col-span-1 flex flex-col justify-center bg-zinc-50/80 md:bg-white/60 backdrop-blur-md border border-zinc-200/50 rounded-[2rem] p-6 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                <div className="col-span-1 md:col-span-1 lg:col-span-1 flex flex-col justify-center bg-white border-2 border-red-500 rounded-[2rem] p-6 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
                   <h3 className="tracking-widest uppercase text-xs font-bold text-red-500 mb-4">
                     {t("about.card3.title")}
                   </h3>
-                  <p className="text-zinc-600 text-base lg:text-lg font-light leading-relaxed">
+                  <p className="text-zinc-700 text-base lg:text-lg font-light leading-relaxed">
                     {t("about.card3.desc")}
                   </p>
                 </div>
 
                 {/* Card 4: Filosofía / Proyectos */}
-                <div className="col-span-1 md:col-span-2 lg:col-span-2 flex flex-col lg:flex-row items-start lg:items-center justify-between bg-zinc-50/80 md:bg-white/60 backdrop-blur-md border border-zinc-200/50 rounded-[2rem] p-6 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-                  <div className="max-w-xl mb-6 md:mb-0">
+                <div className="col-span-1 md:col-span-2 lg:col-span-2 flex flex-col lg:flex-row items-start lg:items-center justify-between bg-white border-2 border-red-500 rounded-[2rem] p-6 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                  <div className="max-w-xl mb-6 lg:mb-0">
                     <h3 className="tracking-widest uppercase text-xs font-bold text-red-500 mb-4">
                       {t("about.card4.title")}
                     </h3>
-                    <p className="text-zinc-900 text-xl font-medium tracking-tight leading-snug">
+                    <p className="text-zinc-700 text-xl font-light tracking-tight leading-snug">
                       {t("about.card4.desc")}
                     </p>
                   </div>
