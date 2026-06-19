@@ -35,7 +35,7 @@ export const Education = () => {
     <section
       id="education"
       ref={sectionRef}
-      className="relative w-full overflow-hidden py-20"
+      className="relative w-full overflow-hidden py-14 md:py-20"
     >
       <div className="relative z-10">
         <h1 className="heading">
@@ -47,17 +47,17 @@ export const Education = () => {
         </p>
 
         {/* Timeline */}
-        <div className="relative mx-auto mt-16 max-w-5xl">
+        <div className="relative mx-auto mt-10 max-w-5xl md:mt-16">
           {/* Static line track */}
-          <div className="absolute left-6 top-0 h-full w-px bg-white/10 md:left-1/2 md:-translate-x-1/2" />
+          <div className="absolute left-5 top-0 h-full w-px bg-white/10 md:left-1/2 md:-translate-x-1/2" />
           {/* Animated fill line (parallax-driven) */}
           <motion.div
             style={{ scaleY: lineScale }}
             aria-hidden
-            className="absolute left-6 top-0 h-full w-px origin-top bg-gradient-to-b from-purple via-purple/60 to-transparent md:left-1/2 md:-translate-x-1/2"
+            className="absolute left-5 top-0 h-full w-px origin-top bg-gradient-to-b from-purple via-purple/60 to-transparent md:left-1/2 md:-translate-x-1/2"
           />
 
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-8 md:gap-12">
             {education.map((item, index) => {
               const Icon =
                 iconMap[item.icon as keyof typeof iconMap] ?? FaGraduationCap;
@@ -66,8 +66,8 @@ export const Education = () => {
               return (
                 <div key={item.id} className="relative flex md:items-center">
                   {/* Node + icon */}
-                  <div className="absolute left-6 z-20 -translate-x-1/2 md:left-1/2">
-                    <div className="flex size-12 items-center justify-center rounded-full border border-white/[0.15] bg-black-100 shadow-[0_0_25px_-4px_#5ce1e6]">
+                  <div className="absolute left-5 z-20 -translate-x-1/2 md:left-1/2">
+                    <div className="flex size-10 items-center justify-center rounded-full border border-white/[0.15] bg-black-100 shadow-[0_0_25px_-4px_#5ce1e6] md:size-12">
                       <Icon className="text-lg text-purple" />
                     </div>
                   </div>
@@ -80,7 +80,7 @@ export const Education = () => {
                     transition={{ duration: 0.6, ease: "easeOut" }}
                     style={{ backgroundColor: "rgba(17, 17, 17, 0.69)" }}
                     className={cn(
-                      "relative ml-16 w-full overflow-hidden rounded-3xl border border-white/[0.1] bg-[url('/grid.svg')] bg-cover bg-center bg-no-repeat p-6 shadow-input transition-colors duration-300 hover:border-purple/40 dark:shadow-none md:ml-0 md:w-[44%]",
+                      "relative ml-12 w-full overflow-hidden rounded-3xl border border-white/[0.1] bg-[url('/grid.svg')] bg-cover bg-center bg-no-repeat p-5 shadow-input transition-colors duration-300 hover:border-purple/40 dark:shadow-none md:ml-0 md:w-[44%] md:p-6",
                       isLeft
                         ? "md:mr-auto md:pr-9 md:text-right"
                         : "md:ml-auto md:pl-9"
