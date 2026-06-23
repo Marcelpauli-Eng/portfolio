@@ -42,8 +42,8 @@ export const Education = () => {
           MY <span className="text-purple">EDUCATION</span>
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-center text-sm text-white-200 md:text-base">
-          A disciplined path of study — precision, structure, and a relentless
-          eye for detail at every stage.
+          Training in computer engineering, web development, and systems —
+          from technical foundations to university degree.
         </p>
 
         {/* Timeline */}

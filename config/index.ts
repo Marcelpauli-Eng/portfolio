@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 
 export const links = {
   sourceCode: "",
-  ownerName: "Dexter Morgan",
-  ownerEmail: "",
+  ownerName: "Marcel Paulí Lara",
+  ownerEmail: "marcelpaulilara@gmail.com",
 } as const;
 
 export const siteConfig: Metadata = {
-  title: `${links.ownerName}' Portfolio`,
-  description: "Portfolio.",
+  title: `${links.ownerName} — Portfolio`,
+  description:
+    "Computer Engineering student at the University of Girona. Web development, IT systems, and team leadership.",
   keywords: [
     "reactjs",
     "nextjs",

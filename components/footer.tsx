@@ -33,7 +33,7 @@ export const Footer = () => {
         </p>
 
         <Link
-          href={`mailto:`}
+          href={`mailto:${links.ownerEmail}`}
           target="_blank"
           rel="noreferrer noopener"
           className="md:mt-10"
@@ -56,7 +56,7 @@ export const Footer = () => {
             rel="noreferrer noopener"
             className="text-white"
           >
-            TUUUUi
+            {links.ownerName}
           </Link>{" "}
           {" "}
           

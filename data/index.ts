@@ -10,33 +10,33 @@ export const navItems = [
 export const education = [
   {
     id: 1,
-    period: "2022 — Present",
-    school: "Stikubank University, Semarang",
-    degree: "B.Sc. in Informatics Engineering",
+    period: "In progress",
+    school: "University of Girona",
+    degree: "B.Sc. in Computer Engineering",
     description:
-      "Specializing in software engineering, data structures, and forensic computing. Every project handled with discipline, precision, and a relentless eye for detail.",
+      "3rd year of the degree. Training in software development, data structures, and computer engineering.",
     icon: "cap",
-    tags: ["Software Eng.", "Forensic Computing", "Algorithms"],
+    tags: ["Software Engineering", "Algorithms", "Informatics"],
   },
   {
     id: 2,
     period: "2020 — 2022",
-    school: "Miami Metro Forensics Institute",
-    degree: "Certification in Blood Spatter Analysis",
+    school: "Escola Ginebrò",
+    degree: "Higher Diploma in Web and Mobile Application Development (DAAM)",
     description:
-      "Advanced training in pattern analysis, crime-scene reconstruction, and meticulous evidence handling. Order, method, and a clean process above all.",
-    icon: "drop",
-    tags: ["Pattern Analysis", "Lab Work"],
+      "Training in web and mobile development, application design, and databases.",
+    icon: "book",
+    tags: ["Web Development", "Mobile Apps", "Databases"],
   },
   {
     id: 3,
-    period: "2017 — 2020",
-    school: "Harrison Senior High School",
-    degree: "Science & Mathematics Track",
+    period: "2018 — 2020",
+    school: "Escola Ginebrò",
+    degree: "Higher Diploma in Microcomputer Systems and Networks (SMX)",
     description:
-      "Laid the foundations of analytical thinking, structured problem solving, and the quiet patience that precision demands.",
-    icon: "book",
-    tags: ["Mathematics", "Biology"],
+      "Configuration of computer systems, networks, and technical support in business environments.",
+    icon: "flask",
+    tags: ["Networks", "Systems", "IT Support"],
   },
 ] as const;
 
@@ -44,17 +44,18 @@ export const gridItems = [
   {
     id: 1,
     title: "About Me",
-description: "I am Dexter Morgan, a blood spatter analyst by day and a meticulous observer of human behavior. With a sharp eye for detail and a disciplined mindset, I maintain order in both my professional work and personal code. I value precision, control, and structure, always striving to keep things clean, efficient, and... balanced.",
-    title2: "Education",
-    description2: "2022 - Present \u00A0\u00A0 Stikubank University, Semarang",
-    description3: "Informatics Engineering",
+    description:
+      "My name is Marcel and I'm 23 years old. I'm currently in my 3rd year of Computer Engineering at the University of Girona. I'm looking for a role that lets me balance my studies with work. I'm extroverted, responsible, and a fast learner, with immediate availability.",
+    title2: "Languages",
+    description2: "Catalan: native · Spanish: native · English: basic",
+    description3: "Llinars del Vallès, Barcelona · Class B driving license",
     className: "lg:col-span-3 md:col-span-3 md:row-span-1",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
     img: "/grid.svg",
     spareImg: "",
   },
-  
+
   {
     id: 4,
     title: "Technical Skills",
@@ -65,8 +66,6 @@ description: "I am Dexter Morgan, a blood spatter analyst by day and a meticulou
     img: "/grid.svg",
     spareImg: "",
   },
-
- 
 ] as const;
 
 export const projects = [
@@ -157,68 +156,41 @@ export const testimonials = [
 export const companies = [
   {
     id: 1,
-    name: "Photosop",
-    img: "/photoshop.svg",
+    name: "WordPress",
+    img: "/php.svg",
     nameImg: "/cloudName.svg",
   },
   {
     id: 2,
-    name: "illustrator",
-    img: "/illustrator.svg",
-    nameImg: "/appName.svg",
-  },
-  {
-    id: 3,
-    name: "Laravel",
-    img: "/laravel.svg",
-    nameImg: "/hostName.svg",
-  },
-  {
-    id: 4,
-    name: "Sql",
+    name: "MySQL",
     img: "/mysql.svg",
     nameImg: "/streamName.svg",
   },
   {
-    id: 5,
-    name: "Ts",
-    img: "/three.svg",
-    nameImg: "/dockerName.svg",
+    id: 3,
+    name: "Next.js",
+    img: "/nextjs.svg",
+    nameImg: "/hostName.svg",
   },
-
   {
-    id: 6,
-    name: "three",
+    id: 4,
+    name: "TypeScript",
     img: "/brandtypescript.svg",
     nameImg: "/dockerName.svg",
   },
-
   {
-    id: 7,
-    name: "next",
-    img: "/nextjs.svg",
+    id: 5,
+    name: "Tailwind",
+    img: "/tailwind.svg",
     nameImg: "/dockerName.svg",
   },
   {
-    id: 8,
-    name: "next",
-    img: "/blender.svg",
-    nameImg: "/dockerName.svg",
-  },
-  {
-    id: 9,
-    name: "next",
-    img: "/php.svg",
-    nameImg: "/dockerName.svg",
-  },
-  {
-    id: 10,
-    name: "next",
-    img: "/java.svg",
+    id: 6,
+    name: "React",
+    img: "/re.svg",
     nameImg: "/dockerName.svg",
   },
 ] as const;
-
 
 export const socialMedia = [
   {
@@ -241,10 +213,9 @@ export const socialMedia = [
     img: "/behance.svg",
     link: "",
   },
-  
 ] as const;
 
 export const techStack = {
-  stack1: ["React.js", "Next.js", "Typescript"],
-  stack2: ["Vue.js", "AWS", "MongoDB"],
+  stack1: ["WordPress", "Web Development", "Networks"],
+  stack2: ["Team Leadership", "IT Systems", "Customer Service"],
 } as const;
