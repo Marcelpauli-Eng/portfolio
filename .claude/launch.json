@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 4321
+    },
+    {
+      "name": "web-final",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview", "--", "--port", "4330"],
+      "port": 4330
+    },
+    {
+      "name": "reparto-demo",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd ../Sergi-Dashboard && DEMO_MODE=true DRIVERS='demo:1234:Transportista de prueba' npx next dev --webpack -p 4340"],
+      "port": 4340
+    }
+  ]
+}
