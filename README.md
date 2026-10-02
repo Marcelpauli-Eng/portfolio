@@ -1,108 +1,55 @@
+# Programas para oficios
 
-![prev-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/0a0ff7b7-ca8d-435f-8d60-d33c736354d5)
+Web de Marcel Paulí: programas a medida para talleres, lampistas, fontaneros y transportistas. En castellano (`/`) y catalán (`/ca/`).
 
-## ✨ Features
+Hecha con **Astro** (sale estática) y **GSAP** con ScrollTrigger para el movimiento. No lleva nada más.
 
-* ⚡ Built with **Next.js (App Router)**
-* 🎨 Styled using **Tailwind CSS**
-* 🧩 Clean and scalable architecture
-* 🎬 Smooth animations & interactive UI
-* 📱 Fully responsive design
-* 🖼 Optimized assets and performance
-* 🔗 Social media integration
-* 📩 Contact section with CTA
+## Arrancar en local
 
----
-
-## 📂 Project Structure
-
-```
-app/            → Pages & routing (Next.js App Router)
-components/     → Reusable UI components
-config/         → Global configs (links, settings)
-data/           → Static data (socials, content)
-lib/            → Utilities & helpers
-public/         → Static assets (images, icons)
-```
-
----
-
-## 🛠 Tech Stack
-
-* **Next.js**
-* **React**
-* **TypeScript**
-* **Tailwind CSS**
-* **Framer Motion / animations**
-* **React Icons**
-
----
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/your-username/portfolio.git
-cd portfolio
-```
-
-### 2. Install dependencies
+Hace falta Node 22 o superior.
 
 ```bash
 npm install
-# or
-yarn install
-# or
-bun install
-```
-
-### 3. Run the development server
-
-```bash
 npm run dev
 ```
 
-### 4. Open in browser
+Se abre en <http://localhost:4321>; la versión en catalán está en <http://localhost:4321/ca/>.
 
+Para ver la versión final, tal como se publicaría:
+
+```bash
+npm run build
+npm run preview
 ```
-http://localhost:3000
-```
 
----
+Lo que hay que subir al hosting es la carpeta `dist/`.
 
-## ⚙️ Customization
+## Dónde se cambia cada cosa
 
-You can easily customize:
+| Qué | Dónde |
+|---|---|
+| Textos en castellano y catalán | `src/textos.ts` |
+| Número de WhatsApp | `WHATSAPP` en `src/textos.ts`. Mientras esté vacío, no sale el botón y en el contacto se ve `[WHATSAPP]` |
+| Capturas de los programas | `src/assets/capturas/` (Astro las pasa a AVIF/WebP) |
+| Aparato y herramientas de cada oficio | `escenas` en `src/components/Pagina.astro` |
+| Dibujos de las herramientas | `src/herramientas.ts` |
+| Colores, tipografías y escala | `src/styles/global.css` (arriba del todo) |
+| Movimiento | `src/scripts/movimiento.ts` |
+| Dominio (Open Graph y URL canónica) | `SITE_URL=https://tudominio.com npm run build`, o en `astro.config.mjs` |
 
-* ✏️ Text content → `data/`
-* 🔗 Links → `config/`
-* 🎨 UI components → `components/`
-* 🖼 Images → `public/`
+## Pendiente de rellenar
 
----
+Los huecos se ven en la web entre corchetes:
 
-## 📸 Preview
+- `[WHATSAPP]`: el número.
+- `[FOTO]`: la foto de «Sobre mí».
+- `[RESULTADO: …]`: un resultado real por cada programa, cuando lo haya.
+- El dominio, para la imagen de Open Graph (`public/og.png`).
 
-Clean UI, modern layout, and smooth animations designed to create strong visual impact.
+## El formulario
 
----
+No hay servidor: al enviar, se abre el correo de quien escribe con el mensaje ya puesto, dirigido a `marcelpaulilara@gmail.com`. Cuando haya hosting, se puede apuntar a un endpoint (un Worker de Cloudflare, Formspree…) para recibirlo sin que tenga que darle a enviar en su correo.
 
-## 💡 Use Cases
+## Diseño
 
-* Developer portfolio
-* Personal branding website
-* UI/UX showcase
-* Creative projects presentation
-
----
-
-
-## ⭐ Support
-
-If you like this project:
-
-* ⭐ Star the repo
-* 📌 Save it for later
-* 🔗 Share with others
-
+El plan está en `PLAN_DISENO.md` y el inventario de proyectos en `INVENTARIO.md`.

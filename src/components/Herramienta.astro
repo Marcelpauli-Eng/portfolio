@@ -1,0 +1,10 @@
+---
+import { herramientas } from '../herramientas';
+
+interface Props { nombre: string; x: string; y: string; w: string; r: string; lado: number }
+const { nombre, x, y, w, r, lado } = Astro.props;
+const h = herramientas[nombre];
+---
+<span class="herr" style={`--x:${x};--y:${y};--w:${w};--r:${r}`} data-lado={lado}>
+  <svg viewBox={h.vb} fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true" focusable="false" set:html={h.cuerpo}></svg>
+</span>
