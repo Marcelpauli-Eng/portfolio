@@ -2,7 +2,7 @@ export type Lang = 'es' | 'ca';
 
 export const EMAIL = 'marcelpaulilara@gmail.com';
 // [WHATSAPP]: tu número con prefijo y sin espacios ni «+», p. ej. 34600111222. Vacío = no hay botón de WhatsApp.
-export const WHATSAPP = '';
+export const WHATSAPP = '34634276385';
 
 const es = {
   meta: {
@@ -97,7 +97,8 @@ const es = {
     enviar: 'Enviar mensaje',
     asunto: 'Programa para mi oficio',
     sello: 'Listo',
-    hecho: 'Se ha abierto tu correo con el mensaje escrito. Solo falta darle a enviar.',
+    hecho: 'Mensaje enviado. Te contesto lo antes posible.',
+    error: 'No se ha podido enviar. Se abre tu correo con el mensaje escrito para que lo mandes desde ahí.',
   },
   pie: {
     lema: 'Programas a medida para talleres, lampistas, fontaneros y transportistas.',
@@ -198,7 +199,8 @@ const ca: typeof es = {
     enviar: 'Envia el missatge',
     asunto: 'Programa per al meu ofici',
     sello: 'Llest',
-    hecho: 'S’ha obert el teu correu amb el missatge escrit. Només cal que l’enviïs.',
+    hecho: 'Missatge enviat. Et contesto al més aviat possible.',
+    error: 'No s’ha pogut enviar. S’obre el teu correu amb el missatge escrit perquè l’enviïs des d’allà.',
   },
   pie: {
     lema: 'Programes a mida per a tallers, lampistes, fontaners i transportistes.',
