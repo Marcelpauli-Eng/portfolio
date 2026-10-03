@@ -111,8 +111,12 @@ if (carrusel) {
       tb.setAttribute('aria-selected', String(i === k));
       tb.tabIndex = i === k ? 0 : -1;
     });
-    if (foco) tabs[k].focus();
-    tabs[k].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    if (foco) tabs[k].focus({ preventScroll: true });
+    // La pestaña elegida se centra en su tira, solo de lado: scrollIntoView también movía la página en vertical.
+    const tira = tabs[k].parentElement!;
+    const caja = tira.getBoundingClientRect();
+    const pestana = tabs[k].getBoundingClientRect();
+    tira.scrollBy({ left: pestana.left - caja.left - (caja.width - pestana.width) / 2, behavior: animado() ? 'smooth' : 'auto' });
     fondos.forEach((f, i) => f.classList.toggle('activo', i === k));
     seccion.dataset.activo = paneles[k].id;
     paneles[actual].classList.remove('activo');
@@ -121,12 +125,9 @@ if (carrusel) {
     cargar(nuevo);
     if (contador) contador.textContent = String(k + 1);
     actual = k;
-    // Las medidas de la ficha nueva cambian (los pasos en móvil se miden con ella). Antes de mover el scroll, no después: refresh lo pararía.
+    // Las medidas de la ficha nueva cambian (los pasos en móvil se miden con ella). La página se queda a la misma altura.
     ScrollTrigger.refresh();
 
-    // Si se cambia estando a media ficha, se vuelve a su principio.
-    const arriba = carrusel.getBoundingClientRect().top;
-    if (arriba < 0) window.scrollTo({ top: scrollY + arriba, behavior: animado() ? 'smooth' : 'auto' });
 
     if (animado()) {
       gsap.fromTo(nuevo, { x: dir * 48, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: 'power3.out', clearProps: 'transform,opacity' });
