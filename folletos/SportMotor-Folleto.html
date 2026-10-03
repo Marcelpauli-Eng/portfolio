@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>SportMotor · Folleto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,600..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&display=block">
+<link rel="stylesheet" href="../src/styles/global.css">
+<link rel="stylesheet" href="folleto.css">
+<style>
+  .pag { --c: var(--amarilla); }
+  .opcion { position: relative; background: var(--blanco); border-radius: 3px; box-shadow: var(--sombra-objeto); }
+  .opcion .plan-cuerpo { gap: 10px; padding-top: 12px; }
+  .opcion h3 { font-size: 19px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ok" viewBox="0 0 20 20"><path d="M4 10.5l4 4 8-9"/></symbol>
+  <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-personas" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></symbol>
+  <symbol id="i-factura" viewBox="0 0 24 24"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8zM14 2.5V8h5.5M8.5 13h7M8.5 17h4.5"/></symbol>
+  <symbol id="i-caja" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M18 7a7 7 0 1 0 0 10M4 10.5h9M4 14h9"/></symbol>
+  <symbol id="i-grafico" viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-7M21 20H3"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l3 3 5-6"/></symbol>
+  <symbol id="i-cartera" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="14" rx="2"/><path d="M3 10h18M15.5 15h2"/></symbol>
+  <symbol id="i-candado" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="11" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 15v2.5"/></symbol>
+  <symbol id="i-pantallas" viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6M9 14v4"/><rect x="17" y="8" width="5" height="11" rx="1.2"/></symbol>
+  <symbol id="i-capas" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-herramienta" viewBox="0 0 24 24"><path d="M14.5 6.5a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.4-3.4a6 6 0 0 1-7.9 7.9l-6.4 6.4a2.1 2.1 0 0 1-3-3l6.4-6.4a6 6 0 0 1 7.9-7.9z"/></symbol>
+  <symbol id="i-gorra" viewBox="0 0 24 24"><path d="M2 9.5L12 5l10 4.5-10 4.5zM6 11.5v4.5c3.5 2.5 8.5 2.5 12 0v-4.5M22 9.5v5"/></symbol>
+  <symbol id="i-mensaje" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-actualizar" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1L20.5 8.5M20.5 3.5v5h-5"/></symbol>
+  <symbol id="i-salida" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+  <symbol id="i-lapiz" viewBox="0 0 24 24"><path d="M16.5 3.5l4 4L8 20l-5 1 1-5zM14 6l4 4"/></symbol>
+  <symbol id="i-puerta" viewBox="0 0 24 24"><path d="M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M15 12h.01"/></symbol>
+  <symbol id="i-archivo" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9M10 13h4"/></symbol>
+  <symbol id="i-ojo" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M3 3l18 18"/></symbol>
+  <symbol id="i-lista" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+</svg>
+
+<!-- 1 · Portada -->
+<section class="pag pag--copia portada">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0001</span></header>
+  <div class="pag-cuerpo">
+    <p class="ceja">Software para talleres</p>
+    <h1>Todo tu taller, en <span class="subrayado">un solo programa<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8C50 3 120 2 197 6" fill="none" stroke="#2448B8" stroke-width="3.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></span>.</h1>
+    <p class="entradilla" style="font-size:16.5px;max-width:34em">Para talleres de coches, motos y furgonetas. De la cita en el mostrador a la factura, pasando por el presupuesto, el almacén y la tablet del técnico. Sin papeles sueltos ni Excel.</p>
+
+    <div style="position:relative;height:580px;margin-top:4px">
+      <div class="hero-escena" style="position:absolute;left:70px;top:-40px;width:490px;max-width:none">
+        <div class="copia copia--rosa"></div>
+        <div class="copia copia--amarilla" style="background:#FBF3CF"></div>
+        <div class="hoja">
+          <div class="perforado"></div>
+          <div class="hoja-cuerpo">
+            <div class="hoja-cabecera"><span>Orden de trabajo</span><span class="numero">Nº 0011</span></div>
+            <div class="campo"><span class="etq">Fecha</span><span class="valor">mar 15 sept</span></div>
+            <div class="campo"><span class="etq">Cliente</span><span class="valor">Carlos Núñez Prieto</span></div>
+            <div class="campo"><span class="etq">Vehículo</span><span class="valor">Yamaha MT-07 · 1234 JKL</span></div>
+            <div class="campo"><span class="etq">Km</span><span class="valor">11.380</span></div>
+            <div class="campo"><span class="etq">Trabajo</span><span class="valor">Revisión y pastillas</span></div>
+            <div class="campo campo--notas"><span class="etq">Notas</span><span class="valor">Ruido al frenar delante.</span></div>
+            <div class="firma">
+              <div class="firma-trazo"><svg viewBox="0 0 200 56" fill="none" stroke="#2448B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42c10-30 26-34 22-8s14 18 22-6 12-14 10 6 18 6 26-12 10-6 12 8 20 2 40-10l34 4"></path><path d="M60 50c30-4 70-6 120-4"></path></svg></div>
+              <span class="etq">Firma del cliente</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-movil hero-movil--tablet" style="right:-9%;top:24%"><div class="hero-movil-pantalla"><img src="img/taller-tablet-orden.jpg" alt=""></div></div>
+      </div>
+      <svg class="herr-f" style="left:-14px;top:470px;width:300px;transform:rotate(-12deg)" viewBox="0 0 320 80" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M64 31 L254 34 L254 46 L64 49 Z"></path><path d="M96 40 L222 40" fill="none" stroke-width="1.2" opacity=".5"></path><path d="M12.5 28 L44 30 L44 50 L12.5 52 A30 30 0 1 0 12.5 28 Z"></path><path fill-rule="evenodd" d="M252 40 a28 28 0 1 0 56 0 a28 28 0 1 0 -56 0 Z M293 40 L286.5 51.3 L273.5 51.3 L267 40 L273.5 28.7 L286.5 28.7 Z"></path></svg>
+      <svg class="herr-f" style="left:630px;top:10px;width:40px;transform:rotate(16deg)" viewBox="0 0 60 200" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="22" y="4" width="16" height="12" rx="2"></rect><rect x="26" y="16" width="8" height="10"></rect><path d="M20 26 L40 26 L42 96 L18 96 Z"></path><path d="M20 38 L40 38 M20 48 L40 48 M19.5 58 L40.5 58 M19.5 68 L40.5 68" fill="none" stroke-width="1.4"></path><path d="M10 96 L50 96 L50 122 L10 122 Z"></path><path d="M23 96 L23 122 M37 96 L37 122" fill="none" stroke-width="1.4"></path><rect x="14" y="122" width="32" height="8"></rect><rect x="18" y="130" width="24" height="44"></rect><path d="M18 136 L42 140 M18 144 L42 148 M18 152 L42 156 M18 160 L42 164 M18 168 L42 172" fill="none" stroke-width="1.4"></path><path d="M28 174 L28 184 L32 184 L32 174" fill="none"></path><path d="M21 174 L21 192 L34 192" fill="none" stroke-width="3"></path></svg>
+      <svg class="herr-f" style="left:520px;top:470px;width:110px" viewBox="0 0 160 160" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path fill-rule="evenodd" d="M142.6 73.1 L153.9 75.9 L153.9 84.1 L142.6 86.9 L141.7 92.8 L151.5 99.0 L149.0 106.7 L137.4 105.9 L134.7 111.2 L142.2 120.1 L137.4 126.7 L126.6 122.4 L122.4 126.6 L126.7 137.4 L120.1 142.2 L111.2 134.7 L105.9 137.4 L106.7 149.0 L99.0 151.5 L92.8 141.7 L86.9 142.6 L84.1 153.9 L75.9 153.9 L73.1 142.6 L67.2 141.7 L61.0 151.5 L53.3 149.0 L54.1 137.4 L48.8 134.7 L39.9 142.2 L33.3 137.4 L37.6 126.6 L33.4 122.4 L22.6 126.7 L17.8 120.1 L25.3 111.2 L22.6 105.9 L11.0 106.7 L8.5 99.0 L18.3 92.8 L17.4 86.9 L6.1 84.1 L6.1 75.9 L17.4 73.1 L18.3 67.2 L8.5 61.0 L11.0 53.3 L22.6 54.1 L25.3 48.8 L17.8 39.9 L22.6 33.3 L33.4 37.6 L37.6 33.4 L33.3 22.6 L39.9 17.8 L48.8 25.3 L54.1 22.6 L53.3 11.0 L61.0 8.5 L67.2 18.3 L73.1 17.4 L75.9 6.1 L84.1 6.1 L86.9 17.4 L92.8 18.3 L99.0 8.5 L106.7 11.0 L105.9 22.6 L111.2 25.3 L120.1 17.8 L126.7 22.6 L122.4 33.4 L126.6 37.6 L137.4 33.3 L142.2 39.9 L134.7 48.8 L137.4 54.1 L149.0 53.3 L151.5 61.0 L141.7 67.2 Z M97 80 a17 17 0 1 0 -34 0 a17 17 0 1 0 34 0 Z M124.0 80.0 a6 6 0 1 0 -12 0 a6 6 0 1 0 12 0 Z M97.7 116.1 a6 6 0 1 0 -12 0 a6 6 0 1 0 12 0 Z M55.3 102.3 a6 6 0 1 0 -12 0 a6 6 0 1 0 12 0 Z M55.3 57.7 a6 6 0 1 0 -12 0 a6 6 0 1 0 12 0 Z M97.7 43.9 a6 6 0 1 0 -12 0 a6 6 0 1 0 12 0 Z"></path><circle cx="80" cy="80" r="54" fill="none" stroke-width="1.2" opacity=".5"></circle></svg>
+    </div>
+
+    <div class="r4 portada-datos">
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Ordenador, tablet y móvil</strong><span>Desde el navegador</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Sigue sin internet</strong><span>El servidor está en tu taller</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Registro de jornada</strong><span>Se ficha al entrar</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Nacido en un taller</strong><span>No en una oficina</span></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Software de gestión para talleres</span><span>Marcel Paulí · marcelpaulilara@gmail.com</span></footer>
+</section>
+
+<!-- 2 · El punto de partida -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0002</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">El punto de partida</p>
+      <h2>¿Te suena alguna de estas frases?</h2>
+      <p class="entradilla">Son las frases de un taller que trabaja con agenda de papel, un Excel de clientes, avisos por WhatsApp y una carpeta de facturas. Cada tarea se hace a mano, y en cada paso se puede perder algo.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;align-items:start">
+      <div class="libreta-escena" style="max-width:none">
+        <div class="libreta-recorte">
+          <div class="libreta-pantalla"></div>
+          <div class="libreta">
+            <div class="libreta-espiral"></div>
+            <div class="libreta-hoja">
+              <p class="libreta-titulo">Esta semana</p>
+              <ul>
+                <li><span class="libreta-frase">«¿Cómo va lo mío?»<span class="tachon">«¿Cómo va lo mío?»</span></span><span class="libreta-coste">El teléfono, sonando</span></li>
+                <li><span class="libreta-frase">«¿Quién dijo lo del kit?»<span class="tachon">«¿Quién dijo lo del kit?»</span></span><span class="libreta-coste">Discusiones al entregar</span></li>
+                <li><span class="libreta-frase">«No quedan pastillas.»<span class="tachon">«No quedan pastillas.»</span></span><span class="libreta-coste">El elevador, ocupado</span></li>
+                <li><span class="libreta-frase">«¿Esta hora la cobramos?»<span class="tachon">«¿Esta hora la cobramos?»</span></span><span class="libreta-coste">Trabajo que no se cobra</span></li>
+                <li><span class="libreta-frase">«¿Y la factura de marzo?»<span class="tachon">«¿Y la factura de marzo?»</span></span><span class="libreta-coste">Tiempo buscando papeles</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="libreta-movil"></div>
+      </div>
+
+      <div class="r2" style="row-gap:16px">
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-calendario"/></svg><h3>Citas en papel y WhatsApp</h3><p>Se olvidan, se pisan y nadie sabe qué entra mañana.</p><span class="coste-f">Huecos sin vender</span></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-personas"/></svg><h3>Fichas repartidas</h3><p>Clientes y vehículos entre libretas, Excel y la memoria del mostrador.</p><span class="coste-f">Tiempo buscando</span></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-factura"/></svg><h3>Presupuestos de palabra</h3><p>«Te lo dije yo», sin nada escrito: discusiones al entregar el vehículo.</p><span class="coste-f">Trabajo sin cobrar</span></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-caja"/></svg><h3>Almacén a ojo</h3><p>La pieza falta cuando el vehículo ya está desmontado en el elevador.</p><span class="coste-f">Elevadores ocupados</span></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-euro"/></svg><h3>Facturas a mano</h3><p>Números que se saltan, importes que no cuadran y correcciones borrando.</p><span class="coste-f">Riesgo con Hacienda</span></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-grafico"/></svg><h3>Sin números</h3><p>No sabes qué mes fue bueno, qué se factura de verdad ni de qué vive el taller.</p><span class="coste-f">Decidir a ciegas</span></div>
+      </div>
+    </div>
+
+    <div class="oscuro" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:26px;align-items:center;margin-top:auto">
+      <p class="grande">¿El resultado?</p>
+      <p><strong>Horas perdidas cada semana, dinero que se escapa</strong> entre la agenda, el almacén y la factura, y un taller que se dirige sin datos.</p>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>SportMotor · Software de gestión para talleres</span><span>2</span></footer>
+</section>
+
+<!-- 3 · La solución -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0003</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">La solución</p>
+      <h2>Un solo programa, de la cita a la factura.</h2>
+      <p class="entradilla">El vehículo entra por la puerta y sale reparado y cobrado. Cada paso queda apuntado, y lo ve quien lo tiene que ver.</p>
+    </div>
+
+    <ol class="fila-pasos" style="--n:7;margin-top:4px">
+      <li><span class="flujo-num">1</span><strong>Cita</strong></li>
+      <li><span class="flujo-num">2</span><strong>Entrada</strong></li>
+      <li><span class="flujo-num">3</span><strong>Diagnóstico</strong></li>
+      <li><span class="flujo-num">4</span><strong>Presupuesto</strong></li>
+      <li><span class="flujo-num">5</span><strong>Reparación</strong></li>
+      <li><span class="flujo-num">6</span><strong>Entrega</strong></li>
+      <li><span class="flujo-num">7</span><strong>Factura</strong></li>
+    </ol>
+
+    <figure class="captura">
+      <div class="marco-f marco-f--hoja"><img src="img/taller-orden-pasos.jpg" alt=""></div>
+      <figcaption><p><strong class="tinta">Orden de trabajo OT-2026-00006.</strong> Cada orden sabe por dónde va. Recepción, diagnóstico, presupuesto, aprobación, reparación y entrega, con quién hizo qué y cuándo.</p></figcaption>
+    </figure>
+
+    <div class="titular" style="margin-top:8px">
+      <h3 style="font-size:21px">Pensado para todo el equipo</h3>
+      <p class="suave">Con un técnico, con varios o con mostrador propio.</p>
+    </div>
+    <div class="r3">
+      <div class="captura"><div class="marco-f marco-f--hoja marco-f--recorte" style="--h:150px"><img src="img/taller-informe.jpg" alt=""></div><div class="punto"><p class="ceja">Dirección</p><h3>Decide con números</h3><p>Facturación, margen y lo que queda por cobrar, sin montar nada a mano.</p></div></div>
+      <div class="captura"><div class="marco-f marco-f--hoja marco-f--recorte" style="--h:150px"><img src="img/taller-presupuesto.jpg" alt=""></div><div class="punto"><p class="ceja">Mostrador</p><h3>Atiende sin buscar papeles</h3><p>Da citas, presupuesta, manda el PDF por WhatsApp y factura.</p></div></div>
+      <div class="captura"><div class="marco-f marco-f--hoja marco-f--recorte" style="--h:150px"><img src="img/taller-tablet-orden.jpg" alt=""></div><div class="punto"><p class="ceja">Técnicos</p><h3>Su trabajo, en la tablet</h3><p>Ven sus órdenes y apuntan horas y material. Los precios, no.</p></div></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>SportMotor · Software de gestión para talleres</span><span>3</span></footer>
+</section>
+
+<!-- 4 · Funciones -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0004</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Funciones principales</p>
+      <h2>Todo lo que necesita el taller, de serie.</h2>
+    </div>
+    <div class="r3" style="row-gap:24px;--h:170px">
+      <div class="captura"><div class="marco-f marco-f--hoja marco-f--recorte"><img src="img/taller-cliente.jpg" alt=""></div><div><h3>Clientes y vehículos</h3><p class="suave" style="font-size:12.5px">Ficha de cada cliente con sus vehículos, kilómetros e historial. El NIF se comprueba al darlo de alta.</p></div></div>
+      <div class="captura"><div class="marco-f marco-f--hoja marco-f--recorte"><img src="img/taller-agenda.jpg" alt=""></div><div><h3>Agenda de citas</h3><p class="suave" style="font-size:12.5px">La semana del taller y la carga de cada técnico. Al llegar el vehículo, la cita se convierte en orden.</p></div></div>
+      <div class="captura"><div class="marco-f marco-f--hoja marco-f--recorte"><img src="img/taller-presupuesto.jpg" alt=""></div><div><h3>Órdenes y presupuestos</h3><p class="suave" style="font-size:12.5px">Mano de obra, piezas y descuentos. Plantillas de trabajo y presupuesto en PDF o por WhatsApp.</p></div></div>
+      <div class="captura"><div class="marco-f marco-f--hoja marco-f--recorte"><img src="img/taller-inventario.jpg" alt=""></div><div><h3>Almacén y proveedores</h3><p class="suave" style="font-size:12.5px">Las piezas se descuentan al reparar, nunca en negativo, y avisa de lo que baja del mínimo.</p></div></div>
+      <div class="captura"><div class="marco-f marco-f--hoja marco-f--recorte"><img src="img/taller-factura.jpg" alt=""></div><div><h3>Facturación</h3><p class="suave" style="font-size:12.5px">Numeración sin huecos, facturas selladas con huella y PDF con código QR. Correcciones con rectificativa.</p></div></div>
+      <div class="captura"><div class="marco-f marco-f--hoja marco-f--recorte"><img src="img/taller-informe.jpg" alt=""></div><div><h3>Informes del negocio</h3><p class="suave" style="font-size:12.5px">Facturación por meses, margen, mejores clientes y el trabajo que falta por facturar.</p></div></div>
+    </div>
+    <div class="r2" style="margin-top:4px">
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-capas"/></svg><h3>Automatizaciones</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Piezas descontadas al empezar la reparación</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>«Esperando piezas» con lo que hay que pedir</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Tasas y pluses a tu medida en Ajustes; la de neumáticos se añade sola</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Todos los puestos al día en tiempo real</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-candado"/></svg><h3>Usuarios, permisos y copias</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>48 permisos para montar roles a medida</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Registro de jornada al entrar en el programa</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Copia cifrada cada noche, fuera del taller</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Exportación para la gestoría: CSV y PDF en ZIP</li>
+        </ul></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>SportMotor · Software de gestión para talleres</span><span>4</span></footer>
+</section>
+
+<!-- 5 · Así se ve -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0005</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Así se ve · capturas reales del programa</p>
+      <h2>Pantallas de verdad, no dibujos.</h2>
+      <p class="entradilla">Claras, en español y pensadas para el mostrador, el taller y el móvil. Así se ve con los datos de demostración.</p>
+    </div>
+    <figure class="captura">
+      <div class="marco-f marco-f--orden"><img src="img/taller-panel.jpg" alt=""></div>
+      <figcaption><p><strong class="tinta">Panel principal.</strong> Órdenes abiertas, vehículos listos para entregar, piezas bajo mínimo y el trabajo de cada técnico, al abrir el programa.</p></figcaption>
+    </figure>
+    <div class="r2">
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/taller-cliente.jpg" alt=""></div><figcaption><p><strong class="tinta">Clientes.</strong> Contacto, datos fiscales comprobados y todos sus vehículos.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/taller-agenda.jpg" alt=""></div><figcaption><p><strong class="tinta">Agenda.</strong> Qué entra cada día y cuánto trabajo tiene cada técnico.</p></figcaption></figure>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>SportMotor · Software de gestión para talleres</span><span>5</span></footer>
+</section>
+
+<!-- 6 · En cada puesto -->
+<section class="pag pag--copia">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0006</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">En cada puesto · capturas reales del programa</p>
+      <h2>En el mostrador, en el elevador y en tu bolsillo.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:28px;align-items:start">
+      <figure class="captura"><div class="marco-f marco-f--orden"><img src="img/taller-informe.jpg" alt=""></div><figcaption><p><strong class="tinta">Informes.</strong> Cuánto facturas cada mes, tu margen y lo que falta por cobrar.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--tablet"><img src="img/taller-tablet-orden.jpg" alt=""></div><figcaption><p><strong class="tinta">La tablet del técnico.</strong> Su orden y su trabajo, sin precios.</p></figcaption></figure>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:28px;align-items:start;margin-right:25px">
+      <figure class="captura"><div class="marco-f marco-f--orden"><img src="img/taller-rectificar.jpg" alt=""></div><figcaption><p><strong class="tinta">Una operación de todos los días: corregir una factura.</strong> Cambias lo que estaba mal y el programa te dice de cuánto será la rectificativa antes de emitirla.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--movil"><img src="img/taller-movil-panel.jpg" alt=""></div><figcaption><p><strong class="tinta">En el móvil.</strong> El taller, desde donde estés.</p></figcaption></figure>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>SportMotor · Software de gestión para talleres</span><span>6</span></footer>
+</section>
+
+<!-- 7 · Registro de jornada -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0007</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Registro de jornada · capturas reales del programa</p>
+      <h2 style="font-size:31px;max-width:none">El fichaje, dentro del programa. Sin papeles ni apps aparte.</h2>
+      <p class="entradilla">El registro de jornada es obligatorio en cualquier taller con trabajadores. Aquí se ficha al empezar a trabajar, y dirección tiene las horas de todo el equipo, día a día.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:330px minmax(0,1fr);gap:26px;align-items:start">
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/taller-horas.jpg" alt=""></div><figcaption><p><strong class="tinta">Control de horas.</strong> Las horas de cada trabajador por día, y lo que hizo en cada jornada.</p></figcaption></figure>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <figure class="captura"><div class="marco-f marco-f--hoja marco-f--recorte" style="--h:150px"><img src="img/taller-fichar.jpg" alt="" style="object-position:center"></div><figcaption><p><strong class="tinta">Así empieza el día.</strong> Sin fichar no se trabaja en el programa.</p></figcaption></figure>
+        <figure class="captura"><div class="marco-f marco-f--hoja" style="width:200px"><img src="img/taller-reloj.jpg" alt=""></div><figcaption><p><strong class="tinta">La jornada, siempre a la vista.</strong> Arriba en la pantalla, con un botón para salir.</p></figcaption></figure>
+        <div class="nota" style="transform:rotate(1deg)"><p style="font-size:15px">¿Te piden el registro? Lo tienes a mano: la hora de entrada y de salida de cada trabajador, día a día, de los últimos cuatro años.</p></div>
+      </div>
+    </div>
+    <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/taller-jornadas.jpg" alt=""></div><figcaption><p><strong class="tinta">Nada se borra.</strong> Una jornada corregida o cerrada a mano queda marcada, con quién lo hizo y por qué.</p></figcaption></figure>
+    <div class="r3" style="row-gap:14px">
+      <div class="punto"><h3>Ficha al empezar</h3><p>Sin empezar la jornada no se trabaja. Dirección puede quedar exenta.</p></div>
+      <div class="punto"><h3>Las horas de todos</h3><p>Por día y por persona: esta semana, este mes o las fechas que elijas.</p></div>
+      <div class="punto"><h3>Qué hizo cada uno</h3><p>Diagnósticos, horas, piezas y citas de cada jornada.</p></div>
+      <div class="punto"><h3>Correcciones firmadas</h3><p>Lo fichado no se pisa: la corrección va aparte, con su motivo.</p></div>
+      <div class="punto"><h3>Salidas olvidadas</h3><p>Quien se fue sin fichar se cierra a mano y queda marcado.</p></div>
+      <div class="punto"><h3>Cuatro años guardado</h3><p>Como pide el art. 34.9 del Estatuto de los Trabajadores.</p></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>SportMotor · Software de gestión para talleres</span><span>7</span></footer>
+</section>
+
+<!-- 8 · Beneficios -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0008</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Beneficios</p>
+      <h2>Lo que cambia desde la primera semana.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:34px;align-items:start">
+      <div style="display:grid;gap:14px">
+        <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-reloj"/></svg><div><h3>Ahorras horas de papeleo cada semana</h3><p>Cada dato se escribe una vez: pasa de la cita a la orden, al presupuesto y a la factura.</p></div></div>
+        <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><h3>Menos errores que cuestan dinero</h3><p>NIF comprobados, existencias que nunca bajan de cero y facturas que cuadran al céntimo.</p></div></div>
+        <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-cartera"/></svg><div><h3>No se escapa nada sin cobrar</h3><p>Horas y piezas quedan en la orden, y ves los trabajos terminados que aún no tienen factura.</p></div></div>
+        <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-caja"/></svg><div><h3>El almacén, bajo control</h3><p>Sabes qué queda y qué hay que pedir antes de desmontar nada, no a mitad de reparación.</p></div></div>
+        <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-ojo"/></svg><div><h3>Cada uno ve lo que le toca</h3><p>El técnico trabaja en su tablet sin ver precios ni márgenes; mostrador y dirección, todo.</p></div></div>
+        <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-pantallas"/></svg><div><h3>Todo en un único programa</h3><p>Clientes, citas, órdenes, almacén, facturas y fichajes, desde el ordenador, la tablet o el móvil.</p></div></div>
+      </div>
+      <ul class="cifras" style="--n:1;gap:20px">
+        <li><strong>0</strong><span>huecos en la numeración de tus facturas</span></li>
+        <li><strong>48</strong><span>permisos para decidir quién ve y hace qué</span></li>
+        <li><strong>6 W</strong><span>consume el mini-PC que hace de servidor en tu taller</span></li>
+        <li><strong>4 años</strong><span>de registro de jornada guardado</span></li>
+      </ul>
+    </div>
+    <table class="antes-tabla" style="margin-top:6px">
+      <thead><tr><th style="width:30%"></th><th style="width:35%"><span class="antes-etq">Antes</span></th><th>Con SportMotor</th></tr></thead>
+      <tbody>
+        <tr><td>¿Cómo va una reparación?</td><td><s>Ir al elevador a preguntar</s></td><td>Mirarlo en el panel</td></tr>
+        <tr><td>Falta una pieza</td><td><s>Se descubre con el vehículo desmontado</s></td><td>Avisa de lo que hay que pedir</td></tr>
+        <tr><td>Factura mal hecha</td><td><s>Se borra y se hace otra</s></td><td>Rectificativa enlazada, la original intacta</td></tr>
+        <tr><td>Registro de jornada</td><td><s>Una hoja que nadie rellena</s></td><td>Se ficha al entrar en el programa</td></tr>
+        <tr><td>Fin de mes</td><td><s>Sumar facturas a mano</s></td><td>El informe ya está hecho</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="pag-pie"><span>SportMotor · Software de gestión para talleres</span><span>8</span></footer>
+</section>
+
+<!-- 9 · Cómo funciona -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0009</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Cómo funciona</p>
+      <h2>En marcha en cuatro pasos.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:30px;align-items:center">
+      <ol class="col-pasos" style="gap:16px">
+        <li style="grid-template-columns:48px minmax(0,1fr)"><span class="paso-num">1</span><div><h3>Configuramos tu cuenta</h3><p>Datos fiscales del taller, series de facturas, tarifa por hora, tipos de IVA y usuarios.</p></div></li>
+        <li style="grid-template-columns:48px minmax(0,1fr)"><span class="paso-num">2</span><div><h3>Importamos tus datos</h3><p>Traemos tus clientes y vehículos del programa que usas ahora. Las piezas, o las cargamos o las das de alta sobre la marcha.</p></div></li>
+        <li style="grid-template-columns:48px minmax(0,1fr)"><span class="paso-num">3</span><div><h3>Tu equipo empieza a trabajar</h3><p>Mostrador en el ordenador y técnicos en la tablet, cada uno con su perfil. Por la mañana, cada uno ficha y a trabajar.</p></div></li>
+        <li style="grid-template-columns:48px minmax(0,1fr)"><span class="paso-num">4</span><div><h3>Consultas los resultados</h3><p>Desde el panel y los informes, en el taller o desde el móvil, sin montar nada a mano.</p></div></li>
+      </ol>
+      <figure class="captura"><div class="marco-f marco-f--movil"><img src="img/taller-movil-panel.jpg" alt=""></div><figcaption><p><strong class="tinta">Y tú, desde el móvil.</strong> El panel del taller, estés donde estés.</p></figcaption></figure>
+    </div>
+
+    <h3 style="font-size:21px;margin-top:6px">Tus datos, donde tú decidas</h3>
+    <div class="r2" style="column-gap:26px">
+      <div class="opcion plan--recomendado">
+        <div class="plan-cuerpo">
+          <p class="ceja">Recomendado</p>
+          <h3>En tu taller</h3>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Un mini-PC de unos 180 € que consume 6 W</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Si se cae internet, se sigue trabajando</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Copia cifrada cada noche, fuera del local</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Acceso seguro desde el móvil</li>
+          </ul>
+        </div>
+      </div>
+      <div class="opcion">
+        <div class="plan-cuerpo">
+          <p class="ceja">Sin equipo</p>
+          <h3>En la nube</h3>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>No tienes que instalar nada en el taller</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Entras desde cualquier sitio con conexión</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Las mismas funciones y los mismos permisos</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Copias de seguridad del proveedor</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:21px;margin-top:6px">Seguro por diseño</h3>
+    <div class="r4">
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-candado"/></svg><p>Bloqueo tras varios intentos de contraseña fallidos</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-ojo"/></svg><p>Los precios no llegan a la pantalla del técnico</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-factura"/></svg><p>Las facturas no se pueden modificar ni borrar</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-lista"/></svg><p>Casi 800 comprobaciones automáticas del programa</p></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>SportMotor · Software de gestión para talleres</span><span>9</span></footer>
+</section>
+
+<!-- 10 · Planes y precios -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0010</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Planes y precios</p>
+      <h2>Un plan para cada tamaño de taller.</h2>
+    </div>
+    <div class="planes">
+      <div class="plan">
+        <div class="perforado"></div>
+        <div class="plan-cuerpo">
+          <h3>Básico</h3>
+          <p class="para">Para el mecánico que trabaja solo y empieza a dejar el papel.</p>
+          <p class="precio"><s>49 €</s><strong>39 €</strong><small>/mes</small></p>
+          <p class="inicial">+ 199 € de pago inicial</p>
+          <p class="usuarios">1 usuario</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Clientes y vehículos con historial</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Agenda de citas</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Órdenes y presupuestos en PDF</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Facturas sin huecos en la numeración</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Tasas y pluses a tu medida, en Ajustes</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Soporte por email</li>
+          </ul>
+          <p class="plan-boton"><span>Empezar</span></p>
+        </div>
+      </div>
+      <div class="plan plan--recomendado">
+        <div class="perforado"></div>
+        <div class="plan-cuerpo">
+          <h3>Profesional</h3>
+          <p class="para">Para el taller con mostrador y varios técnicos.</p>
+          <p class="precio"><s>99 €</s><strong>75 €</strong><small>/mes</small></p>
+          <p class="inicial">+ 399 € de pago inicial</p>
+          <p class="usuarios">Hasta 5 usuarios</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Todo lo del plan Básico</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Almacén, proveedores y avisos de mínimos</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Informes de facturación y margen</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Tablet del técnico, sin ver precios</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Registro de jornada del equipo</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Soporte prioritario</li>
+          </ul>
+          <p class="plan-boton"><span>Pedir demostración</span></p>
+        </div>
+        <span class="sello">Recomendado</span>
+      </div>
+      <div class="plan">
+        <div class="perforado"></div>
+        <div class="plan-cuerpo">
+          <h3>Empresa</h3>
+          <p class="para">Para talleres grandes o con varios puestos de trabajo.</p>
+          <p class="precio"><strong>A medida</strong></p>
+          <p class="inicial">Presupuesto cerrado</p>
+          <p class="usuarios">Usuarios ilimitados</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Todo lo del plan Profesional</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Roles y permisos a medida</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Servidor en tu taller o en la nube</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Importación de tus datos anteriores</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Instalación y formación incluidas</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Soporte dedicado</li>
+          </ul>
+          <p class="plan-boton"><span>Hablemos</span></p>
+        </div>
+      </div>
+    </div>
+    <p class="peque">IVA no incluido. Facturación mensual y sin permanencia. El pago inicial se abona una sola vez al contratar y cubre la instalación, la importación de tus clientes y vehículos, el alta de los usuarios y la formación del equipo. El plan Empresa se presupuesta según el número de usuarios y lo que necesite tu taller.</p>
+    <ul class="garantias">
+      <li>Sin permanencia</li><li>Periodo de prueba</li><li>Formación en el alta</li><li>Soporte en español</li>
+    </ul>
+    <h3 style="font-size:21px;margin-top:4px">¿Qué plan me conviene?</h3>
+    <div class="r3">
+      <div class="punto"><h3>Trabajas tú solo</h3><p>Empieza con el Básico. Citas, órdenes y facturas en un solo sitio desde el primer día.</p></div>
+      <div class="punto"><h3>Tienes de 2 a 5 personas</h3><p>El Profesional: cada técnico con su acceso en la tablet, y tú con el almacén, los informes y el fichaje de todos.</p></div>
+      <div class="punto"><h3>Taller grande</h3><p>El plan Empresa. Vemos cómo trabajáis y te presupuestamos el sistema a medida.</p></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>SportMotor · Software de gestión para talleres</span><span>10</span></footer>
+</section>
+
+<!-- 11 · Soporte y contacto -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">SportMotor</span><span class="numero">Nº 0011</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Soporte y condiciones</p>
+      <h2>Contigo antes, durante y después.</h2>
+    </div>
+    <div class="r3" style="row-gap:16px">
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-herramienta"/></svg><h3>Instalación y configuración</h3><p>Te lo dejamos instalado, con los datos fiscales del taller y listo para facturar.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-gorra"/></svg><h3>Formación del equipo</h3><p>Una sesión para mostrador y técnicos, para empezar desde el primer día.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-mensaje"/></svg><h3>Soporte técnico</h3><p>Para las dudas e incidencias del día a día, en español.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-actualizar"/></svg><h3>Actualizaciones incluidas</h3><p>Las mejoras y correcciones te llegan sin coste adicional.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-calendario"/></svg><h3>Periodo de prueba</h3><p>Pruébalo antes de decidir, sin compromiso.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-salida"/></svg><h3>Sin permanencia</h3><p>Lo dejas cuando quieras y te llevas tus clientes, vehículos y facturas.</p></div>
+    </div>
+    <div class="punto punto--fila" style="padding:14px 18px;border:2px solid var(--imprenta);border-radius:4px;background:var(--blanco)"><svg class="icono" viewBox="0 0 24 24"><use href="#i-escudo"/></svg><div><h3>Protección de tus datos</h3><p>Tus datos se quedan en tu taller, con acceso por usuario y contraseña, bloqueo tras varios intentos fallidos y una copia de seguridad cifrada cada noche.</p></div></div>
+
+    <div style="position:relative;flex:1">
+      <svg class="herr-f" style="right:190px;bottom:4px;width:280px;transform:rotate(-8deg)" viewBox="0 0 320 80" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M64 31 L254 34 L254 46 L64 49 Z"></path><path d="M96 40 L222 40" fill="none" stroke-width="1.2" opacity=".5"></path><path d="M12.5 28 L44 30 L44 50 L12.5 52 A30 30 0 1 0 12.5 28 Z"></path><path fill-rule="evenodd" d="M252 40 a28 28 0 1 0 56 0 a28 28 0 1 0 -56 0 Z M293 40 L286.5 51.3 L273.5 51.3 L267 40 L273.5 28.7 L286.5 28.7 Z"></path></svg>
+      <svg class="herr-f" style="right:40px;bottom:-14px;width:110px" viewBox="0 0 160 160" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path fill-rule="evenodd" d="M142.6 73.1 L153.9 75.9 L153.9 84.1 L142.6 86.9 L141.7 92.8 L151.5 99.0 L149.0 106.7 L137.4 105.9 L134.7 111.2 L142.2 120.1 L137.4 126.7 L126.6 122.4 L122.4 126.6 L126.7 137.4 L120.1 142.2 L111.2 134.7 L105.9 137.4 L106.7 149.0 L99.0 151.5 L92.8 141.7 L86.9 142.6 L84.1 153.9 L75.9 153.9 L73.1 142.6 L67.2 141.7 L61.0 151.5 L53.3 149.0 L54.1 137.4 L48.8 134.7 L39.9 142.2 L33.3 137.4 L37.6 126.6 L33.4 122.4 L22.6 126.7 L17.8 120.1 L25.3 111.2 L22.6 105.9 L11.0 106.7 L8.5 99.0 L18.3 92.8 L17.4 86.9 L6.1 84.1 L6.1 75.9 L17.4 73.1 L18.3 67.2 L8.5 61.0 L11.0 53.3 L22.6 54.1 L25.3 48.8 L17.8 39.9 L22.6 33.3 L33.4 37.6 L37.6 33.4 L33.3 22.6 L39.9 17.8 L48.8 25.3 L54.1 22.6 L53.3 11.0 L61.0 8.5 L67.2 18.3 L73.1 17.4 L75.9 6.1 L84.1 6.1 L86.9 17.4 L92.8 18.3 L99.0 8.5 L106.7 11.0 L105.9 22.6 L111.2 25.3 L120.1 17.8 L126.7 22.6 L122.4 33.4 L126.6 37.6 L137.4 33.3 L142.2 39.9 L134.7 48.8 L137.4 54.1 L149.0 53.3 L151.5 61.0 L141.7 67.2 Z M97 80 a17 17 0 1 0 -34 0 a17 17 0 1 0 34 0 Z M124.0 80.0 a6 6 0 1 0 -12 0 a6 6 0 1 0 12 0 Z M97.7 116.1 a6 6 0 1 0 -12 0 a6 6 0 1 0 12 0 Z M55.3 102.3 a6 6 0 1 0 -12 0 a6 6 0 1 0 12 0 Z M55.3 57.7 a6 6 0 1 0 -12 0 a6 6 0 1 0 12 0 Z M97.7 43.9 a6 6 0 1 0 -12 0 a6 6 0 1 0 12 0 Z"></path><circle cx="80" cy="80" r="54" fill="none" stroke-width="1.2" opacity=".5"></circle></svg>
+    </div>
+    <div class="contacto-f">
+      <div>
+        <h2>¿Lo vemos en tu taller?</h2>
+        <p class="entradilla">Te enseñamos el programa en media hora con datos de ejemplo, y ves si encaja con vuestro día a día.</p>
+      </div>
+      <dl class="canales-f">
+        <div><dt>Email</dt><dd>marcelpaulilara@gmail.com</dd></div>
+        <div><dt>Teléfono</dt><dd>+34 634 27 63 85</dd></div>
+        <div><dt>Dónde</dt><dd>Llinars del Vallès (Barcelona)</dd></div>
+      </dl>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>SportMotor · Software de gestión para talleres</span><span>Marcel Paulí · © 2026</span></footer>
+</section>
+</body>
+</html>

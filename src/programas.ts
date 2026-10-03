@@ -14,6 +14,8 @@ export type Programa = {
   antes: [string, string][];
   cifras: { n: string; t: string }[];
   cta: string;
+  // Folleto: se diseña en folletos/<pdf>.html y se imprime con «npm run folletos». Sin folleto, no hay botón.
+  folleto?: { pdf: string; info: string };
 };
 
 const es: Programa[] = [
@@ -41,6 +43,7 @@ const es: Programa[] = [
       { n: '4 años', t: 'de fichajes guardados' },
     ],
     cta: 'Quiero verlo en mi taller',
+    folleto: { pdf: 'SportMotor-Folleto.pdf', info: 'PDF · 11 páginas' },
   },
   {
     id: 'lampistas',
@@ -94,6 +97,7 @@ const es: Programa[] = [
       { n: '2', t: 'empresas en el mismo calendario' },
     ],
     cta: 'Quiero verlo en mi furgoneta',
+    folleto: { pdf: 'Reparto-Folleto.pdf', info: 'PDF · 11 páginas' },
   },
 ];
 
@@ -122,6 +126,7 @@ const ca: Programa[] = [
       { n: '4 anys', t: 'de fitxatges guardats' },
     ],
     cta: 'Vull veure-ho al meu taller',
+    folleto: { pdf: 'SportMotor-Folleto.pdf', info: 'PDF · 11 pàgines' },
   },
   {
     id: 'lampistas',
@@ -175,6 +180,7 @@ const ca: Programa[] = [
       { n: '2', t: 'empreses al mateix calendari' },
     ],
     cta: 'Vull veure-ho a la meva furgoneta',
+    folleto: { pdf: 'Reparto-Folleto.pdf', info: 'PDF · 11 pàgines' },
   },
 ];
 

@@ -248,6 +248,24 @@ h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
 .datos li { display: flex; gap: 10px; align-items: center; font-weight: 700; font-size: 1.0625rem; }
 .datos svg { flex: none; color: var(--boli); }
 .ficha-texto .boton { align-self: flex-start; }
+/* El folleto: la hoja grapada con un clip a la matriz del talonario. */
+.folleto {
+  align-self: flex-start; display: flex; align-items: center; gap: 16px; margin-top: 14px;
+  padding: 12px 20px 12px 16px; border-left: 2px dashed var(--raya); border-radius: 3px;
+  background: var(--blanco); box-shadow: var(--sombra-objeto); color: var(--imprenta); text-decoration: none;
+  transition: transform .12s ease-out;
+}
+.folleto:hover { color: var(--imprenta); }
+.folleto:active { transform: translateY(2px); }
+.folleto-hoja { position: relative; flex: none; width: 72px; margin-block: -26px -4px; transform: rotate(-5deg); transition: transform .25s cubic-bezier(.34, 1.56, .64, 1); }
+.folleto-hoja img { display: block; width: 100%; height: auto; border-radius: 2px; box-shadow: 0 1px 2px rgba(27, 42, 74, .2), 0 8px 16px -8px rgba(27, 42, 74, .45); }
+.folleto-clip { position: absolute; top: -12px; left: 10px; width: 12px; transform: rotate(4deg); }
+.folleto-texto { display: flex; flex-direction: column; gap: 2px; }
+.folleto-texto strong { font-family: var(--f-titulo); font-weight: 700; font-size: 1.125rem; line-height: 1.2; }
+.folleto-texto span { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: var(--t-etiqueta); color: var(--imprenta-suave); }
+.folleto-flecha { flex: none; color: var(--boli); transition: transform .2s ease-out; }
+.folleto:hover .folleto-hoja { transform: rotate(-1deg) translateY(-6px); }
+.folleto:hover .folleto-flecha { transform: translateY(3px); }
 @media (min-width: 600px) { .datos { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1024px) {
   .ficha-cabecera { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }

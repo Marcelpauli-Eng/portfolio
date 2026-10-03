@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node scripts/comprobar-ahorro.ts"
+    "test": "node scripts/comprobar-ahorro.ts",
+    "folletos": "sh scripts/folletos.sh"
   },
   "dependencies": {
     "astro": "^7.3.5",

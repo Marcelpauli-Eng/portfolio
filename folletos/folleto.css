@@ -1,0 +1,167 @@
+/* Folletos en A4 con el papel, la tinta y los dibujos de la web. Los colores, letras y piezas
+   (hoja, libreta, ticket, pasos…) vienen de ../src/styles/global.css; aquí solo va la maqueta de la página.
+   Se imprimen a PDF con: npm run folletos */
+@page { size: A4; margin: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-size: 13.5px; line-height: 1.5; background: #C9CCC4; }
+@media print { body { background: none; } }
+
+/* Cada página es una hoja del talonario: agujeros arriba, cabecera con su número en rojo. */
+.pag { position: relative; isolation: isolate; width: 210mm; height: 297mm; margin: 24px auto; padding: 0 15mm 11mm; display: flex; flex-direction: column; overflow: hidden; background: var(--papel); break-after: page; }
+@media print { .pag { margin: 0; } }
+.pag > .perforado { margin-inline: -15mm; }
+.pag-cab { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0 9px; border-bottom: 2px solid var(--imprenta); font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: 15px; }
+.pag-cab .marca { font-size: 17px; font-stretch: 112%; }
+.pag-cuerpo { flex: 1; display: flex; flex-direction: column; gap: 22px; padding-top: 26px; min-height: 0; }
+.pag-pie { display: flex; justify-content: space-between; gap: 16px; padding-top: 9px; border-top: 1px solid var(--raya); font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: 12px; color: var(--imprenta-suave); }
+
+/* Fondo de la copia de color de cada programa, como en la web: se funde con el papel. */
+.pag--copia { background: linear-gradient(to bottom, var(--papel) 0, var(--c) 34%, var(--c) 100%); }
+.pag--oscura { background: var(--imprenta); color: var(--blanco); }
+
+/* Textos */
+.ceja { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: 15px; color: var(--imprenta-suave); }
+.pag h1 { font-size: 54px; line-height: 1.02; max-width: 10.5em; }
+.pag h2 { font-size: 36px; line-height: 1.05; max-width: 17em; }
+.pag h3 { font-size: 16.5px; line-height: 1.25; }
+.titular { display: flex; flex-direction: column; gap: 8px; }
+.titular .entradilla { font-size: 16px; line-height: 1.5; max-width: 40em; margin-top: 6px; }
+.suave { color: var(--imprenta-suave); }
+.peque { font-size: 11.5px; line-height: 1.45; color: var(--imprenta-suave); }
+.boli { font-style: italic; color: var(--boli); }
+/* El subrayado a boli debajo de lo importante del titular. */
+.subrayado { position: relative; white-space: nowrap; }
+.subrayado svg { position: absolute; left: -2%; bottom: -.16em; width: 104%; height: .32em; overflow: visible; }
+
+/* Rejillas */
+.r2, .r3, .r4 { display: grid; column-gap: 22px; row-gap: 18px; }
+.r2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.r3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.r4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* Un punto: raya gorda arriba, dibujo a línea, título y texto. Como «Lo que te hago» en la web. */
+.punto { display: flex; flex-direction: column; gap: 5px; padding-top: 12px; border-top: 2px solid var(--imprenta); }
+.punto p { color: var(--imprenta-suave); font-size: 13px; }
+.icono { width: 30px; height: 30px; margin-bottom: 4px; fill: none; stroke: var(--imprenta); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.punto--fila { flex-direction: row; gap: 14px; }
+.punto--fila > div { display: flex; flex-direction: column; gap: 3px; }
+
+/* Listas con el check a boli */
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; }
+.checks li { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.4; }
+.checks svg { flex: none; width: 15px; height: 15px; margin-top: 1px; fill: none; stroke: var(--boli); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Pasos en fila: círculo con el número en rojo y la raya que los une. */
+.fila-pasos { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); column-gap: 12px; }
+.fila-pasos::before { content: ''; position: absolute; left: 18px; right: calc(100% / var(--n) - 18px); top: 17px; height: 2px; background: var(--imprenta); }
+.fila-pasos li { position: relative; display: flex; flex-direction: column; gap: 6px; }
+.fila-pasos strong { font-family: var(--f-titulo); font-weight: 700; font-size: 15px; line-height: 1.2; }
+.fila-pasos p { font-size: 12px; line-height: 1.4; color: var(--imprenta-suave); }
+.pag .flujo-num { width: 36px; height: 36px; }
+
+/* Pasos en columna, como «Cómo trabajo» en el móvil. */
+.col-pasos { position: relative; list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+.col-pasos::before { content: ''; position: absolute; left: 23px; top: 24px; bottom: 24px; width: 2px; background: var(--imprenta); }
+.col-pasos > li { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 190px; column-gap: 18px; align-items: start; }
+.col-pasos h3 { font-size: 19px; margin: 10px 0 4px; }
+.col-pasos p { font-size: 13.5px; }
+
+/* La caja oscura, como «¿Lo quieres ver con tus datos?» en la web. */
+.oscuro { padding: 22px 26px; border-radius: 6px; background: var(--imprenta); color: var(--blanco); }
+.oscuro p { font-size: 16px; line-height: 1.45; }
+.oscuro strong { color: var(--amarilla); }
+.oscuro .grande { font-family: var(--f-titulo); font-stretch: 125%; font-weight: 800; font-size: 26px; line-height: 1.1; color: var(--blanco); }
+
+/* La nota a boli sobre un papel de copia amarilla. */
+.nota { position: relative; padding: 18px 22px 16px; background: var(--amarilla); border-radius: 2px; box-shadow: var(--sombra-objeto); transform: rotate(-1.5deg); }
+.nota p { font-style: italic; color: var(--boli); font-size: 17px; line-height: 1.4; }
+.nota .peque { font-style: normal; color: var(--imprenta-suave); margin-top: 8px; }
+
+/* Pantallas dentro de su aparato, como en la web. */
+.marco-f { background: var(--imprenta); box-shadow: 0 18px 36px -18px rgba(27, 42, 74, .55); line-height: 0; }
+.marco-f img { display: block; width: 100%; height: auto; }
+.marco-f--orden { padding: 6px 6px 12px; border-radius: 10px 10px 3px 3px; }
+.marco-f--orden img { border-radius: 2px; }
+.marco-f--movil { padding: 4px; border-radius: 20px; }
+.marco-f--movil img { border-radius: 16px; }
+.marco-f--tablet { padding: 9px; border-radius: 20px; }
+.marco-f--tablet img { border-radius: 10px; }
+.marco-f--hoja { padding: 0; border-radius: 4px; background: var(--blanco); box-shadow: var(--sombra-objeto); overflow: hidden; }
+.captura { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.captura figcaption { display: flex; flex-direction: column; gap: 2px; }
+.captura figcaption p { font-size: 12.5px; line-height: 1.4; color: var(--imprenta-suave); }
+figure { margin: 0; }
+
+/* Las herramientas dibujadas alrededor de las pantallas */
+.herr-f { position: absolute; z-index: 2; height: auto; pointer-events: none; }
+
+/* Portada: la escena del hero de la web (hoja, copias y aparato), con su tamaño fijo. */
+.portada .pag-cuerpo { gap: 16px; padding-top: 30px; }
+.portada .hero-escena { position: absolute; margin: 0; }
+.portada-datos { margin-top: auto; }
+.dato { display: flex; flex-direction: column; gap: 2px; padding-top: 10px; border-top: 2px solid var(--imprenta); }
+.dato strong { display: flex; align-items: center; gap: 7px; font-family: var(--f-titulo); font-weight: 700; font-size: 15px; line-height: 1.2; }
+.dato strong svg { flex: none; width: 16px; height: 16px; fill: none; stroke: var(--boli); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.dato span { font-size: 12.5px; color: var(--imprenta-suave); }
+
+/* Las cifras en rojo, como en la ficha de cada programa. */
+.pag .cifras { padding: 0; border: 0; grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); gap: 18px 22px; }
+.pag .cifras strong { font-size: 54px; }
+.pag .cifras span { font-size: 13px; }
+
+/* Antes / Ahora */
+.antes-tabla { width: 100%; border-collapse: collapse; font-size: 13px; }
+.antes-tabla th { text-align: left; padding: 0 10px 8px 0; font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: 15px; border-bottom: 2px solid var(--imprenta); }
+.antes-tabla td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--raya); vertical-align: top; line-height: 1.35; }
+.antes-tabla td:first-child { font-family: var(--f-titulo); font-weight: 700; }
+.antes-tabla s { color: var(--imprenta-suave); text-decoration-color: rgba(196, 35, 47, .75); text-decoration-thickness: 2px; }
+.antes-tabla td:last-child { font-family: var(--f-titulo); font-weight: 700; color: var(--boli); }
+
+/* El ticket de la cuenta rápida, el mismo de la calculadora de la web. */
+.pag .ticket-cuerpo { padding: 12px 24px 20px; gap: 8px; }
+.pag .regla { grid-template-columns: 1fr auto; padding-block: 7px; font-size: 13.5px; }
+.pag .ticket-cifra { font-size: 50px; }
+
+/* Planes: cada uno, una hoja del talonario. El recomendado lleva la copia amarilla debajo y el sello. */
+.planes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; padding-top: 10px; }
+.plan { position: relative; display: flex; flex-direction: column; background: var(--blanco); border-radius: 3px; box-shadow: var(--sombra-objeto); }
+.plan > .perforado { height: 12px; background-size: 12px 12px; background-image: radial-gradient(circle at 6px 6px, var(--agujero) 2.6px, transparent 3px); }
+.plan-cuerpo { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 8px 18px 18px; }
+.plan h3 { font-size: 21px; font-stretch: 112%; font-weight: 800; padding-bottom: 6px; border-bottom: 2px solid var(--imprenta); }
+.plan .para { font-size: 12.5px; line-height: 1.4; color: var(--imprenta-suave); min-height: 3.6em; }
+.precio { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.precio strong { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 800; font-size: 44px; line-height: 1; color: var(--rojo); font-variant-numeric: tabular-nums; }
+.precio small { font-weight: 700; font-size: 14px; }
+.precio s { font-size: 13px; color: var(--imprenta-suave); text-decoration-color: var(--rojo); text-decoration-thickness: 2px; }
+.inicial { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: 13px; color: var(--imprenta-suave); }
+.usuarios { padding: 6px 0; border-block: 1px dashed var(--raya); font-family: var(--f-titulo); font-weight: 700; font-size: 14px; }
+.plan .checks { margin-top: 2px; }
+.plan .checks li { font-size: 12.5px; }
+.plan-boton { margin-top: auto; padding-top: 12px; }
+.plan-boton span { display: flex; align-items: center; justify-content: center; min-height: 40px; border-radius: 8px; border: 2px solid var(--boli); font-weight: 700; font-size: 14px; color: var(--boli); }
+.plan--recomendado .plan-boton span { background: var(--boli); color: var(--blanco); }
+.plan--recomendado::before, .plan--recomendado::after { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: 3px; }
+.plan--recomendado::before { background: var(--rosa); transform: rotate(-3deg) translate(-4px, 6px); }
+.plan--recomendado::after { background: var(--amarilla); transform: rotate(-1.6deg) translate(-2px, 3px); }
+.pag .sello { opacity: .9; transform: rotate(-8deg); top: -14px; right: -10px; background: var(--blanco); padding: 0 8px; border-width: 3px; font-size: 19px; }
+.garantias { display: flex; flex-wrap: wrap; gap: 8px; }
+.garantias li { padding: 6px 14px; border-radius: 999px; background: var(--blanco); box-shadow: 0 1px 2px rgba(27, 42, 74, .16); font-weight: 700; font-size: 13px; }
+.garantias { list-style: none; margin: 0; padding: 0; }
+
+/* Contacto: la copia rosa, la que te quedas tú. */
+.contacto-f { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; align-items: center; padding: 26px 28px; border-radius: 3px; background: var(--rosa); box-shadow: var(--sombra-objeto); }
+.contacto-f h2 { font-size: 32px; }
+.contacto-f .entradilla { font-size: 15px; margin-top: 10px; max-width: 26em; }
+.canales-f { display: grid; gap: 12px; padding: 16px 20px; background: var(--blanco); border-radius: 3px; }
+.canales-f dt { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: 13px; color: var(--imprenta-suave); }
+.canales-f dd { margin: 0; font-style: italic; font-size: 17px; color: var(--boli); border-bottom: 1px solid var(--raya); padding-bottom: 4px; }
+.tinta { color: var(--imprenta); }
+.nota-lado { display: flex; flex-direction: column; gap: 3px; margin-top: 10px; padding-left: 14px; border-left: 2px dashed var(--raya); }
+.nota-lado .boli { font-size: 16px; font-weight: 700; }
+/* La tablet de la portada del taller, en el sitio del móvil del hero. */
+.hero-movil--tablet { width: 50%; top: 17%; padding: 2cqw; border-radius: 4.6cqw; }
+.hero-movil--tablet .hero-movil-pantalla { border-radius: 2.6cqw; }
+/* Captura recortada por arriba, para las fichas pequeñas. */
+.marco-f--recorte img { height: var(--h, 104px); object-fit: cover; object-position: left top; }
+.coste-f { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: 13px; color: var(--imprenta); }
+.coste-f::before { content: '→ '; color: var(--rojo); }

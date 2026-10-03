@@ -61,6 +61,7 @@ const es = {
     antes: 'Antes',
     ahora: 'Ahora',
     mas: '¿Lo quieres ver con tus datos?',
+    folleto: 'Descárgate el folleto',
   },
   servicios: {
     h2: 'Lo que te hago',
@@ -161,6 +162,7 @@ const ca: typeof es = {
     antes: 'Abans',
     ahora: 'Ara',
     mas: 'Ho vols veure amb les teves dades?',
+    folleto: 'Descarrega’t el fullet',
   },
   servicios: {
     h2: 'El que et faig',
