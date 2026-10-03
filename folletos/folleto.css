@@ -165,3 +165,10 @@ figure { margin: 0; }
 .marco-f--recorte img { height: var(--h, 104px); object-fit: cover; object-position: left top; }
 .coste-f { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: 13px; color: var(--imprenta); }
 .coste-f::before { content: '→ '; color: var(--rojo); }
+
+/* Sombras sin difuminar: las difuminadas, al imprimir, salen como imágenes semitransparentes
+   y Vista Previa (y otros visores) las pinta como cuadros grises encima de la página. */
+.pag * { box-shadow: none !important; }
+.pag :is(.hoja, .ticket, .plan, .opcion, .nota, .flota, .marco-f--hoja, .libreta, .contacto-f, .garantias li) {
+  box-shadow: 0 0 0 1px rgba(27, 42, 74, .12), 3px 5px 0 rgba(27, 42, 74, .09) !important;
+}
