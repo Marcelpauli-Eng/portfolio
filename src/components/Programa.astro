@@ -9,7 +9,7 @@ type Herr = [string, string, string, string, string, number];
 interface Props {
   p: Programa;
   activo: boolean;
-  t: { pantallas: string; pista: string; hace: string; antes: string; ahora: string; mas: string; folleto: string };
+  t: { pantallas: string; pista: string; mas: string; folleto: string };
   escena: { aparato: string; widths: number[]; sizes: string; herr: Herr[] };
   img: (nombre: string) => ImageMetadata;
 }
@@ -79,25 +79,14 @@ const folleto = p.folleto && {
     </ol>
   </div>
 
-  <div class="ficha-detalle">
-    <div class="hace">
-      <h4>{t.hace}</h4>
-      <ul>{p.hace.map((h) => <li>{h}</li>)}</ul>
-    </div>
-    <div class="antes-ahora">
-      <h4><span class="antes-etq">{t.antes}</span> / {t.ahora}</h4>
-      <ul>
-        {p.antes.map(([a, d]) => <li><s>{a}</s><span>{d}</span></li>)}
-      </ul>
-    </div>
-  </div>
-
   <ul class="cifras">
     {p.cifras.map((c) => <li><strong>{c.n}</strong><span>{c.t}</span></li>)}
   </ul>
 
-  <div class="mas">
-    <p>{t.mas}</p>
-    <a class="boton" href="#contacto">{p.cta}</a>
-  </div>
+  {folleto && (
+    <div class="mas">
+      <p>{t.mas}</p>
+      <a class="boton" href={folleto.href} download>{t.folleto}</a>
+    </div>
+  )}
 </div>

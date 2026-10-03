@@ -1,5 +1,5 @@
 /* Folletos en A4 con el papel, la tinta y los dibujos de la web. Los colores, letras y piezas
-   (hoja, libreta, ticket, pasos…) vienen de ../src/styles/global.css; aquí solo va la maqueta de la página.
+   (hoja, ticket, pasos…) vienen de ../src/styles/global.css; aquí va la maqueta de la página y las piezas que ya solo usan los folletos.
    Se imprimen a PDF con: npm run folletos */
 @page { size: A4; margin: 0; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -107,7 +107,7 @@ figure { margin: 0; }
 /* Las cifras en rojo, como en la ficha de cada programa. */
 .pag .cifras { padding: 0; border: 0; grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); gap: 18px 22px; }
 .pag .cifras strong { font-size: 54px; }
-.pag .cifras span { font-size: 13px; }
+.pag .cifras span { font-size: 13px; line-height: 1.5; }
 
 /* Antes / Ahora */
 .antes-tabla { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -196,3 +196,21 @@ figure { margin: 0; }
 .estado { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; }
 .estado--mal { color: var(--rojo); }
 .estado--bien { color: var(--boli); }
+
+/* La libreta con las frases tachadas (estuvo en la web, en «¿Te suena?»). */
+.libreta-escena { position: relative; container-type: inline-size; width: 100%; max-width: 560px; aspect-ratio: 440 / 640; justify-self: center; }
+.libreta-recorte { position: absolute; inset: 0 0 6cqw 0; overflow: hidden; }
+.libreta-pantalla { position: absolute; left: 11.4cqw; right: 11.4cqw; top: 81.4cqw; bottom: -10cqw; border-radius: 6.6cqw; background: #E9EDF4; }
+.libreta { position: absolute; left: 13cqw; right: 13cqw; top: 5cqw; height: 150cqw; background: var(--blanco); border-radius: 1.6cqw 1.6cqw 0 0; box-shadow: 0 1px 2px rgba(27, 42, 74, .14), 0 20px 40px -20px rgba(27, 42, 74, .45); }
+.libreta-espiral { position: absolute; left: 3cqw; right: 3cqw; top: -2.4cqw; height: 5cqw; background-image: radial-gradient(circle at 50% 50%, transparent 1cqw, var(--imprenta) 1.1cqw, var(--imprenta) 1.6cqw, transparent 1.7cqw); background-size: 4.4cqw 5cqw; background-repeat: repeat-x; }
+.libreta-hoja { position: relative; height: 100%; padding: 6cqw 4cqw 0 9cqw; background-image: linear-gradient(transparent calc(6.6cqw - 1px), rgba(36, 72, 184, .2) calc(6.6cqw - 1px)); background-size: 100% 6.6cqw; background-position: 0 5.4cqw; }
+.libreta-hoja::before { content: ''; position: absolute; left: 6.6cqw; top: 0; bottom: 0; width: 1px; background: rgba(196, 35, 47, .45); }
+.libreta-titulo { font-style: italic; font-weight: 700; color: var(--boli); font-size: 4.6cqw; line-height: 6.6cqw; text-decoration: underline; text-decoration-thickness: .3cqw; text-underline-offset: 1cqw; }
+.libreta-hoja ul { list-style: none; margin: 0; padding: 0; }
+.libreta-hoja li { display: flex; flex-direction: column; margin-top: 3.3cqw; }
+.libreta-frase { position: relative; align-self: flex-start; font-style: italic; color: var(--boli); font-size: max(15px, 4.4cqw); line-height: 6.6cqw; }
+/* El tachón es la misma frase, transparente y tachada en rojo encima: así cruza cada línea aunque la frase se parta. */
+.tachon { position: absolute; inset: 0; color: transparent; text-decoration: line-through; text-decoration-color: var(--rojo); text-decoration-thickness: max(2px, .55cqw); pointer-events: none; }
+.libreta-coste { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: max(12.5px, 3.3cqw); line-height: 3.3cqw; color: var(--imprenta); }
+.libreta-movil { position: absolute; left: 8cqw; right: 8cqw; top: 78cqw; bottom: 0; border: 3.4cqw solid var(--imprenta); border-bottom-width: 6cqw; border-radius: 10cqw; box-shadow: 0 30px 60px -28px rgba(27, 42, 74, .55); pointer-events: none; }
+.antes-etq { text-decoration: line-through; text-decoration-color: var(--rojo); text-decoration-thickness: 2px; color: var(--imprenta-suave); }

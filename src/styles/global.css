@@ -26,6 +26,8 @@
   --t-etiqueta: .9375rem;
 
   --margen: clamp(16px, 5vw, 72px);
+  /* El aire entre secciones: unos 56 px en el móvil y 112 px en el ordenador. */
+  --hueco: clamp(56px, 32px + 5.5vw, 112px);
   --sombra-objeto: 0 1px 2px rgba(27, 42, 74, .14), 0 18px 36px -18px rgba(27, 42, 74, .35);
 }
 
@@ -143,35 +145,43 @@ a:hover { color: var(--imprenta); }
 .programas-cabecera > * { max-width: 44rem; }
 h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
 
-/* ---------- ¿Te suena? La libreta sale del móvil y las frases se tachan ---------- */
-.problemas { display: grid; gap: 32px; padding-block: 112px 96px; }
-.problemas h2 { font-size: clamp(2.5rem, 1.6rem + 4vw, 4.5rem); }
-.libreta-escena { position: relative; container-type: inline-size; width: 100%; max-width: 560px; aspect-ratio: 440 / 640; justify-self: center; }
-.libreta-recorte { position: absolute; inset: 0 0 6cqw 0; overflow: hidden; }
-.libreta-pantalla { position: absolute; left: 11.4cqw; right: 11.4cqw; top: 81.4cqw; bottom: -10cqw; border-radius: 6.6cqw; background: #E9EDF4; }
-.libreta { position: absolute; left: 13cqw; right: 13cqw; top: 5cqw; height: 150cqw; background: var(--blanco); border-radius: 1.6cqw 1.6cqw 0 0; box-shadow: 0 1px 2px rgba(27, 42, 74, .14), 0 20px 40px -20px rgba(27, 42, 74, .45); }
-.libreta-espiral { position: absolute; left: 3cqw; right: 3cqw; top: -2.4cqw; height: 5cqw; background-image: radial-gradient(circle at 50% 50%, transparent 1cqw, var(--imprenta) 1.1cqw, var(--imprenta) 1.6cqw, transparent 1.7cqw); background-size: 4.4cqw 5cqw; background-repeat: repeat-x; }
-.libreta-hoja { position: relative; height: 100%; padding: 6cqw 4cqw 0 9cqw; background-image: linear-gradient(transparent calc(6.6cqw - 1px), rgba(36, 72, 184, .2) calc(6.6cqw - 1px)); background-size: 100% 6.6cqw; background-position: 0 5.4cqw; }
-.libreta-hoja::before { content: ''; position: absolute; left: 6.6cqw; top: 0; bottom: 0; width: 1px; background: rgba(196, 35, 47, .45); }
-.libreta-titulo { font-style: italic; font-weight: 700; color: var(--boli); font-size: 4.6cqw; line-height: 6.6cqw; text-decoration: underline; text-decoration-thickness: .3cqw; text-underline-offset: 1cqw; }
-.libreta-hoja ul { list-style: none; margin: 0; padding: 0; }
-.libreta-hoja li { display: flex; flex-direction: column; margin-top: 3.3cqw; }
-.libreta-frase { position: relative; align-self: flex-start; font-style: italic; color: var(--boli); font-size: max(15px, 4.4cqw); line-height: 6.6cqw; }
-/* El tachón es la misma frase, transparente y tachada en rojo encima: así cruza cada línea aunque la frase se parta. */
-.tachon { position: absolute; inset: 0; color: transparent; text-decoration: line-through; text-decoration-color: var(--rojo); text-decoration-thickness: max(2px, .55cqw); pointer-events: none; }
-.libreta-coste { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: max(12.5px, 3.3cqw); line-height: 3.3cqw; color: var(--imprenta); }
-.libreta-movil { position: absolute; left: 8cqw; right: 8cqw; top: 78cqw; bottom: 0; border: 3.4cqw solid var(--imprenta); border-bottom-width: 6cqw; border-radius: 10cqw; box-shadow: 0 30px 60px -28px rgba(27, 42, 74, .55); pointer-events: none; }
-.problemas-remate { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
-.problemas-remate p { font-family: var(--f-titulo); font-stretch: 125%; font-weight: 800; font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem); line-height: 1.08; letter-spacing: -.01em; max-width: 12em; text-wrap: balance; }
+/* ---------- Bajo control: la tablilla con los avisos de hoy, que se van marcando como hechos ---------- */
+.control { display: grid; gap: 28px; padding-block: var(--hueco) calc(var(--hueco) / 2); }
+.control-texto { display: flex; flex-direction: column; gap: 16px; }
+.tabla-escena { container-type: inline-size; width: 100%; max-width: 540px; justify-self: center; padding: 6cqw 3cqw 0; }
+.tabla { position: relative; padding: 8cqw 3.6cqw 3.6cqw; border-radius: 3.6cqw; background: var(--imprenta); box-shadow: 0 30px 60px -28px rgba(27, 42, 74, .55); transform: rotate(-2deg); }
+.tabla-pinza { position: absolute; left: 50%; top: -4cqw; width: 36cqw; height: auto; transform: translateX(-50%); }
+.tabla-hoja { background: var(--blanco); border-radius: 1cqw; overflow: hidden; }
+.tabla-hoja .perforado { height: 2.6cqw; background-image: radial-gradient(circle at 1.3cqw 1.3cqw, var(--agujero) .55cqw, transparent .65cqw); background-size: 2.6cqw 2.6cqw; }
+.tabla-cuerpo { display: flex; flex-direction: column; padding: 2cqw 5cqw 4cqw; }
+.tabla-cab { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 2cqw; border-bottom: max(2px, .5cqw) solid var(--imprenta); font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: max(17px, 5.2cqw); line-height: 1.2; }
+.aviso { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 3.4cqw; align-items: center; padding-block: 3cqw; border-bottom: 1px solid var(--raya); }
+.aviso time { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: max(13px, 3.8cqw); color: var(--imprenta-suave); font-variant-numeric: tabular-nums; }
+.aviso strong { display: block; font-family: var(--f-titulo); font-weight: 700; font-size: max(14px, 4.2cqw); line-height: 1.2; }
+.aviso small { display: block; font-size: max(12.5px, 3.5cqw); line-height: 1.3; color: var(--imprenta-suave); }
+.aviso-estado { display: inline-flex; align-items: center; gap: 1.4cqw; font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: max(13px, 3.8cqw); white-space: nowrap; color: var(--imprenta-suave); }
+.aviso-estado--hecho { color: var(--boli); }
+.aviso-estado--hecho svg { width: max(16px, 4.6cqw); height: auto; }
+.aviso-estado--marcha { color: var(--imprenta); }
+.aviso-estado--marcha::before { content: ''; width: max(8px, 2cqw); height: max(8px, 2cqw); border-radius: 50%; background: var(--boli); }
+.tabla-pie { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1cqw 4cqw; padding-top: 3cqw; font-size: max(13px, 3.6cqw); }
+.tabla-pie em { color: var(--boli); }
+.puntos-control { list-style: none; margin: 0; padding: 0; display: grid; }
+.puntos-control li { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px; row-gap: 2px; align-items: center; padding-block: 16px; border-top: 2px solid var(--imprenta); }
+.puntos-control svg { grid-row: span 2; color: var(--imprenta); }
+.puntos-control h3 { font-size: 1.25rem; }
+.puntos-control p { grid-column: 2; color: var(--imprenta-suave); font-size: 1.0625rem; line-height: 1.45; }
+.control-remate { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+.control-remate .puntos-control { align-self: stretch; }
 @media (min-width: 1024px) {
-  .problemas { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; }
-  .problemas h2 { grid-column: 1 / -1; }
-  .libreta-escena { grid-column: 1 / span 6; }
-  .problemas-remate { grid-column: 8 / span 5; }
+  .control { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 40px; align-items: center; }
+  .control-texto { grid-column: 1 / span 8; }
+  .tabla-escena { grid-column: 1 / span 6; }
+  .control-remate { grid-column: 8 / span 5; }
 }
 
 /* ---------- Cuánto tiempo te devuelve: el ticket ---------- */
-.ahorro { padding-block: 40px 96px; }
+.ahorro { padding-block: calc(var(--hueco) / 2) var(--hueco); }
 .ahorro-rejilla { display: grid; gap: 40px; }
 .ahorro-texto { display: flex; flex-direction: column; gap: 18px; }
 .ticket { position: relative; background: var(--blanco); border-radius: 3px; box-shadow: var(--sombra-objeto); }
@@ -198,7 +208,7 @@ h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
 }
 
 /* ---------- Programas: carrusel ---------- */
-.programas { position: relative; isolation: isolate; overflow-x: clip; padding-block: 120px 40px; --c-activa: var(--amarilla); }
+.programas { position: relative; isolation: isolate; overflow-x: clip; padding-block: var(--hueco) 40px; --c-activa: var(--amarilla); }
 .programas[data-activo="lampistas"] { --c-activa: var(--azul-copia); }
 .programas[data-activo="transportistas"] { --c-activa: var(--verde-copia); }
 /* Cada programa tiene su copia de color; al cambiar, se funden, y por arriba y por abajo se difuminan con el papel. */
@@ -352,26 +362,11 @@ h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
   .flujo::before { content: ''; position: absolute; left: 18px; right: calc(100% / var(--n) - 18px); top: 49px; height: 2px; background: var(--imprenta); }
 }
 
-.ficha-detalle { display: grid; gap: 40px; padding-block: 36px; border-top: 1px solid var(--raya); }
-.ficha-detalle h4 { margin-bottom: 16px; font-stretch: 75%; font-size: 1.25rem; }
-.hace ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.hace li { padding: 9px 16px; border-radius: 999px; background: var(--blanco); box-shadow: 0 1px 2px rgba(27, 42, 74, .16); font-weight: 700; font-size: 1rem; }
-.antes-etq { text-decoration: line-through; text-decoration-color: var(--rojo); text-decoration-thickness: 2px; color: var(--imprenta-suave); }
-.antes-ahora ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.antes-ahora li { display: grid; gap: 2px; padding-block: 12px; border-bottom: 1px solid var(--raya); }
-.antes-ahora s { color: var(--imprenta-suave); text-decoration-color: rgba(196, 35, 47, .7); text-decoration-thickness: 2px; font-size: 1rem; }
-.antes-ahora li span { font-family: var(--f-titulo); font-weight: 700; font-size: 1.1875rem; line-height: 1.3; }
-@media (min-width: 1024px) {
-  .ficha-detalle { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
-  .hace { grid-column: 1 / span 5; }
-  .antes-ahora { grid-column: 7 / span 6; }
-}
-
-.cifras { list-style: none; margin: 0; padding: 36px 0; display: grid; gap: 28px; border-top: 1px solid var(--raya); }
+.cifras { list-style: none; margin: 0; padding: 32px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; border-top: 1px solid var(--raya); }
 .cifras li { display: flex; flex-direction: column; gap: 6px; }
-.cifras strong { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 800; font-size: clamp(3.5rem, 2.6rem + 3.5vw, 6rem); line-height: .95; color: var(--rojo); font-variant-numeric: tabular-nums; }
-.cifras span { font-weight: 700; font-size: 1.0625rem; max-width: 16em; }
-@media (min-width: 700px) { .cifras { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; } }
+.cifras strong { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 800; font-size: clamp(2.25rem, 1.2rem + 4.2vw, 6rem); line-height: .95; color: var(--rojo); font-variant-numeric: tabular-nums; }
+.cifras span { font-weight: 700; font-size: clamp(.9375rem, .85rem + .4vw, 1.0625rem); line-height: 1.35; max-width: 16em; }
+@media (min-width: 700px) { .cifras { column-gap: 24px; } }
 
 .mas { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; padding: 32px; border-radius: 6px; background: var(--imprenta); color: var(--blanco); }
 .mas p { font-family: var(--f-titulo); font-stretch: 125%; font-weight: 800; font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.25rem); line-height: 1.1; max-width: 16em; }
@@ -380,7 +375,7 @@ h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
 .mas :focus-visible { outline-color: var(--blanco); }
 
 /* ---------- Servicios ---------- */
-.servicios { padding-block: 112px 80px; }
+.servicios { padding-block: var(--hueco) calc(var(--hueco) * .7); }
 .servicios h2 { margin-bottom: 40px; }
 .servicios-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
 .servicio { display: grid; grid-template-columns: 56px 1fr; column-gap: 20px; row-gap: 4px; align-items: center; padding-block: 24px; border-top: 2px solid var(--imprenta); }
@@ -393,7 +388,7 @@ h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
 }
 
 /* ---------- Cómo trabajo: la línea de pasos ---------- */
-.proceso { padding-block: 112px; background: linear-gradient(to bottom, var(--papel), var(--papel-2) 180px, var(--papel-2) calc(100% - 180px), var(--papel)); }
+.proceso { padding-block: var(--hueco); background: linear-gradient(to bottom, var(--papel), var(--papel-2) 180px, var(--papel-2) calc(100% - 180px), var(--papel)); }
 .proceso h2 { margin-bottom: 44px; }
 .pasos { position: relative; list-style: none; margin: 0; padding: 0; display: grid; gap: 28px; }
 .pasos::before { content: ''; position: absolute; left: 23px; top: 24px; bottom: 24px; width: 2px; background: var(--imprenta); }
@@ -409,7 +404,7 @@ h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
 }
 
 /* ---------- Contacto: la copia rosa ---------- */
-.contacto { padding-block: 140px 104px; background: linear-gradient(to bottom, var(--papel), var(--rosa) 220px); }
+.contacto { padding-block: calc(var(--hueco) * 1.25) var(--hueco); background: linear-gradient(to bottom, var(--papel), var(--rosa) 220px); }
 .contacto-rejilla { display: grid; gap: 40px; }
 .contacto-texto { display: flex; flex-direction: column; gap: 20px; }
 .canales { display: grid; margin: 8px 0 0; border-top: 2px solid var(--imprenta); }
