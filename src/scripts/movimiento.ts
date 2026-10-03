@@ -223,13 +223,13 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
     marcar(a, 0, false);
   });
 
-  // La libreta sale del móvil a medida que se baja, y luego sus frases se tachan una a una.
-  const libreta = document.querySelector('.libreta');
-  if (libreta) {
+  // La tablilla se endereza al bajar y los avisos de la mañana se van marcando como hechos.
+  const tabla = document.querySelector('.tabla');
+  if (tabla) {
     gsap
-      .timeline({ scrollTrigger: { trigger: '.libreta-escena', start: 'top 80%', end: 'bottom 75%', scrub: true } })
-      .fromTo(libreta, { yPercent: 38 }, { yPercent: 0, ease: 'none', duration: 1 })
-      .fromTo('.tachon', { opacity: 0 }, { opacity: 1, ease: 'none', duration: 0.2, stagger: 0.3 }, '+=0.1');
+      .timeline({ scrollTrigger: { trigger: '.tabla-escena', start: 'top 85%', end: 'bottom 70%', scrub: true } })
+      .fromTo(tabla, { y: 60, rotation: 3 }, { y: 0, rotation: -2, ease: 'none', duration: 1 })
+      .fromTo('.aviso-estado--hecho', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, ease: 'back.out(3)', duration: 0.25, stagger: 0.35 }, '-=0.3');
   }
 
   return () => {

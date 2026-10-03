@@ -10,8 +10,6 @@ export type Programa = {
   datos: string[];
   pantallas: { img: string; t: string; alt: string }[];
   pasos: string[];
-  hace: string[];
-  antes: [string, string][];
   cifras: { n: string; t: string }[];
   cta: string;
   // Folleto: se diseña en folletos/<pdf>.html y se imprime con «npm run folletos». Sin folleto, no hay botón.
@@ -31,12 +29,6 @@ const es: Programa[] = [
       { img: 'taller-fichar', t: 'Fichar la entrada', alt: 'Pantalla para fichar la entrada en la tablet del taller' },
     ],
     pasos: ['Cita', 'Entrada', 'Diagnóstico', 'Presupuesto', 'Reparación', 'Entrega', 'Factura'],
-    hace: ['Clientes y vehículos', 'Agenda de citas', 'Órdenes y presupuestos', 'Almacén', 'Facturas', 'Fichajes', 'Informes', 'Permisos por puesto'],
-    antes: [
-      ['Ir al elevador a preguntar cómo va', 'Mirarlo en el panel'],
-      ['La pieza falta con el coche desmontado', 'Avisa antes de lo que hay que pedir'],
-      ['Sumar facturas a fin de mes', 'El informe ya está hecho'],
-    ],
     cifras: [
       { n: '0', t: 'huecos en tus facturas' },
       { n: '48', t: 'permisos para decidir quién ve qué' },
@@ -58,12 +50,6 @@ const es: Programa[] = [
       { img: 'codo90-presupuesto', t: 'Presupuesto', alt: 'Presupuesto calculado a partir del plano 3D' },
     ],
     pasos: ['Aviso', 'Día', 'Ruta', 'Trabajo', 'Firma', 'Albarán', 'Factura'],
-    hace: ['Comandas y calendario', 'Clientes y viviendas', 'Partes con fotos', 'Firma del cliente', 'Albaranes', 'Facturas', 'Planos en 3D', 'Presupuestos en PDF'],
-    antes: [
-      ['El parte, a limpio por la noche', 'Se cierra en la puerta, con firma'],
-      ['El latiguillo que se olvida', 'Cada material entra en el importe'],
-      ['En el sótano, a apuntar en papel', 'Funciona sin cobertura'],
-    ],
     cifras: [
       { n: '0', t: 'partes por pasar a limpio' },
       { n: '48', t: 'servicios listos de salida' },
@@ -86,12 +72,6 @@ const es: Programa[] = [
       { img: 'reparto-facturas', t: 'Por facturar', alt: 'Importe pendiente de facturar con el botón para generar la factura' },
     ],
     pasos: ['Pedido', 'Día', 'Ruta', 'Entrega', 'Cobro', 'Factura'],
-    hace: ['Ruta del día', 'Entregado o incidencia', 'Cobros', 'Calendario', 'Nuevas comandas', 'Historial', 'Facturas', 'Informes'],
-    antes: [
-      ['La lista impresa que a mediodía ya no vale', 'Las entregas de hoy, al día en el móvil'],
-      ['La oficina llamando para preguntar', 'Lo ve en su hoja al momento'],
-      ['Sumar lo cobrado a fin de mes', 'La factura sale sola, en PDF'],
-    ],
     cifras: [
       { n: '1', t: 'toque para marcar una entrega' },
       { n: '1 año', t: 'de sesión: se entra una vez' },
@@ -115,12 +95,6 @@ const ca: Programa[] = [
       { img: 'taller-fichar', t: 'Fitxar l’entrada', alt: 'Pantalla per fitxar l’entrada a la tauleta del taller' },
     ],
     pasos: ['Cita', 'Entrada', 'Diagnosi', 'Pressupost', 'Reparació', 'Lliurament', 'Factura'],
-    hace: ['Clients i vehicles', 'Agenda de cites', 'Ordres i pressupostos', 'Magatzem', 'Factures', 'Fitxatges', 'Informes', 'Permisos per lloc'],
-    antes: [
-      ['Anar a l’elevador a preguntar com va', 'Mirar-ho al tauler'],
-      ['La peça falta amb el cotxe desmuntat', 'Avisa abans del que cal demanar'],
-      ['Sumar factures a final de mes', 'L’informe ja està fet'],
-    ],
     cifras: [
       { n: '0', t: 'salts a les teves factures' },
       { n: '48', t: 'permisos per decidir qui veu què' },
@@ -142,12 +116,6 @@ const ca: Programa[] = [
       { img: 'codo90-presupuesto', t: 'Pressupost', alt: 'Pressupost calculat a partir del plànol 3D' },
     ],
     pasos: ['Avís', 'Dia', 'Ruta', 'Feina', 'Signatura', 'Albarà', 'Factura'],
-    hace: ['Comandes i calendari', 'Clients i habitatges', 'Parts amb fotos', 'Signatura del client', 'Albarans', 'Factures', 'Plànols en 3D', 'Pressupostos en PDF'],
-    antes: [
-      ['El part, en net a la nit', 'Es tanca a la porta, amb signatura'],
-      ['El latiguillo que s’oblida', 'Cada material entra a l’import'],
-      ['Al soterrani, a apuntar en paper', 'Funciona sense cobertura'],
-    ],
     cifras: [
       { n: '0', t: 'parts per passar en net' },
       { n: '48', t: 'serveis a punt de sortida' },
@@ -170,12 +138,6 @@ const ca: Programa[] = [
       { img: 'reparto-facturas', t: 'Per facturar', alt: 'Import pendent de facturar amb el botó per generar la factura' },
     ],
     pasos: ['Comanda', 'Dia', 'Ruta', 'Lliurament', 'Cobrament', 'Factura'],
-    hace: ['Ruta del dia', 'Lliurat o incidència', 'Cobraments', 'Calendari', 'Comandes noves', 'Historial', 'Factures', 'Informes'],
-    antes: [
-      ['La llista impresa que al migdia ja no serveix', 'Els lliuraments d’avui, al dia al mòbil'],
-      ['L’oficina trucant per preguntar', 'Ho veu al seu full al moment'],
-      ['Sumar el que s’ha cobrat a final de mes', 'La factura surt sola, en PDF'],
-    ],
     cifras: [
       { n: '1', t: 'toc per marcar un lliurament' },
       { n: '1 any', t: 'de sessió: s’hi entra un cop' },
