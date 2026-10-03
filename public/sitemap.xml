@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.automaittech.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.automaittech.com/" />
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.automaittech.com/ca/" />
+  </url>
+  <url>
+    <loc>https://www.automaittech.com/ca/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.automaittech.com/" />
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.automaittech.com/ca/" />
+  </url>
+</urlset>

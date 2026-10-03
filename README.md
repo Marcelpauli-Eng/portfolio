@@ -1,6 +1,6 @@
 # Programas para oficios
 
-Web de Marcel Paulí: programas a medida para talleres, lampistas, fontaneros y transportistas. En castellano (`/`) y catalán (`/ca/`).
+Web de Automaittech: programas a medida para talleres, lampistas, fontaneros y transportistas. En castellano (`/`) y catalán (`/ca/`).
 
 Hecha con **Astro** (sale estática) y **GSAP** con ScrollTrigger para el movimiento. No lleva nada más.
 

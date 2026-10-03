@@ -6,7 +6,7 @@ export const WHATSAPP = '34634276385';
 
 const es = {
   meta: {
-    title: 'Programas para oficios: talleres, lampistas y transportistas | Marcel Paulí',
+    title: 'Programas para oficios: talleres, lampistas y transportistas | Automaittech',
     description:
       'Programas a medida para talleres, lampistas, fontaneros y transportistas de Catalunya. Órdenes, partes, albaranes y facturas desde el móvil, también sin cobertura.',
   },
@@ -102,13 +102,13 @@ const es = {
   },
   pie: {
     lema: 'Programas a medida para talleres, lampistas, fontaneros y transportistas.',
-    derechos: '© 2026 Marcel Paulí',
+    derechos: '© 2026 Automaittech',
   },
 };
 
 const ca: typeof es = {
   meta: {
-    title: 'Programes per a oficis: tallers, lampistes i transportistes | Marcel Paulí',
+    title: 'Programes per a oficis: tallers, lampistes i transportistes | Automaittech',
     description:
       'Programes a mida per a tallers, lampistes, fontaners i transportistes de Catalunya. Ordres, parts, albarans i factures des del mòbil, també sense cobertura.',
   },
@@ -204,7 +204,7 @@ const ca: typeof es = {
   },
   pie: {
     lema: 'Programes a mida per a tallers, lampistes, fontaners i transportistes.',
-    derechos: '© 2026 Marcel Paulí',
+    derechos: '© 2026 Automaittech',
   },
 };
 
