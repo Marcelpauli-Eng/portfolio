@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Codo90 · Folleto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,600..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&display=block">
+<link rel="stylesheet" href="../src/styles/global.css">
+<link rel="stylesheet" href="folleto.css">
+<style>
+  .pag { --c: var(--azul-copia); }
+  .opcion { position: relative; background: var(--blanco); border-radius: 3px; }
+  .opcion .plan-cuerpo { gap: 10px; padding-top: 12px; }
+  .opcion h3 { font-size: 19px; }
+  .obras { display: flex; flex-direction: column; gap: 8px; padding-left: 16px; border-left: 1px dashed var(--raya); }
+  .obras p { font-size: 12px; line-height: 1.35; color: var(--imprenta-suave); }
+  .obras strong { display: block; font-family: var(--f-titulo); font-weight: 700; font-size: 13px; color: var(--imprenta); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ok" viewBox="0 0 20 20"><path d="M4 10.5l4 4 8-9"/></symbol>
+  <symbol id="i-bandeja" viewBox="0 0 24 24"><path d="M3 13h5l1.5 3h5l1.5-3h5M5.5 5h13L21 13v6H3v-6z"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-puerta" viewBox="0 0 24 24"><path d="M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M15 12h.01"/></symbol>
+  <symbol id="i-sinred" viewBox="0 0 24 24"><path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 12.9a10 10 0 0 1 5-2.7M19 12.9a10 10 0 0 0-2.2-1.6M2 8.8a15 15 0 0 1 4.3-2.6M22 8.8A15 15 0 0 0 11 5M12 20h.01"/></symbol>
+  <symbol id="i-caja" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-factura" viewBox="0 0 24 24"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8zM14 2.5V8h5.5M8.5 13h7M8.5 17h4.5"/></symbol>
+  <symbol id="i-furgo" viewBox="0 0 24 24"><path d="M2 6h11.5v10H2zM13.5 9.5h4l3.5 3.5v3h-7.5"/><circle cx="6" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/></symbol>
+  <symbol id="i-edificio" viewBox="0 0 24 24"><path d="M4 21V4h10v17M14 9h6v12M2.5 21h19M7.5 8h3M7.5 12h3M7.5 16h3M17 13h.01M17 17h.01"/></symbol>
+  <symbol id="i-capas" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
+  <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-personas" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></symbol>
+  <symbol id="i-lapiz" viewBox="0 0 24 24"><path d="M16.5 3.5l4 4L8 20l-5 1 1-5zM14 6l4 4"/></symbol>
+  <symbol id="i-lista" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M18 7a7 7 0 1 0 0 10M4 10.5h9M4 14h9"/></symbol>
+  <symbol id="i-grafico" viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-7M21 20H3"/></symbol>
+  <symbol id="i-pantallas" viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6M9 14v4"/><rect x="17" y="8" width="5" height="11" rx="1.2"/></symbol>
+  <symbol id="i-ruta" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7.5a3.5 3.5 0 0 0 0-7h-7a3.5 3.5 0 0 1 0-7H16"/></symbol>
+  <symbol id="i-candado" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="11" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 15v2.5"/></symbol>
+  <symbol id="i-enlace" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l3 3 5-6"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-herramienta" viewBox="0 0 24 24"><path d="M14.5 6.5a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.4-3.4a6 6 0 0 1-7.9 7.9l-6.4 6.4a2.1 2.1 0 0 1-3-3l6.4-6.4a6 6 0 0 1 7.9-7.9z"/></symbol>
+  <symbol id="i-gorra" viewBox="0 0 24 24"><path d="M2 9.5L12 5l10 4.5-10 4.5zM6 11.5v4.5c3.5 2.5 8.5 2.5 12 0v-4.5M22 9.5v5"/></symbol>
+  <symbol id="i-mensaje" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-actualizar" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1L20.5 8.5M20.5 3.5v5h-5"/></symbol>
+  <symbol id="i-salida" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+</svg>
+
+<!-- 1 · Portada -->
+<section class="pag pag--copia portada">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0001</span></header>
+  <div class="pag-cuerpo">
+    <p class="ceja">La app para fontaneros autónomos · fontanería, gas y calefacción</p>
+    <h1>Tu día entero, <span class="subrayado">de la llamada<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8C50 3 120 2 197 6" fill="none" stroke="#2448B8" stroke-width="3.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></span> a la factura.</h1>
+    <p class="entradilla" style="font-size:16.5px;max-width:34em">Comandas, calendario, partes firmados en casa del cliente, albaranes, facturas y el plano de la instalación en 3D. Funciona sin cobertura y cabe en el móvil que ya llevas en la furgoneta.</p>
+
+    <div style="position:relative;height:540px;margin-top:4px">
+      <div class="hero-escena" style="position:absolute;left:110px;top:-36px;width:440px;max-width:none">
+        <div class="copia copia--rosa"></div>
+        <div class="copia copia--amarilla"></div>
+        <div class="hoja">
+          <div class="perforado"></div>
+          <div class="hoja-cuerpo">
+            <div class="hoja-cabecera"><span>Parte de trabajo</span><span class="numero">Nº 0098</span></div>
+            <div class="campo"><span class="etq">Fecha</span><span class="valor">lun 21 sept</span></div>
+            <div class="campo"><span class="etq">Cliente</span><span class="valor">Antonio García Ruiz</span></div>
+            <div class="campo"><span class="etq">Teléfono</span><span class="valor">600 100 104</span></div>
+            <div class="campo"><span class="etq">Dirección</span><span class="valor">Av. de Blondel 7, Lleida</span></div>
+            <div class="campo"><span class="etq">Trabajo</span><span class="valor">Reparación de termo</span></div>
+            <div class="campo campo--notas"><span class="etq">Notas</span><span class="valor">No calienta y salta el diferencial.</span></div>
+            <div class="firma">
+              <div class="firma-trazo"><svg viewBox="0 0 200 56" fill="none" stroke="#2448B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42c10-30 26-34 22-8s14 18 22-6 12-14 10 6 18 6 26-12 10-6 12 8 20 2 40-10l34 4"></path><path d="M60 50c30-4 70-6 120-4"></path></svg></div>
+              <span class="etq">Firma del cliente</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-movil"><div class="hero-movil-pantalla"><img src="img/codo90-movil-parte.jpg" alt=""></div></div>
+      </div>
+      <svg class="herr-f" style="left:-8px;top:420px;width:250px;transform:rotate(-4deg)" viewBox="0 0 300 100" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="56" y="58" width="236" height="22" rx="9"></rect><circle cx="276" cy="69" r="5" fill="#F5E7A8"></circle><rect x="56" y="14" width="13" height="50"></rect><path d="M6 82 L6 62 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 L62 62 L62 82 Z"></path><path d="M6 14 L68 14 L68 30 L48 30 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 Z"></path><rect x="50" y="34" width="28" height="20" rx="3"></rect><path d="M56 34 L56 54 M62 34 L62 54 M68 34 L68 54 M74 34 L74 54" fill="none" stroke-width="1.4"></path></svg>
+      <svg class="herr-f" style="left:574px;top:-10px;width:104px" viewBox="0 0 170 150" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="4" y="34" width="16" height="56" rx="3"></rect><path d="M20 50 L104 50 Q134 50 134 80 L134 104 L116 104 L116 80 Q116 68 104 68 L20 68 Z"></path><rect x="54" y="28" width="16" height="22"></rect><rect x="34" y="16" width="56" height="12" rx="6"></rect><path d="M125 116 C129 124 133 128 133 133 A8 8 0 0 1 117 133 C117 128 121 124 125 116 Z" fill="#2448B8" stroke="none"></path></svg>
+      <svg class="herr-f" style="left:580px;top:400px;width:98px" viewBox="0 0 160 170" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M8 40 L20 40 A110 110 0 0 1 130 150 L130 160 L90 160 L90 150 A70 70 0 0 0 20 80 L8 80 Z"></path><path d="M20 60 A90 90 0 0 1 110 150" fill="none" stroke-width="1.2" stroke-dasharray="6 5"></path><rect x="2" y="34" width="18" height="52" rx="2"></rect><rect x="84" y="146" width="52" height="18" rx="2"></rect></svg>
+    </div>
+
+    <div class="r4 portada-datos">
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Comandas y calendario</strong><span>Lo urgente, primero</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Sin cobertura</strong><span>Lo sube al volver la señal</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Albaranes y facturas</strong><span>El parte firmado ya es albarán</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Planos en 3D</strong><span>Con el presupuesto calculado</span></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Propuesta para fontaneros autónomos</span><span>Automaittech · marcelpaulilara@gmail.com</span></footer>
+</section>
+
+<!-- 2 · El punto de partida -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0002</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">El punto de partida</p>
+      <h2>Un día de fontanero sin sistema</h2>
+      <p class="entradilla">Si haces cuatro o cinco avisos al día, seguro que te suena. Los trabajos llegan por teléfono y por WhatsApp, el parte se escribe en un papel y a final de mes toca sentarse con la libreta para saber qué facturar. Nada de eso es fontanería, pero se come horas cada semana.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;align-items:start">
+      <div class="libreta-escena" style="max-width:none">
+        <div class="libreta-recorte">
+          <div class="libreta-pantalla"></div>
+          <div class="libreta">
+            <div class="libreta-espiral"></div>
+            <div class="libreta-hoja">
+              <p class="libreta-titulo">Esta semana</p>
+              <ul>
+                <li><span class="libreta-frase">«¿Quién me abre?»<span class="tachon">«¿Quién me abre?»</span></span><span class="libreta-coste">Otro viaje</span></li>
+                <li><span class="libreta-frase">«Luego lo paso a limpio.»<span class="tachon">«Luego lo paso a limpio.»</span></span><span class="libreta-coste">El trabajo, hecho dos veces</span></li>
+                <li><span class="libreta-frase">«¿Y el latiguillo?»<span class="tachon">«¿Y el latiguillo?»</span></span><span class="libreta-coste">Margen en la furgoneta</span></li>
+                <li><span class="libreta-frase">«¿Esta hora la cobramos?»<span class="tachon">«¿Esta hora la cobramos?»</span></span><span class="libreta-coste">Trabajo que no se cobra</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="libreta-movil"></div>
+      </div>
+
+      <div class="r2" style="row-gap:16px">
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-bandeja"/></svg><h3>Los avisos, en cinco sitios</h3><p>La libreta, los mensajes, las notas del móvil y lo que te dijeron en la escalera. Tarde o temprano uno se queda sin hacer.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-reloj"/></svg><h3>El día, a ojo cada mañana</h3><p>Ordenas los avisos de memoria y el urgente se queda para el final. Un mal orden son kilómetros de más y una tarde que se alarga.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-puerta"/></svg><h3>Cada piso, un misterio</h3><p>Quién abre, qué teléfono es el bueno y qué se cambió la última vez. Si no te acuerdas, es otro viaje.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-sinred"/></svg><h3>El mismo dato, apuntado dos veces</h3><p>Apuntas el trabajo en un papel porque en el sótano no hay cobertura, y por la noche lo pasas a limpio. Si se te olvida, nadie se entera.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-caja"/></svg><h3>Material que no llega a la factura</h3><p>Los codos, el latiguillo y la media hora de más se olvidan. Es margen que se queda en la furgoneta.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-factura"/></svg><h3>La factura, fila a fila</h3><p>Repasar partes, sumar importes, calcular el IVA y numerar a mano. Un despiste y la factura sale mal o sale tarde.</p></div>
+      </div>
+    </div>
+
+    <div class="oscuro" style="margin-top:auto">
+      <p>El resultado: <strong>horas de oficina en vez de fontanería</strong>, trabajos que se pierden entre mensajes y facturas que se cobran tarde, o no se cobran.</p>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>2</span></footer>
+</section>
+
+<!-- 3 · La solución -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0003</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">La solución</p>
+      <h2>Una sola app, del aviso al cobro</h2>
+      <p class="entradilla">Suena el teléfono y la comanda cae en el día que le toca. Por la mañana ves lo urgente, llamas y navegas desde la misma pantalla. En casa del cliente cierras el parte con fotos, materiales, horas y firma: ese parte ya es el albarán, y los albaranes de un cliente se convierten en su factura.</p>
+    </div>
+
+    <ol class="fila-pasos" style="--n:7;margin-top:4px;column-gap:10px">
+      <li><span class="flujo-num">1</span><strong>Aviso</strong><p>Llega y se apunta</p></li>
+      <li><span class="flujo-num">2</span><strong>Día</strong><p>Urgente o con hora</p></li>
+      <li><span class="flujo-num">3</span><strong>Ruta</strong><p>Llamar y llegar</p></li>
+      <li><span class="flujo-num">4</span><strong>Trabajo</strong><p>Fotos y material</p></li>
+      <li><span class="flujo-num">5</span><strong>Firma</strong><p>En la puerta</p></li>
+      <li><span class="flujo-num">6</span><strong>Albarán</strong><p>Numerado y en PDF</p></li>
+      <li><span class="flujo-num">7</span><strong>Factura</strong><p>Con su IVA</p></li>
+    </ol>
+
+    <div style="display:grid;grid-template-columns:420px minmax(0,1fr);gap:28px;align-items:center;margin-top:6px">
+      <div class="marco-f marco-f--orden"><img src="img/codo90-hoy.jpg" alt=""></div>
+      <div class="nota">
+        <p>«Abro la app, veo lo que toca hoy, hago el trabajo y lo cierro en la puerta con la firma. A final de mes la factura ya está hecha.»</p>
+        <p class="peque">Así es un día con Codo90: nada de pasar datos de un sitio a otro por la noche.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:21px;margin-top:4px">¿Para quién está pensada?</h3>
+    <div class="r3">
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-furgo"/></svg><h3>Fontanero autónomo</h3><p>Una furgoneta y cuatro o cinco avisos al día. Quiere trabajar, no pelearse con hojas de cálculo ni con facturas.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-edificio"/></svg><h3>Mantenimiento de fincas</h3><p>Administradores y comunidades con muchas viviendas. Cada portal con su historial, su contacto y quién abre.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-capas"/></svg><h3>Reformas de baño y cocina</h3><p>Si además presupuestas obra, el plano en 3D saca los metros de tubo, los codos y las horas por ti.</p></div>
+    </div>
+  </div>
+  <svg class="herr-f" style="right:16mm;top:84px;width:96px" viewBox="0 0 170 150" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="4" y="34" width="16" height="56" rx="3"></rect><path d="M20 50 L104 50 Q134 50 134 80 L134 104 L116 104 L116 80 Q116 68 104 68 L20 68 Z"></path><rect x="54" y="28" width="16" height="22"></rect><rect x="34" y="16" width="56" height="12" rx="6"></rect><path d="M125 116 C129 124 133 128 133 133 A8 8 0 0 1 117 133 C117 128 121 124 125 116 Z" fill="#2448B8" stroke="none"></path></svg>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>3</span></footer>
+</section>
+
+<!-- 4 · Funciones -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0004</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Funciones principales</p>
+      <h2>Todo lo que necesita un día de trabajo</h2>
+    </div>
+    <div class="r3" style="row-gap:48px;margin-top:10px">
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-calendario"/></svg><h3>Comandas y calendario</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>El mes con lo lleno que va cada día</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Urgentes en rojo y hora opcional</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Cambiar de día arrastrando</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Hoy: urgentes, atrasadas y las de hoy</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-personas"/></svg><h3>Clientes y viviendas</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Varias viviendas por cliente</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Quién abre, teléfono y notas</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Historial por vivienda</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>NIF y dirección fiscal</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-lapiz"/></svg><h3>Parte de trabajo</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Fotos de antes y después</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Materiales del catálogo y horas</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>El importe, a la vista</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Firma del cliente en la pantalla</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-lista"/></svg><h3>Albaranes</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Cada parte cerrado, numerado</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Imprimible o en PDF</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Sin facturar / facturados</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Se marcan los de un cliente</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-factura"/></svg><h3>Facturas</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Juntan los albaranes de un cliente</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>IVA 21, 10 o 0 %</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Numeración correlativa por año</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Se puede borrar la última</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-capas"/></svg><h3>Planos en 3D</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Habitaciones con sus medidas</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Tuberías que se tiran solas</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Revisión con reglas del CTE</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Presupuesto en PDF</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-caja"/></svg><h3>Tu catálogo</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>48 servicios en 9 familias</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Materiales con tu precio</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Tu precio por hora</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Nada se borra: se desactiva</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-grafico"/></svg><h3>Panel y resumen</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Lo pendiente y lo urgente</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Importe del mes y sin facturar</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>De qué vive el negocio</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Partes cerrados, uno a uno</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-sinred"/></svg><h3>Sin cobertura</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>El parte se guarda en el móvil</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Se envía solo al volver la red</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Datos, firma y fotos de una vez</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Reenviar nunca duplica</li>
+        </ul></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>4</span></footer>
+</section>
+
+<!-- 5 · Así se ve -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0005</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Así se ve</p>
+      <h2>Capturas reales del programa</h2>
+      <p class="entradilla">La misma app en el ordenador de casa, en la tablet o en el móvil de la furgoneta. En español, con letra grande y todo a dos toques.</p>
+    </div>
+    <div class="r2" style="row-gap:16px">
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/codo90-panel.jpg" alt=""></div><figcaption><p><strong class="tinta">Panel.</strong> Lo pendiente, lo urgente y lo que falta por facturar.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/codo90-comandas.jpg" alt=""></div><figcaption><p><strong class="tinta">Comandas.</strong> El mes entero y el día elegido. Se cambian de día arrastrando.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/codo90-cliente.jpg" alt=""></div><figcaption><p><strong class="tinta">Clientes y viviendas.</strong> Sus portales y todo el historial.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/codo90-albaran.jpg" alt=""></div><figcaption><p><strong class="tinta">Albarán.</strong> Materiales, horas y la firma del cliente.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/codo90-factura.jpg" alt=""></div><figcaption><p><strong class="tinta">Factura.</strong> Varios albaranes en una, con su IVA y su número correlativo.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/codo90-resumen.jpg" alt=""></div><figcaption><p><strong class="tinta">Resumen del mes.</strong> Partes cerrados, horas, materiales y el total.</p></figcaption></figure>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>5</span></footer>
+</section>
+
+<!-- 6 · Una mañana paso a paso -->
+<section class="pag pag--copia">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0006</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Ejemplo de una operación habitual</p>
+      <h2>Una mañana de trabajo, paso a paso</h2>
+      <p class="entradilla">Un aviso de los de siempre: un termo que no calienta, en un tercero sin ascensor. Todo lo que ves son pantallas reales de la app.</p>
+    </div>
+    <ol class="fila-pasos" style="--n:4;column-gap:22px">
+      <li><span class="flujo-num">1</span><strong>Abre la app</strong><div class="marco-f marco-f--movil" style="margin:6px 4px"><img src="img/codo90-movil-hoy.jpg" alt=""></div><p>Lo urgente primero, con la dirección y las notas. Llamar y cómo llegar, en un toque.</p></li>
+      <li><span class="flujo-num">2</span><strong>Haz el parte allí</strong><div class="marco-f marco-f--movil" style="margin:6px 4px"><img src="img/codo90-movil-parte.jpg" alt=""></div><p>Foto de antes, lo que has hecho y los materiales del catálogo, con su precio.</p></li>
+      <li><span class="flujo-num">3</span><strong>Firma en la puerta</strong><div class="marco-f marco-f--movil" style="margin:6px 4px"><img src="img/codo90-movil-firma.jpg" alt=""></div><p>El cliente ve el importe y firma en la pantalla. Al cerrar, ya es un albarán numerado.</p></li>
+      <li><span class="flujo-num">4</span><strong>Planifica mañana</strong><div class="marco-f marco-f--movil" style="margin:6px 4px"><img src="img/codo90-movil-comandas.jpg" alt=""></div><p>Desde el calendario repartes lo que queda entre los próximos días, sin pisar horas.</p></li>
+    </ol>
+    <div class="oscuro" style="display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;align-items:center;margin-top:auto">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <p class="ceja" style="color:#C9D2E3">Y a final de mes</p>
+        <p class="grande">La factura sale de los albaranes</p>
+        <p style="font-size:14px">Abres Albaranes, marcas los de un cliente y pulsas facturar. La app junta los trabajos, aplica el IVA que toca y le pone el número que le corresponde, sin huecos. Después la imprimes o la mandas en PDF.</p>
+      </div>
+      <div class="marco-f marco-f--hoja"><img src="img/codo90-albaranes.jpg" alt=""></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>6</span></footer>
+</section>
+
+<!-- 7 · Reformas: el plano en 3D -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0007</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Si además haces reformas</p>
+      <h2>La instalación, dibujada y presupuestada</h2>
+      <p class="entradilla">Dibujas las habitaciones con sus medidas, pones las piezas y las tuberías se tiran solas por el recorrido más barato. Sale el presupuesto con los metros de tubo, los codos, las horas y lo que se gasta al montarlo.</p>
+    </div>
+    <figure class="captura">
+      <div class="marco-f marco-f--orden marco-f--recorte" style="--h:320px"><img src="img/codo90-plano-grande.jpg" alt="" style="object-position:center 60%"></div>
+      <figcaption><p><strong class="tinta">Reforma de baño y cocina</strong> · planta baja y planta 1.</p></figcaption>
+    </figure>
+    <div class="r2">
+      <figure class="captura"><div class="marco-f marco-f--hoja marco-f--recorte" style="--h:150px"><img src="img/codo90-plano-revision.jpg" alt=""></div><figcaption><p><strong class="tinta">Revisión con las reglas del CTE.</strong> Diámetros, velocidad del agua, pendientes y llaves de corte. «Corregir todo» los arregla de una vez.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja marco-f--recorte" style="--h:150px"><img src="img/codo90-plano-presupuesto.jpg" alt=""></div><figcaption><p><strong class="tinta">El presupuesto, al céntimo.</strong> Cada tubo con sus metros, cada codo contado, las horas y el material de montaje.</p></figcaption></figure>
+    </div>
+    <div class="r4">
+      <div class="punto"><h3>Habitaciones de cualquier forma</h3><p>En L, en U o como sea, en varias plantas y sótanos.</p></div>
+      <div class="punto"><h3>El plano del cliente, de fondo</h3><p>Su foto o su PDF a escala, para dibujar encima.</p></div>
+      <div class="punto"><h3>Conexión automática</h3><p>Cada toma busca su puerto con el diámetro que aguanta el caudal.</p></div>
+      <div class="punto"><h3>104 componentes</h3><p>Tubos, válvulas, calderas, sanitarios, riego y exterior.</p></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>7</span></footer>
+</section>
+
+<!-- 8 · Empresas -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0008</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Para empresas con más de un fontanero</p>
+      <h2 style="font-size:31px;max-width:none">¿Tenéis varios fontaneros? Os lo hacemos a medida</h2>
+      <p class="entradilla">Si llevas una empresa o trabajas con autónomos subcontratados, adaptamos Codo90 a vuestra forma de trabajar. Desde la oficina ves quién va a cada obra, cómo lleva el día cada uno y qué se ha cerrado, sin hacer ni una llamada.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <p class="etq">Ejemplo de panel a medida</p>
+      <div class="flota">
+        <div class="flota-cab"><h3>Panel del equipo <span>· martes, 22 de septiembre</span></h3><span class="directo">En directo</span></div>
+        <div class="flota-cifras">
+          <div><span>Trabajos hoy</span><strong>18 / 24</strong></div>
+          <div><span>En ruta</span><strong>3 / 5</strong></div>
+          <div><span>Urgentes</span><strong>2</strong></div>
+          <div><span>Cerrado hoy</span><strong>1.284 €</strong></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:16px">
+          <table>
+            <thead><tr><th>Fontanero</th><th style="width:100px">Progreso</th><th>Ahora</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td><span class="quien"><span class="ini">JP</span><span>Jordi Puig<small>Centro</small></span></span></td><td><span class="barra"><i style="--p:71%"></i>5/7</span></td><td>C/ Cavallers 18</td><td class="estado">En ruta</td></tr>
+              <tr><td><span class="quien"><span class="ini">MR</span><span>Marta Ruiz<small>Balàfia</small></span></span></td><td><span class="barra"><i style="--p:100%"></i>6/6</span></td><td>—</td><td class="estado estado--bien">Terminado</td></tr>
+              <tr><td><span class="quien"><span class="ini">ÀF</span><span>Àlex Ferrer<small>Pardinyes</small></span></span></td><td><span class="barra"><i style="--p:40%"></i>2/5</span></td><td>Reforma Av. Catalunya 14</td><td class="estado estado--mal">1 urgente</td></tr>
+              <tr><td><span class="quien"><span class="ini">PC</span><span>Pau Costa<small>Cappont · autónomo</small></span></span></td><td><span class="barra"><i style="--p:50%"></i>3/6</span></td><td>Sala de calderas · Clínica Verdi</td><td class="estado suave">Sin cobertura</td></tr>
+              <tr><td><span class="quien"><span class="ini">LS</span><span>Laia Serra<small>Secà</small></span></span></td><td><span class="barra"><i style="--p:80%"></i>4/5</span></td><td>Bar La Plaça</td><td class="estado">En ruta</td></tr>
+            </tbody>
+          </table>
+          <div class="obras">
+            <p class="etq">Obras en marcha</p>
+            <p><strong>Reforma de baño y cocina</strong>Av. Catalunya 14 · Àlex · día 3 de 6</p>
+            <p><strong>Sala de calderas</strong>Clínica Verdi · Pau · día 2 de 4</p>
+            <p><strong>Cambio de bajante</strong>C/ Sant Antoni 51 · Jordi · día 1 de 2</p>
+            <p><strong>Comunidad Av. Madrid 25</strong>3 avisos del administrador · Marta</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="r2" style="row-gap:12px">
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-pantallas"/></svg><div><h3>Quién va a cada obra</h3><p>Desde la oficina ves a quién le toca cada dirección, qué lleva hecho y qué le queda del día.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-ruta"/></svg><div><h3>Repartir los avisos</h3><p>Asignas y mueves comandas de un fontanero a otro sin llamar a nadie.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-calendario"/></svg><div><h3>Obras de varios días</h3><p>Una reforma con sus jornadas, sus partes y su presupuesto del plano, todo junto.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-candado"/></svg><div><h3>Permisos por rol</h3><p>Oficina, jefe de obra y fontanero: cada uno con lo que le toca ver. Los precios, solo quien tú digas.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-grafico"/></svg><div><h3>Informes por fontanero y por obra</h3><p>Horas, materiales y lo facturado de cada uno, para saber qué rinde y dónde se atasca el trabajo.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-capas"/></svg><div><h3>Con vuestra marca</h3><p>Vuestro logo y vuestros colores en la app de todo el equipo y en albaranes y facturas.</p></div></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>8</span></footer>
+</section>
+
+<!-- 9 · Beneficios -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0009</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Beneficios</p>
+      <h2>Lo que cambia desde el primer día</h2>
+    </div>
+    <div class="r2" style="row-gap:14px">
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-reloj"/></svg><div><h3>Se acaba la oficina de por la noche</h3><p>El parte se cierra en la puerta y ya es albarán. No hay nada que pasar a limpio.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-caja"/></svg><div><h3>No se escapa ni un material</h3><p>Se apunta allí mismo, con su precio, y entra en el importe del trabajo.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-sinred"/></svg><div><h3>Trabajas aunque no haya señal</h3><p>En sótanos y garajes la app sigue funcionando y lo sube todo cuando vuelve la cobertura.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-euro"/></svg><div><h3>Sabes qué falta por cobrar</h3><p>Los albaranes sin facturar y lo que llevas este mes, en la primera pantalla.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-puerta"/></svg><div><h3>Llegas sabiendo a qué vas</h3><p>Quién abre, el teléfono del portal, las notas y lo que se hizo la última vez.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-pantallas"/></svg><div><h3>Lo consultas desde donde sea</h3><p>El móvil en la furgoneta, el ordenador en casa o la tablet. Siempre los mismos datos.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-capas"/></svg><div><h3>Presupuestas sin ir a ojo</h3><p>El plano da los metros de tubo, los codos, las horas y el material de montaje.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><h3>Todo en un único programa</h3><p>Comandas, clientes, partes, albaranes, facturas y planos. Y los datos son tuyos.</p></div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:30px;align-items:center;margin-top:6px">
+      <div class="ticket">
+        <div class="perforado"></div>
+        <div class="ticket-cuerpo">
+          <p class="ticket-titulo">Cuenta rápida</p>
+          <div class="regla"><span>Pasar los partes del papel a limpio, 20 min al día</span><output>100 min</output></div>
+          <div class="regla"><span>Buscar qué se hizo en esa vivienda, 10 min al día</span><output>50 min</output></div>
+          <div class="regla"><span>Montar las facturas del mes (2 h), por semana</span><output>30 min</output></div>
+          <div class="ticket-total">
+            <p class="ticket-total-etq">Tiempo que recuperas cada semana</p>
+            <p class="ticket-cifra">≈ 3 h</p>
+          </div>
+          <p class="ticket-nota">Estimación orientativa para un autónomo con cuatro o cinco avisos al día. Cada caso es distinto.</p>
+        </div>
+      </div>
+      <ul class="cifras" style="--n:1">
+        <li><strong>+12 h</strong><span>al mes para hacer más trabajos o para irte antes a casa</span></li>
+      </ul>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>9</span></footer>
+</section>
+
+<!-- 10 · Cómo funciona -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0010</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Cómo funciona</p>
+      <h2>En marcha en cuatro pasos</h2>
+    </div>
+    <ol class="col-pasos" style="gap:22px">
+      <li><span class="paso-num">1</span><div><h3>Lo dejamos instalado</h3><p>En tu ordenador o en un servidor pequeño, con tus datos fiscales y tu precio por hora, que son los que salen en albaranes y facturas.</p></div><div class="nota-lado"><p class="boli">Lo hacemos nosotros</p><p class="peque">Tú solo nos dices cómo facturas y a qué precio va la hora.</p></div></li>
+      <li><span class="paso-num">2</span><div><h3>Cargamos tu catálogo</h3><p>Tus servicios y tus materiales con el precio al que los compras. Vienen 48 servicios en 9 familias de salida, y los cambias cuando quieras.</p></div><div class="nota-lado"><p class="boli">Y tus clientes</p><p class="peque">Si los tienes en una hoja o en la agenda del móvil, los pasamos nosotros.</p></div></li>
+      <li><span class="paso-num">3</span><div><h3>El móvil, a la pantalla de inicio</h3><p>Se abre como cualquier app, sin pasar por la App Store. El primer trabajo del día puede ser en un sótano sin cobertura.</p></div><div class="nota-lado"><p class="boli">En lo que ya tienes</p><p class="peque">Móvil, tablet u ordenador: es la misma app en el navegador.</p></div></li>
+      <li><span class="paso-num">4</span><div><h3>A trabajar</h3><p>Comandas por la mañana, partes durante el día y, a final de mes, albaranes y facturas sin montar nada a mano.</p></div><div class="nota-lado"><p class="boli">Del primer contacto al primer parte</p><p class="peque">Normalmente, en menos de un día.</p></div></li>
+    </ol>
+
+    <h3 style="font-size:21px;margin-top:8px">Tus datos, donde tú decidas</h3>
+    <div class="r2" style="column-gap:26px">
+      <div class="opcion plan--recomendado">
+        <div class="plan-cuerpo">
+          <p class="ceja">Recomendado</p>
+          <h3>En tu ordenador</h3>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Clientes, fotos y firmas no salen de casa</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Se levanta entero con una orden</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>La copia de seguridad la haces tú</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Sin cuotas por puesto ni por usuario</li>
+          </ul>
+        </div>
+      </div>
+      <div class="opcion">
+        <div class="plan-cuerpo">
+          <p class="ceja">Para usarlo desde la calle</p>
+          <h3>En un servidor</h3>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>El mismo programa, publicado por un túnel</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Solo entra tu correo: lo demás, fuera</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Se instala en el móvil y funciona sin red</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Sin abrir puertos en el router</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>10</span></footer>
+</section>
+
+<!-- 11 · Planes y precios -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0011</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Planes y precios</p>
+      <h2>Un plan para cada forma de trabajar</h2>
+    </div>
+    <div class="planes">
+      <div class="plan">
+        <div class="perforado"></div>
+        <div class="plan-cuerpo">
+          <h3>Básico</h3>
+          <p class="para">Para el fontanero autónomo que quiere quitarse la libreta.</p>
+          <p class="precio"><s>49 €</s><strong>39 €</strong><small>/mes</small></p>
+          <p class="inicial">+ 199 € de pago inicial</p>
+          <p class="usuarios">1 fontanero</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Comandas, calendario y clientes</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Partes con fotos, materiales y firma</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Albaranes numerados en PDF</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Funciona sin cobertura</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Soporte por email</li>
+          </ul>
+          <p class="plan-boton"><span>Empezar</span></p>
+        </div>
+      </div>
+      <div class="plan plan--recomendado">
+        <div class="perforado"></div>
+        <div class="plan-cuerpo">
+          <h3>Profesional</h3>
+          <p class="para">Para quien factura cada mes y presupuesta reformas.</p>
+          <p class="precio"><s>99 €</s><strong>75 €</strong><small>/mes</small></p>
+          <p class="inicial">+ 399 € de pago inicial</p>
+          <p class="usuarios">1 fontanero</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Todo lo del plan Básico</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Facturas con IVA y numeración por año</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Resumen mensual y panel del negocio</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Planos en 3D con revisión del CTE</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Presupuesto de obra en PDF</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Soporte prioritario</li>
+          </ul>
+          <p class="plan-boton"><span>Pedir demostración</span></p>
+        </div>
+        <span class="sello">Recomendado</span>
+      </div>
+      <div class="plan">
+        <div class="perforado"></div>
+        <div class="plan-cuerpo">
+          <h3>Empresa</h3>
+          <p class="para">Para empresas con varios fontaneros o subcontratados.</p>
+          <p class="precio"><strong>A medida</strong></p>
+          <p class="inicial">Presupuesto cerrado</p>
+          <p class="usuarios">Fontaneros ilimitados</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Todo lo del plan Profesional</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Panel del equipo y de las obras</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Permisos por rol y vuestra marca</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Conexión con vuestro software</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Instalación y formación incluidas</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Soporte dedicado</li>
+          </ul>
+          <p class="plan-boton"><span>Hablemos</span></p>
+        </div>
+      </div>
+    </div>
+    <p class="peque">IVA no incluido. Facturación mensual y sin permanencia. El pago inicial se abona una sola vez al contratar y cubre la instalación, el alta de tus datos fiscales, la carga de tu catálogo de servicios y materiales y la formación. El plan Empresa se presupuesta según el número de fontaneros y lo que haya que hacer a medida.</p>
+    <ul class="garantias">
+      <li>Sin permanencia</li><li>Periodo de prueba</li><li>Formación en el alta</li><li>Soporte en español y catalán</li>
+    </ul>
+    <h3 style="font-size:21px;margin-top:4px">¿Qué plan me conviene?</h3>
+    <div class="r3">
+      <div class="punto"><h3>Trabajas tú solo</h3><p>Empieza con el Básico. Si además facturas cada mes desde la app, el Profesional te ahorra montar la factura a mano.</p></div>
+      <div class="punto"><h3>Haces reformas</h3><p>El Profesional: el plano en 3D saca el presupuesto con los metros de tubo, los codos y las horas, y lo mandas en PDF.</p></div>
+      <div class="punto"><h3>Tenéis equipo</h3><p>El plan Empresa. Nos sentamos con vosotros, vemos cómo trabajáis y os presupuestamos el sistema a medida.</p></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>11</span></footer>
+</section>
+
+<!-- 12 · Soporte y contacto -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0012</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Soporte y condiciones</p>
+      <h2>Contigo antes, durante y después</h2>
+    </div>
+    <div class="r2" style="row-gap:14px">
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-herramienta"/></svg><div><h3>Instalación y configuración</h3><p>Te lo dejamos instalado, con tus datos, tu tarifa y tu catálogo, listo para hacer el primer parte.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-gorra"/></svg><div><h3>Formación</h3><p>Media hora, en persona o por videollamada. No hay más que aprender: una comanda, un parte y una factura.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-mensaje"/></svg><div><h3>Soporte</h3><p>Por email o WhatsApp, en español y con quien ha hecho el programa, no con un centro de llamadas.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-actualizar"/></svg><div><h3>Actualizaciones incluidas</h3><p>Las mejoras y correcciones te llegan sin coste. Verifactu está en camino.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-calendario"/></svg><div><h3>Periodo de prueba</h3><p>Pruébalo con tus avisos de verdad antes de decidir, sin compromiso.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-salida"/></svg><div><h3>Sin permanencia</h3><p>Lo dejas cuando quieras y te llevas tus clientes, tus albaranes y tus facturas.</p></div></div>
+    </div>
+    <div class="punto punto--fila" style="padding:14px 18px;border:2px solid var(--imprenta);border-radius:4px;background:var(--blanco)"><svg class="icono" viewBox="0 0 24 24"><use href="#i-escudo"/></svg><div><h3>Protección de datos</h3><p>Los clientes, las direcciones, las fotos y las firmas se quedan en tu máquina, no en un servidor ajeno. Si lo publicas para usarlo desde la calle, solo entra tu correo. Verifactu (huella, QR y envío a Hacienda) todavía no está incluido: llegará en una actualización.</p></div></div>
+
+    <div style="position:relative;flex:1">
+      <svg class="herr-f" style="right:180px;bottom:0;width:250px;transform:rotate(-4deg)" viewBox="0 0 300 100" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="56" y="58" width="236" height="22" rx="9"></rect><circle cx="276" cy="69" r="5" fill="#F5E7A8"></circle><rect x="56" y="14" width="13" height="50"></rect><path d="M6 82 L6 62 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 L62 62 L62 82 Z"></path><path d="M6 14 L68 14 L68 30 L48 30 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 Z"></path><rect x="50" y="34" width="28" height="20" rx="3"></rect><path d="M56 34 L56 54 M62 34 L62 54 M68 34 L68 54 M74 34 L74 54" fill="none" stroke-width="1.4"></path></svg>
+      <svg class="herr-f" style="right:40px;bottom:-6px;width:96px" viewBox="0 0 160 170" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M8 40 L20 40 A110 110 0 0 1 130 150 L130 160 L90 160 L90 150 A70 70 0 0 0 20 80 L8 80 Z"></path><path d="M20 60 A90 90 0 0 1 110 150" fill="none" stroke-width="1.2" stroke-dasharray="6 5"></path><rect x="2" y="34" width="18" height="52" rx="2"></rect><rect x="84" y="146" width="52" height="18" rx="2"></rect></svg>
+    </div>
+    <div class="contacto-f">
+      <div>
+        <h2>¿Lo vemos con tus avisos?</h2>
+        <p class="entradilla">Pídenos una demostración con tus propios trabajos. En media hora ves si encaja con tu día a día.</p>
+      </div>
+      <dl class="canales-f">
+        <div><dt>Email</dt><dd>marcelpaulilara@gmail.com</dd></div>
+        <div><dt>Teléfono y WhatsApp</dt><dd>+34 634 27 63 85</dd></div>
+        <div><dt>Dónde</dt><dd>Llinars del Vallès (Barcelona)</dd></div>
+      </dl>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · Software de gestión para fontaneros</span><span>Automaittech · © 2026</span></footer>
+</section>
+</body>
+</html>
