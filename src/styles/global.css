@@ -227,6 +227,15 @@ h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
 .flecha:hover { background: var(--imprenta); color: var(--blanco); }
 .flecha:active { transform: scale(.94); }
 @media (min-width: 700px) { .contador { display: block; } }
+/* En el móvil sobran las flechas (se desliza con el dedo): las tres pestañas, siempre a la vista. */
+@media (max-width: 899px) {
+  .carrusel-barra-int { min-height: 0; padding-block: 10px; }
+  .flechas { display: none; }
+  .pestanas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; overflow: visible; padding-block: 0; }
+  .pestanas button { min-height: 56px; padding: 6px 8px; align-items: center; justify-content: center; text-align: center; border-radius: 10px; }
+  .pestana-oficio { font-size: .875rem; line-height: 1.15; }
+  .pestana-nombre { font-size: .75rem; }
+}
 
 .js .programa:not(.activo) { display: none; }
 .programa { padding-block: 40px 16px; }
@@ -301,15 +310,28 @@ h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
 }
 
 /* La ficha en corto */
-.flujo { position: relative; list-style: none; margin: 0; padding: 32px 0; display: grid; gap: 14px; border-top: 2px solid var(--imprenta); }
-.flujo::before { content: ''; position: absolute; left: 17px; top: 50px; bottom: 50px; width: 2px; background: var(--imprenta); }
-.flujo li { position: relative; display: flex; align-items: center; gap: 12px; }
+.flujo-caja { border-top: 2px solid var(--imprenta); }
+.flujo { position: relative; list-style: none; margin: 0; padding: 32px 0; }
+.flujo li { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .flujo-num { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--imprenta); background: var(--blanco); font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: 1.0625rem; color: var(--rojo); font-variant-numeric: tabular-nums; }
 .flujo strong { font-family: var(--f-titulo); font-weight: 700; font-size: 1.0625rem; }
+/* Móvil: los pasos en fila. Sin animación se pasan con el dedo; con animación avanzan solos al hacer scroll. */
+@media (max-width: 899px) {
+  .flujo-caja { margin-inline: calc(-1 * var(--margen)); overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; }
+  .flujo-caja::-webkit-scrollbar { display: none; }
+  .mov .flujo-caja { overflow-x: clip; }
+  .flujo { display: flex; width: max-content; padding-inline: var(--margen); }
+  .flujo li { flex: 0 0 120px; scroll-snap-align: start; scroll-margin-inline-start: var(--margen); }
+  .flujo li:not(:last-child)::after { content: ''; position: absolute; left: 36px; right: 0; top: 17px; height: 2px; background: var(--imprenta); }
+  .mov .flujo li:not(.hecho)::after { background: rgba(27, 42, 74, .22); }
+  .flujo li.actual .flujo-num { background: var(--imprenta); border-color: var(--imprenta); color: var(--blanco); }
+  .flujo li.actual strong { color: var(--boli); }
+  /* La letra del texto tacha el cero («Codo9Ø»); en las pestañas va la de los títulos. */
+  .pestana-nombre { font-family: var(--f-titulo); font-weight: 600; }
+}
 @media (min-width: 900px) {
-  .flujo { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 8px; }
-  .flujo::before { left: 18px; right: calc(100% / var(--n) - 18px); top: 49px; bottom: auto; width: auto; height: 2px; }
-  .flujo li { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .flujo { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 8px; }
+  .flujo::before { content: ''; position: absolute; left: 18px; right: calc(100% / var(--n) - 18px); top: 49px; height: 2px; background: var(--imprenta); }
 }
 
 .ficha-detalle { display: grid; gap: 40px; padding-block: 36px; border-top: 1px solid var(--raya); }

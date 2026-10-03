@@ -56,9 +56,11 @@ const check = '<path d="M4 10.5l4 4 8-9"></path>';
     </div>
   </div>
 
-  <ol class="flujo" role="list" style={`--n:${p.pasos.length}`}>
-    {p.pasos.map((s, i) => <li><span class="flujo-num" aria-hidden="true">{i + 1}</span><strong>{s}</strong></li>)}
-  </ol>
+  <div class="flujo-caja">
+    <ol class="flujo" role="list" style={`--n:${p.pasos.length}`}>
+      {p.pasos.map((s, i) => <li><span class="flujo-num" aria-hidden="true">{i + 1}</span><strong>{s}</strong></li>)}
+    </ol>
+  </div>
 
   <div class="ficha-detalle">
     <div class="hace">

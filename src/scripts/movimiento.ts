@@ -121,6 +121,8 @@ if (carrusel) {
     cargar(nuevo);
     if (contador) contador.textContent = String(k + 1);
     actual = k;
+    // Las medidas de la ficha nueva cambian (los pasos en móvil se miden con ella). Antes de mover el scroll, no después: refresh lo pararía.
+    ScrollTrigger.refresh();
 
     // Si se cambia estando a media ficha, se vuelve a su principio.
     const arriba = carrusel.getBoundingClientRect().top;
@@ -234,6 +236,36 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
     raiz.classList.remove('mov');
     aparatos.forEach((a) => marcar(a, 0, false));
   };
+});
+// En el móvil, los pasos del 1 al 7 avanzan de lado mientras se baja.
+mm.add('(max-width: 899px) and (prefers-reduced-motion: no-preference)', () => {
+  document.querySelectorAll<HTMLElement>('.flujo-caja').forEach((caja) => {
+    const fila = caja.querySelector<HTMLElement>('.flujo')!;
+    const pasos = [...fila.children] as HTMLElement[];
+    let actualPaso = -1;
+    const marcarPaso = (k: number) => {
+      if (k === actualPaso) return;
+      actualPaso = k;
+      pasos.forEach((li, i) => {
+        li.classList.toggle('hecho', i < k);
+        li.classList.toggle('actual', i === k);
+      });
+    };
+    marcarPaso(0);
+    gsap.to(fila, {
+      x: () => -Math.max(0, fila.scrollWidth - caja.clientWidth),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: caja,
+        start: 'top 75%',
+        end: 'top 25%',
+        scrub: true,
+        invalidateOnRefresh: true,
+        onUpdate: (st) => marcarPaso(Math.round(st.progress * (pasos.length - 1))),
+      },
+    });
+  });
+  return () => document.querySelectorAll('.flujo li').forEach((li) => li.classList.remove('hecho', 'actual'));
 });
 document.fonts?.ready.then(() => ScrollTrigger.refresh());
 
