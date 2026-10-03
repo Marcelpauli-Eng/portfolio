@@ -70,6 +70,7 @@ const es: Programa[] = [
       { n: '104', t: 'piezas para dibujar tus planos' },
     ],
     cta: 'Quiero verlo en mi furgoneta',
+    folleto: { pdf: 'Codo90-Folleto.pdf', info: 'PDF · 12 páginas' },
   },
   {
     id: 'transportistas',
@@ -153,6 +154,7 @@ const ca: Programa[] = [
       { n: '104', t: 'peces per dibuixar els teus plànols' },
     ],
     cta: 'Vull veure-ho a la meva furgoneta',
+    folleto: { pdf: 'Codo90-Folleto.pdf', info: 'PDF · 12 pàgines' },
   },
   {
     id: 'transportistas',

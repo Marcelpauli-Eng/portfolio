@@ -172,3 +172,27 @@ figure { margin: 0; }
 .pag :is(.hoja, .ticket, .plan, .opcion, .nota, .flota, .marco-f--hoja, .libreta, .contacto-f, .garantias li) {
   box-shadow: 0 0 0 1px rgba(27, 42, 74, .12), 3px 5px 0 rgba(27, 42, 74, .09) !important;
 }
+
+/* El panel de equipo de ejemplo (plan Empresa), dibujado como una hoja más. */
+.flota { position: relative; background: var(--blanco); border-radius: 4px; box-shadow: var(--sombra-objeto); padding: 14px 20px 14px; display: flex; flex-direction: column; gap: 10px; }
+.flota-cab { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--imprenta); padding-bottom: 8px; }
+.flota-cab h3 { font-size: 18px; }
+.flota-cab span { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: 13px; color: var(--imprenta-suave); }
+.directo { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: 13px; color: var(--boli); }
+.directo::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--boli); }
+.flota-cifras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.flota-cifras div { padding: 8px 12px; border: 1px solid var(--raya); border-radius: 4px; }
+.flota-cifras span { display: block; font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: 12px; color: var(--imprenta-suave); }
+.flota-cifras strong { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 800; font-size: 26px; line-height: 1.1; color: var(--rojo); font-variant-numeric: tabular-nums; }
+.flota table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.flota th { text-align: left; font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: 12px; color: var(--imprenta-suave); padding: 0 8px 5px 0; border-bottom: 1px solid var(--raya); }
+.flota td { padding: 4px 8px 4px 0; border-bottom: 1px dashed var(--raya); vertical-align: middle; }
+.flota td small { display: block; color: var(--imprenta-suave); font-size: 11px; }
+.ini { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: 8px; border-radius: 50%; border: 1.5px solid var(--imprenta); font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: 11px; vertical-align: middle; }
+.quien { display: flex; align-items: center; font-weight: 700; }
+.barra { display: flex; align-items: center; gap: 8px; font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-variant-numeric: tabular-nums; }
+.barra i { flex: 1; height: 5px; border-radius: 3px; background: rgba(27, 42, 74, .14); overflow: hidden; }
+.barra i::before { content: ''; display: block; height: 100%; width: var(--p); background: var(--boli); }
+.estado { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; }
+.estado--mal { color: var(--rojo); }
+.estado--bien { color: var(--boli); }
