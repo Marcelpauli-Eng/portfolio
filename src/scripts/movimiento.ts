@@ -269,15 +269,28 @@ mm.add('(max-width: 899px) and (prefers-reduced-motion: no-preference)', () => {
 });
 document.fonts?.ready.then(() => ScrollTrigger.refresh());
 
-// ---------- Formulario: abre el correo con el mensaje escrito y cae el sello ----------
+// ---------- Formulario: FormSubmit lo reenvía al correo y cae el sello ----------
 const form = document.querySelector<HTMLFormElement>('form.parte');
-form?.addEventListener('submit', (e) => {
+form?.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const lineas = [...form.querySelectorAll<HTMLInputElement>('[name]')].map(
-    (campo) => `${form.querySelector(`label[for="${campo.id}"]`)?.textContent}: ${campo.value}`,
-  );
-  const { email, asunto, hecho } = form.dataset;
-  location.href = `mailto:${email}?subject=${encodeURIComponent(asunto ?? '')}&body=${encodeURIComponent(lineas.join('\n'))}`;
-  form.classList.add('enviado');
-  form.querySelector('.hecho')!.textContent = hecho ?? '';
+  const { email, asunto, hecho, error } = form.dataset;
+  const boton = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+  const aviso = form.querySelector('.hecho')!;
+  boton.disabled = true;
+  try {
+    const r = await fetch(`https://formsubmit.co/ajax/${email}`, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+    if (String((await r.json()).success) !== 'true') throw new Error();
+    form.classList.add('enviado');
+    aviso.textContent = hecho ?? '';
+    form.reset();
+  } catch {
+    // Que no se pierda el mensaje: se abre el correo de quien escribe con él ya puesto.
+    const lineas = [...form.querySelectorAll<HTMLInputElement>('[id][name]')].map(
+      (campo) => `${form.querySelector(`label[for="${campo.id}"]`)?.textContent}: ${campo.value}`,
+    );
+    aviso.textContent = error ?? '';
+    location.href = `mailto:${email}?subject=${encodeURIComponent(asunto ?? '')}&body=${encodeURIComponent(lineas.join('\n'))}`;
+  } finally {
+    boton.disabled = false;
+  }
 });

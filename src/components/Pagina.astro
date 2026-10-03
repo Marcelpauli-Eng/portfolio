@@ -262,8 +262,11 @@ const check = '<path d="M4 10.5l4 4 8-9"></path>';
           </dl>
         </div>
 
-        <!-- ponytail: sin servidor, el formulario abre el correo de quien escribe con el mensaje ya puesto. Con hosting, apuntarlo a un endpoint (Worker, Formspree…). -->
-        <form class="parte" action={`mailto:${EMAIL}`} method="post" enctype="text/plain" data-email={EMAIL} data-asunto={t.contacto.asunto} data-hecho={t.contacto.hecho}>
+        <!-- ponytail: FormSubmit reenvía el formulario a EMAIL sin servidor ni claves. El primer envío manda a EMAIL un correo para activarlo. Si un día hace falta más control, un endpoint propio (Vercel + Resend). -->
+        <form class="parte" action={`https://formsubmit.co/${EMAIL}`} method="post" data-email={EMAIL} data-asunto={t.contacto.asunto} data-hecho={t.contacto.hecho} data-error={t.contacto.error}>
+          <input type="hidden" name="_subject" value={t.contacto.asunto} />
+          <input type="hidden" name="_template" value="table" />
+          <input type="text" name="_honey" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="perforado"></div>
           <div class="parte-cuerpo">
             <div class="campo-form">
