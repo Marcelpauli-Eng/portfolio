@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Reparto · Folleto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,600..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&display=block">
+<link rel="stylesheet" href="../src/styles/global.css">
+<link rel="stylesheet" href="folleto.css">
+<style>
+  .pag { --c: var(--verde-copia); }
+  /* El panel de flota de ejemplo, dibujado como una hoja más. */
+  .flota { position: relative; background: var(--blanco); border-radius: 4px; box-shadow: var(--sombra-objeto); padding: 14px 20px 14px; display: flex; flex-direction: column; gap: 10px; }
+  .flota-cab { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--imprenta); padding-bottom: 8px; }
+  .flota-cab h3 { font-size: 18px; }
+  .flota-cab span { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: 13px; color: var(--imprenta-suave); }
+  .directo { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: 13px; color: var(--boli); }
+  .directo::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--boli); }
+  .flota-cifras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .flota-cifras div { padding: 8px 12px; border: 1px solid var(--raya); border-radius: 4px; }
+  .flota-cifras span { display: block; font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: 12px; color: var(--imprenta-suave); }
+  .flota-cifras strong { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 800; font-size: 26px; line-height: 1.1; color: var(--rojo); font-variant-numeric: tabular-nums; }
+  .flota table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .flota th { text-align: left; font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; font-size: 12px; color: var(--imprenta-suave); padding: 0 8px 5px 0; border-bottom: 1px solid var(--raya); }
+  .flota td { padding: 4px 8px 4px 0; border-bottom: 1px dashed var(--raya); vertical-align: middle; }
+  .flota td small { display: block; color: var(--imprenta-suave); font-size: 11px; }
+  .ini { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: 8px; border-radius: 50%; border: 1.5px solid var(--imprenta); font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: 11px; vertical-align: middle; }
+  .quien { display: flex; align-items: center; font-weight: 700; }
+  .barra { display: flex; align-items: center; gap: 8px; font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .barra i { flex: 1; height: 5px; border-radius: 3px; background: rgba(27, 42, 74, .14); overflow: hidden; }
+  .barra i::before { content: ''; display: block; height: 100%; width: var(--p); background: var(--boli); }
+  .estado { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; }
+  .estado--mal { color: var(--rojo); }
+  .estado--bien { color: var(--boli); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ok" viewBox="0 0 20 20"><path d="M4 10.5l4 4 8-9"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-bandeja" viewBox="0 0 24 24"><path d="M3 13h5l1.5 3h5l1.5-3h5M5.5 5h13L21 13v6H3v-6z"/></symbol>
+  <symbol id="i-sinred" viewBox="0 0 24 24"><path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 12.9a10 10 0 0 1 5-2.7M19 12.9a10 10 0 0 0-2.2-1.6M2 8.8a15 15 0 0 1 4.3-2.6M22 8.8A15 15 0 0 0 11 5M12 20h.01"/></symbol>
+  <symbol id="i-telefono" viewBox="0 0 24 24"><path d="M21 16.5v3a2 2 0 0 1-2.2 2A19.5 19.5 0 0 1 2.5 5.2 2 2 0 0 1 4.5 3h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.5 10.7a16 16 0 0 0 4.8 4.8l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-factura" viewBox="0 0 24 24"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8zM14 2.5V8h5.5M8.5 13h7M8.5 17h4.5"/></symbol>
+  <symbol id="i-cartera" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="14" rx="2"/><path d="M3 10h18M15.5 15h2"/></symbol>
+  <symbol id="i-furgo" viewBox="0 0 24 24"><path d="M2 6h11.5v10H2zM13.5 9.5h4l3.5 3.5v3h-7.5"/><circle cx="6" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/></symbol>
+  <symbol id="i-personas" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></symbol>
+  <symbol id="i-edificio" viewBox="0 0 24 24"><path d="M4 21V4h10v17M14 9h6v12M2.5 21h19M7.5 8h3M7.5 12h3M7.5 16h3M17 13h.01M17 17h.01"/></symbol>
+  <symbol id="i-ruta" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7.5a3.5 3.5 0 0 0 0-7h-7a3.5 3.5 0 0 1 0-7H16"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l3 3 5-6"/></symbol>
+  <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-grafico" viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-7M21 20H3"/></symbol>
+  <symbol id="i-rayo" viewBox="0 0 24 24"><path d="M13 2.5L4.5 13.5H11l-1 8 8.5-11H12z"/></symbol>
+  <symbol id="i-enlace" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+  <symbol id="i-candado" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="11" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 15v2.5"/></symbol>
+  <symbol id="i-nube" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12.5 3.5 3.5 0 0 0 6 19z"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-gasoil" viewBox="0 0 24 24"><path d="M4.5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h13M14.5 10h2a2 2 0 0 1 2 2v4a1.5 1.5 0 0 0 3 0V8l-3-3M7.5 8h4"/></symbol>
+  <symbol id="i-pantallas" viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6M9 14v4"/><rect x="17" y="8" width="5" height="11" rx="1.2"/></symbol>
+  <symbol id="i-capas" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M18 7a7 7 0 1 0 0 10M4 10.5h9M4 14h9"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-herramienta" viewBox="0 0 24 24"><path d="M14.5 6.5a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.4-3.4a6 6 0 0 1-7.9 7.9l-6.4 6.4a2.1 2.1 0 0 1-3-3l6.4-6.4a6 6 0 0 1 7.9-7.9z"/></symbol>
+  <symbol id="i-gorra" viewBox="0 0 24 24"><path d="M2 9.5L12 5l10 4.5-10 4.5zM6 11.5v4.5c3.5 2.5 8.5 2.5 12 0v-4.5M22 9.5v5"/></symbol>
+  <symbol id="i-mensaje" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-actualizar" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 1 1-2.6-6.1L20.5 8.5M20.5 3.5v5h-5"/></symbol>
+  <symbol id="i-salida" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+</svg>
+
+<!-- 1 · Portada -->
+<section class="pag pag--copia portada">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0001</span></header>
+  <div class="pag-cuerpo">
+    <p class="ceja">La app de reparto para transportistas</p>
+    <h1>Tus entregas del día, en la <span class="subrayado">ruta más corta<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8C50 3 120 2 197 6" fill="none" stroke="#2448B8" stroke-width="3.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></span>.</h1>
+    <p class="entradilla" style="font-size:16.5px;max-width:34em">Pedidos, ruta, entregas, facturas y cobros en el móvil del transportista. Funciona sin cobertura y trabaja sobre la misma hoja de pedidos que ya usa la oficina.</p>
+
+    <div style="position:relative;height:540px;margin-top:4px">
+      <div class="hero-escena" style="position:absolute;left:110px;top:-36px;width:440px;max-width:none">
+        <div class="copia copia--rosa"></div>
+        <div class="copia copia--amarilla"></div>
+        <div class="hoja">
+          <div class="perforado"></div>
+          <div class="hoja-cuerpo">
+            <div class="hoja-cabecera"><span>Albarán de entrega</span><span class="numero">Nº 0412</span></div>
+            <div class="campo"><span class="etq">Fecha</span><span class="valor">mar 15 sept</span></div>
+            <div class="campo"><span class="etq">Cliente</span><span class="valor">Bar Elèctric</span></div>
+            <div class="campo"><span class="etq">Teléfono</span><span class="valor">600 100 104</span></div>
+            <div class="campo"><span class="etq">Dirección</span><span class="valor">C. de Girona 88, Barcelona</span></div>
+            <div class="campo"><span class="etq">Entrega</span><span class="valor">3 cajas · cobrado 56,50 €</span></div>
+            <div class="campo campo--notas"><span class="etq">Notas</span><span class="valor">Por la puerta de atrás.</span></div>
+            <div class="firma">
+              <div class="firma-trazo"><svg viewBox="0 0 200 56" fill="none" stroke="#2448B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42c10-30 26-34 22-8s14 18 22-6 12-14 10 6 18 6 26-12 10-6 12 8 20 2 40-10l34 4"></path><path d="M60 50c30-4 70-6 120-4"></path></svg></div>
+              <span class="etq">Firma del cliente</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-movil"><div class="hero-movil-pantalla"><img src="img/reparto-movil-paradas.jpg" alt=""></div></div>
+      </div>
+      <svg class="herr-f" style="left:-6px;top:388px;width:240px;transform:rotate(-3deg)" viewBox="0 0 300 150" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="6" y="12" width="188" height="98" rx="3"></rect><path d="M53 12 L53 110 M100 12 L100 110 M147 12 L147 110" fill="none" stroke-width="1.2" opacity=".5"></path><path d="M194 40 L248 40 L272 72 L286 78 L286 110 L194 110 Z"></path><path d="M204 48 L244 48 L262 72 L204 72 Z"></path><path d="M226 80 L226 104" fill="none"></path><rect x="278" y="96" width="14" height="10" rx="2"></rect><circle cx="56" cy="118" r="20"></circle><circle cx="56" cy="118" r="7"></circle><circle cx="104" cy="118" r="20"></circle><circle cx="104" cy="118" r="7"></circle><circle cx="246" cy="118" r="20"></circle><circle cx="246" cy="118" r="7"></circle></svg>
+      <svg class="herr-f" style="left:574px;top:400px;width:104px" viewBox="0 0 160 150" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M10 40 L80 70 L80 140 L10 110 Z"></path><path d="M80 70 L150 40 L150 110 L80 140 Z"></path><path d="M80 10 L150 40 L80 70 L10 40 Z"></path><path d="M40 27 L50 23 L120 53 L110 57 Z" fill="#F5E7A8"></path><path d="M30 102 L30 80 M25 86 L30 80 L35 86 M46 108 L46 86 M41 92 L46 86 L51 92" fill="none" stroke-width="1.8"></path></svg>
+      <svg class="herr-f" style="left:-4px;top:40px;width:128px" viewBox="0 0 230 170" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M26 158 C70 148 44 100 104 96 S176 82 198 48" fill="none" stroke="#2448B8" stroke-width="2.6" stroke-dasharray="7 6"></path><path d="M26 158 C22 148 13 142 13 132 A13 13 0 1 1 39 132 C39 142 30 148 26 158 Z"></path><text x="26" y="137" text-anchor="middle" stroke="none" fill="#C4232F" style="font-family: Archivo, sans-serif; font-stretch: 75%; font-weight: 700; font-size: 15px">1</text><path d="M104 96 C100 86 91 80 91 70 A13 13 0 1 1 117 70 C117 80 108 86 104 96 Z"></path><text x="104" y="75" text-anchor="middle" stroke="none" fill="#C4232F" style="font-family: Archivo, sans-serif; font-stretch: 75%; font-weight: 700; font-size: 15px">2</text><path d="M198 48 C194 38 185 32 185 22 A13 13 0 1 1 211 22 C211 32 202 38 198 48 Z"></path><text x="198" y="27" text-anchor="middle" stroke="none" fill="#C4232F" style="font-family: Archivo, sans-serif; font-stretch: 75%; font-weight: 700; font-size: 15px">3</text></svg>
+    </div>
+
+    <div class="r4 portada-datos">
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Ruta optimizada</strong><span>El orden más corto, con Google Maps</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Sin cobertura</strong><span>Lo sube al volver la señal</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Facturas y cobros</strong><span>PDF numerado, con IVA e IRPF</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Uno o varios</strong><span>Cada transportista, con su código</span></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Propuesta para transportistas y empresas de reparto</span><span>Marcel Paulí · marcelpaulilara@gmail.com</span></footer>
+</section>
+
+<!-- 2 · El punto de partida -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0002</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">El punto de partida</p>
+      <h2>Un día de reparto sin sistema</h2>
+      <p class="entradilla">Si repartes, seguro que te suena. Los pedidos llegan en una hoja de cálculo o por WhatsApp, la ruta la montas de cabeza en el primer semáforo y a final de mes toca sentarse con la libreta para saber qué facturar. Nada de eso es repartir, pero se come horas cada semana.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;align-items:start">
+      <div class="libreta-escena" style="max-width:none">
+        <div class="libreta-recorte">
+          <div class="libreta-pantalla"></div>
+          <div class="libreta">
+            <div class="libreta-espiral"></div>
+            <div class="libreta-hoja">
+              <p class="libreta-titulo">Esta semana</p>
+              <ul>
+                <li><span class="libreta-frase">«La ruta, de cabeza.»<span class="tachon">«La ruta, de cabeza.»</span></span><span class="libreta-coste">Kilómetros de más</span></li>
+                <li><span class="libreta-frase">«Luego lo paso a limpio.»<span class="tachon">«Luego lo paso a limpio.»</span></span><span class="libreta-coste">El dato, apuntado dos veces</span></li>
+                <li><span class="libreta-frase">«¿Ya lo has entregado?»<span class="tachon">«¿Ya lo has entregado?»</span></span><span class="libreta-coste">Llamadas mientras conduces</span></li>
+                <li><span class="libreta-frase">«¿Y esta factura?»<span class="tachon">«¿Y esta factura?»</span></span><span class="libreta-coste">Dinero por el camino</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="libreta-movil"></div>
+      </div>
+
+      <div class="r2" style="row-gap:16px">
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-pin"/></svg><h3>La ruta, a ojo cada mañana</h3><p>Ordenas las paradas de memoria. Un mal orden son kilómetros de más, gasoil y la tarde que se alarga.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-bandeja"/></svg><h3>Pedidos en cinco sitios distintos</h3><p>La hoja de la empresa, los mensajes, las notas del móvil, un papel en la guantera. Tarde o temprano uno se queda sin entregar.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-sinred"/></svg><h3>El mismo dato, apuntado dos veces</h3><p>Apuntas la entrega en papel porque en el polígono no hay cobertura y por la noche la pasas a la hoja. Si se te olvida, nadie se entera.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-telefono"/></svg><h3>«¿Ya has entregado lo de…?»</h3><p>La oficina no ve cómo va el reparto, así que cada duda es una llamada mientras conduces.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-factura"/></svg><h3>La factura, fila a fila</h3><p>Repasar entregas, sumar importes, calcular IVA e IRPF y numerar a mano. Un despiste y la factura sale mal o tarde.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-cartera"/></svg><h3>Cobros que se olvidan</h3><p>¿Esa factura está cobrada o solo enviada? Sin un sitio donde mirarlo, el dinero pendiente se queda por el camino.</p></div>
+      </div>
+    </div>
+
+    <div class="oscuro" style="margin-top:auto">
+      <p>El resultado: <strong>horas de papeleo en vez de reparto</strong>, entregas que se pierden entre mensajes y facturas que se cobran tarde, o no se cobran.</p>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Reparto · Propuesta para transportistas y empresas de reparto</span><span>2</span></footer>
+</section>
+
+<!-- 3 · La solución -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0003</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">La solución</p>
+      <h2>Una sola app, del pedido al cobro</h2>
+      <p class="entradilla">Reparto recoge los pedidos de la hoja de Google de siempre, calcula el orden de paradas más corto y deja que el transportista marque cada entrega en el momento, con o sin cobertura. Con eso ya tiene su factura hecha y sabe qué le falta por cobrar. La oficina no cambia nada de lo que hace: sigue viendo la misma hoja, pero ahora actualizada sola.</p>
+    </div>
+
+    <ol class="fila-pasos" style="--n:6;margin-top:6px">
+      <li><span class="flujo-num">1</span><strong>Pedido</strong><p>Llega a la hoja o lo creas en la app</p></li>
+      <li><span class="flujo-num">2</span><strong>Planificar</strong><p>Lo asignas a un día</p></li>
+      <li><span class="flujo-num">3</span><strong>Ruta</strong><p>Orden más corto, con Google Maps</p></li>
+      <li><span class="flujo-num">4</span><strong>Entrega</strong><p>Entregado o incidencia, con hora</p></li>
+      <li><span class="flujo-num">5</span><strong>Factura</strong><p>PDF numerado con IVA e IRPF</p></li>
+      <li><span class="flujo-num">6</span><strong>Cobro</strong><p>Emitida, enviada o cobrada</p></li>
+    </ol>
+
+    <div style="display:grid;grid-template-columns:420px minmax(0,1fr);gap:28px;align-items:center;margin-top:6px">
+      <div class="marco-f marco-f--orden"><img src="img/reparto-panel.jpg" alt=""></div>
+      <div class="nota">
+        <p>«Abro la app, veo qué me toca, sigo el orden y marco cada entrega en la puerta. A fin de mes, la factura ya está hecha.»</p>
+        <p class="peque">Así es un día con Reparto: nada de pasar datos de un sitio a otro por la noche.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:21px;margin-top:4px">¿Para quién está pensada?</h3>
+    <div class="r3">
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-furgo"/></svg><h3>Transportista autónomo</h3><p>Una furgoneta y muchas paradas. Quiere repartir, no pelearse con hojas de cálculo ni facturas.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-personas"/></svg><h3>Pequeñas flotas</h3><p>De 2 a 5 conductores. Cada uno entra con su código y ve solo sus pedidos y su ruta.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-edificio"/></svg><h3>Empresas con varios transportistas</h3><p>Propios o subcontratados. Les hacemos un sistema a medida para controlarlos a todos desde la oficina.</p></div>
+    </div>
+
+  </div>
+  <svg class="herr-f" style="right:16mm;top:92px;width:82px" viewBox="0 0 160 150" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M10 40 L80 70 L80 140 L10 110 Z"></path><path d="M80 70 L150 40 L150 110 L80 140 Z"></path><path d="M80 10 L150 40 L80 70 L10 40 Z"></path><path d="M40 27 L50 23 L120 53 L110 57 Z" fill="#F5E7A8"></path><path d="M30 102 L30 80 M25 86 L30 80 L35 86 M46 108 L46 86 M41 92 L46 86 L51 92" fill="none" stroke-width="1.8"></path></svg>
+  <footer class="pag-pie"><span>Reparto · Propuesta para transportistas y empresas de reparto</span><span>3</span></footer>
+</section>
+
+<!-- 4 · Funciones -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0004</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Funciones principales</p>
+      <h2>Todo lo que necesita un día de reparto</h2>
+    </div>
+    <div class="r3" style="row-gap:26px">
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-personas"/></svg><h3>Clientes y pedidos</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Cliente, dirección, teléfono y observaciones en cada pedido</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Buscador por número, cliente o población</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Crear pedidos desde el móvil</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Historial completo con importes</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-check"/></svg><h3>Control de entregas</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Entregado o incidencia con un toque</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Hora e importe guardados al momento</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Pedidos partidos en varias entregas</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Botón de deshacer si te equivocas</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-ruta"/></svg><h3>Ruta y calendario</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Orden de paradas más corto</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Navegar y llamar al cliente con un toque</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Calendario mensual y semanal</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Bolsa de pedidos sin asignar</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-grafico"/></svg><h3>Informes</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Entregas por día y estado del mes</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Facturación y media por entrega</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Previsión de lo que queda por cobrar</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Comparativa entre meses</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-factura"/></svg><h3>Facturas y cobros</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Factura en PDF a partir de las entregas</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Numeración correlativa, IVA e IRPF</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Varios clientes de facturación</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Seguimiento: emitida, enviada, cobrada</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-rayo"/></svg><h3>Automatizaciones</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Elige sola la pestaña del mes en curso</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Crea las columnas que falten en la hoja</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Sube las entregas al volver la señal</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Avisa de pedidos atrasados sin cerrar</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-enlace"/></svg><h3>Integraciones</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Google Sheets: lee y escribe en tu hoja</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Google Maps para ruta y navegación</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Facturas en PDF listas para enviar</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Exportación del historial a CSV</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-candado"/></svg><h3>Usuarios y permisos</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Código y PIN para cada transportista</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Cada uno ve solo sus pedidos</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Tus precios, en un documento privado que la empresa no ve</li>
+        </ul></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-nube"/></svg><h3>En la nube y sin cobertura</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Datos en tu propia cuenta de Google</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Copia en el móvil para trabajar sin red</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Móvil, tablet u ordenador</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Se instala sin pasar por la App Store</li>
+        </ul></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Reparto · Propuesta para transportistas y empresas de reparto</span><span>4</span></footer>
+</section>
+
+<!-- 5 · Así se ve -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0005</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Así se ve</p>
+      <h2>Capturas reales del sistema</h2>
+      <p class="entradilla">La misma app en el ordenador de casa, el iPad de la oficina o el móvil de la furgoneta. Letra grande, botones grandes y todo a dos toques.</p>
+    </div>
+    <div class="r2" style="row-gap:16px">
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/reparto-panel.jpg" alt=""></div><figcaption><p><strong class="tinta">Panel principal.</strong> Lo que queda por repartir, lo cobrado hoy y lo facturado en el mes.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/reparto-historial.jpg" alt=""></div><figcaption><p><strong class="tinta">Pedidos y clientes.</strong> Cada entrega con su cliente, fecha e importe. Con buscador y exportación.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/reparto-calendario.jpg" alt=""></div><figcaption><p><strong class="tinta">Calendario y bolsa de pedidos.</strong> Los pedidos sin día esperan a la derecha hasta que los asignas.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/reparto-informes.jpg" alt=""></div><figcaption><p><strong class="tinta">Informes del mes.</strong> Entregas por día, facturación, media por entrega e incidencias.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/reparto-facturas.jpg" alt=""></div><figcaption><p><strong class="tinta">Facturas.</strong> Lo que falta por facturar y las facturas emitidas, listas para descargar.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja"><img src="img/reparto-cobros.jpg" alt=""></div><figcaption><p><strong class="tinta">Cobros.</strong> Qué está pendiente, qué se ha enviado y qué ya está en el banco.</p></figcaption></figure>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Reparto · Propuesta para transportistas y empresas de reparto</span><span>5</span></footer>
+</section>
+
+<!-- 6 · Una mañana paso a paso -->
+<section class="pag pag--copia">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0006</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Ejemplo de una operación habitual</p>
+      <h2>Una mañana de reparto, paso a paso</h2>
+      <p class="entradilla">Así trabaja Jordi, transportista con una furgoneta y unas veinte paradas al día en Barcelona. Todo lo que ves son pantallas reales de la app.</p>
+    </div>
+    <ol class="fila-pasos" style="--n:4;column-gap:22px">
+      <li><span class="flujo-num">1</span><strong>Abre la app</strong><div class="marco-f marco-f--movil" style="margin:6px 4px"><img src="img/reparto-movil-hoy.jpg" alt=""></div><p>Ve de un vistazo cuántas paradas le quedan y cuánto lleva cobrado hoy.</p></li>
+      <li><span class="flujo-num">2</span><strong>Sigue la ruta</strong><div class="marco-f marco-f--movil" style="margin:6px 4px"><img src="img/reparto-movil-paradas.jpg" alt=""></div><p>Las paradas salen ordenadas. Navegar abre Google Maps; Trucar llama al cliente.</p></li>
+      <li><span class="flujo-num">3</span><strong>Marca la entrega</strong><div class="marco-f marco-f--movil" style="margin:6px 4px"><img src="img/reparto-movil-cobro.jpg" alt=""></div><p>Toca Entregat, apunta el importe y listo. Sin cobertura se guarda y se sube después.</p></li>
+      <li><span class="flujo-num">4</span><strong>Planifica mañana</strong><div class="marco-f marco-f--movil" style="margin:6px 4px"><img src="img/reparto-movil-calendario.jpg" alt=""></div><p>Desde el calendario reparte los pedidos pendientes entre los próximos días.</p></li>
+    </ol>
+    <div class="oscuro" style="display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;align-items:center;margin-top:auto">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <p class="ceja" style="color:#C9D2E3">Y a final de mes</p>
+        <p class="grande">La factura sale sola</p>
+        <p style="font-size:14px">Abre Facturas y pulsa Generar factura. La app monta el PDF con todas las entregas del mes, sus importes, IVA e IRPF, y le pone el número que toca. Después la marca como enviada y, cuando le pagan, como cobrada.</p>
+      </div>
+      <div class="marco-f marco-f--hoja"><img src="img/reparto-factura-mes.jpg" alt=""></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Reparto · Propuesta para transportistas y empresas de reparto</span><span>6</span></footer>
+</section>
+
+<!-- 7 · Empresas -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0007</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Para empresas con más de un transportista</p>
+      <h2 style="font-size:31px;max-width:none">¿Tienes varios transportistas? Te hacemos el sistema a medida</h2>
+      <p class="entradilla">Si llevas una flota o trabajas con autónomos subcontratados, adaptamos Reparto a tu forma de trabajar. Desde la oficina ves en tiempo real cómo va cada conductor, repartes los pedidos entre ellos y controlas entregas, incidencias y cobros sin hacer ni una llamada.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <p class="etq">Ejemplo de panel a medida</p>
+      <div class="flota">
+        <div class="flota-cab"><h3>Panel de flota <span>· martes, 15 de septiembre</span></h3><span class="directo">En directo</span></div>
+        <div class="flota-cifras">
+          <div><span>Entregas hoy</span><strong>46 / 62</strong></div>
+          <div><span>En ruta</span><strong>4 / 5</strong></div>
+          <div><span>Incidencias</span><strong>2</strong></div>
+          <div><span>Cobrado hoy</span><strong>1.284 €</strong></div>
+        </div>
+        <table>
+          <thead><tr><th>Transportista</th><th style="width:150px">Progreso</th><th>Ahora</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td><span class="quien"><span class="ini">JP</span><span>Jordi Puig<small>Eixample</small></span></span></td><td><span class="barra"><i style="--p:72%"></i>13/18</span></td><td>Forn Nou</td><td class="estado">En ruta</td></tr>
+            <tr><td><span class="quien"><span class="ini">MR</span><span>Marta Ruiz<small>Sants</small></span></span></td><td><span class="barra"><i style="--p:100%"></i>15/15</span></td><td>—</td><td class="estado estado--bien">Terminado</td></tr>
+            <tr><td><span class="quien"><span class="ini">ÀF</span><span>Àlex Ferrer<small>Zona Franca</small></span></span></td><td><span class="barra"><i style="--p:45%"></i>5/11</span></td><td>Vivers Montjuïc</td><td class="estado estado--mal">1 incidencia</td></tr>
+            <tr><td><span class="quien"><span class="ini">PC</span><span>Pau Costa<small>Gràcia · autónomo</small></span></span></td><td><span class="barra"><i style="--p:60%"></i>6/10</span></td><td>Clínica Verdi</td><td class="estado suave">Sin cobertura</td></tr>
+            <tr><td><span class="quien"><span class="ini">LS</span><span>Laia Serra<small>Poblenou</small></span></span></td><td><span class="barra"><i style="--p:87%"></i>7/8</span></td><td>Bodega Pobl.</td><td class="estado estado--mal">1 incidencia</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="r2" style="row-gap:14px">
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-pantallas"/></svg><div><h3>Panel de control de toda la flota</h3><p>Quién va por dónde, qué le queda y qué ha pasado hoy.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-ruta"/></svg><div><h3>Reparto de pedidos entre conductores</h3><p>Asignas y mueves pedidos de un transportista a otro desde la oficina.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-candado"/></svg><div><h3>Permisos por rol</h3><p>Oficina, jefe de tráfico y conductor, cada uno con lo que le toca ver.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-grafico"/></svg><div><h3>Informes por conductor, zona y cliente</h3><p>Para saber qué rinde, qué cuesta y dónde se atasca el reparto.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-enlace"/></svg><div><h3>Conexión con tu software</h3><p>Tu ERP, tu web o tu programa de facturación, sin teclear dos veces.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-capas"/></svg><div><h3>Con tu marca</h3><p>Tu logo y tus colores en la app de todos tus transportistas.</p></div></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Reparto · Propuesta para transportistas y empresas de reparto</span><span>7</span></footer>
+</section>
+
+<!-- 8 · Beneficios -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0008</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Beneficios</p>
+      <h2>Lo que cambia desde el primer día</h2>
+    </div>
+    <div class="r2" style="row-gap:14px">
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-reloj"/></svg><div><h3>Ahorras horas cada semana</h3><p>La ruta se calcula sola y la factura sale de las entregas ya marcadas. Se acabó pasar datos de un sitio a otro.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-gasoil"/></svg><div><h3>Menos kilómetros y menos gasoil</h3><p>Paradas en el orden más corto, calculado con Google Maps, en lugar de a ojo.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><h3>Menos errores al apuntar datos</h3><p>Cada entrega se marca en la puerta, con su hora e importe. No depende de acordarse por la noche.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-sinred"/></svg><div><h3>Trabajas aunque no haya señal</h3><p>En sótanos, polígonos o pueblos la app sigue funcionando y lo sube todo cuando vuelve la cobertura.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-pantallas"/></svg><div><h3>Lo consultas desde cualquier dispositivo</h3><p>El móvil en la furgoneta, el ordenador en casa o el iPad en la oficina. Siempre los mismos datos.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-capas"/></svg><div><h3>Todo en un único programa</h3><p>Pedidos, ruta, calendario, facturas y cobros en el mismo sitio, no en cinco herramientas distintas.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-euro"/></svg><div><h3>Cobras antes</h3><p>Ves qué facturas están emitidas, enviadas o cobradas, y nada pendiente se te olvida.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-telefono"/></svg><div><h3>Menos llamadas de la oficina</h3><p>La hoja se actualiza sola con cada entrega, así que la oficina lo ve sin tener que preguntar.</p></div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:30px;align-items:center;margin-top:6px">
+      <div class="ticket">
+        <div class="perforado"></div>
+        <div class="ticket-cuerpo">
+          <p class="ticket-titulo">Cuenta rápida</p>
+          <div class="regla"><span>Ordenar la ruta a mano, 10 min al día</span><output>50 min</output></div>
+          <div class="regla"><span>Pasar las entregas del papel a la hoja, 15 min al día</span><output>75 min</output></div>
+          <div class="regla"><span>Montar la factura del mes (2 h), por semana</span><output>30 min</output></div>
+          <div class="ticket-total">
+            <p class="ticket-total-etq">Tiempo que recuperas cada semana</p>
+            <p class="ticket-cifra">≈ 2 h 35 min</p>
+          </div>
+          <p class="ticket-nota">Estimación orientativa para un transportista con unas 20 paradas diarias. Cada caso es distinto.</p>
+        </div>
+      </div>
+      <ul class="cifras" style="--n:1">
+        <li><strong>+10 h</strong><span>al mes para repartir más o para irte antes a casa</span></li>
+      </ul>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Reparto · Propuesta para transportistas y empresas de reparto</span><span>8</span></footer>
+</section>
+
+<!-- 9 · Cómo funciona -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0009</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Cómo funciona</p>
+      <h2>En marcha en cuatro pasos</h2>
+    </div>
+    <ol class="col-pasos" style="gap:26px">
+      <li><span class="paso-num">1</span><div><h3>Configuramos tu cuenta</h3><p>Conectamos la app a tu hoja de pedidos de Google (o te creamos una), damos de alta tus datos fiscales y un código con PIN para cada transportista.</p></div><div class="nota-lado"><p class="boli">Lo hacemos nosotros</p><p class="peque">Tú solo nos das acceso a la hoja y tus datos de facturación.</p></div></li>
+      <li><span class="paso-num">2</span><div><h3>Importamos tus datos</h3><p>Pedidos, clientes y precios. Si ya trabajas con Google Sheets no hay nada que importar: la app lee tu hoja tal como está, aunque las columnas estén en catalán o en otro orden.</p></div><div class="nota-lado"><p class="boli">Tu hoja no cambia</p><p class="peque">La oficina sigue trabajando exactamente igual que hasta ahora.</p></div></li>
+      <li><span class="paso-num">3</span><div><h3>El equipo empieza a usarla</h3><p>Cada transportista recibe un enlace por WhatsApp, entra una vez con su código y su PIN, y la añade a la pantalla de inicio. La sesión dura un año.</p></div><div class="nota-lado"><p class="boli">Sin App Store</p><p class="peque">Funciona en iPhone y Android, como cualquier otra app.</p></div></li>
+      <li><span class="paso-num">4</span><div><h3>Consultas los resultados</h3><p>Informes, facturas y cobros desde el panel, en el móvil o en el ordenador. Sin montar nada a mano a final de mes.</p></div><div class="nota-lado"><p class="boli">Siempre al día</p><p class="peque">Cada entrega marcada aparece al momento en informes y en la hoja.</p></div></li>
+    </ol>
+    <div class="nota" style="margin:18px 140px 0 60px">
+      <p>Del primer contacto a la primera ruta: normalmente, en menos de un día.</p>
+      <p class="peque">Los sistemas a medida para flotas se planifican contigo por fases.</p>
+    </div>
+  </div>
+  <svg class="herr-f" style="right:12mm;bottom:20mm;width:210px;transform:rotate(-3deg)" viewBox="0 0 300 150" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="6" y="12" width="188" height="98" rx="3"></rect><path d="M53 12 L53 110 M100 12 L100 110 M147 12 L147 110" fill="none" stroke-width="1.2" opacity=".5"></path><path d="M194 40 L248 40 L272 72 L286 78 L286 110 L194 110 Z"></path><path d="M204 48 L244 48 L262 72 L204 72 Z"></path><path d="M226 80 L226 104" fill="none"></path><rect x="278" y="96" width="14" height="10" rx="2"></rect><circle cx="56" cy="118" r="20"></circle><circle cx="56" cy="118" r="7"></circle><circle cx="104" cy="118" r="20"></circle><circle cx="104" cy="118" r="7"></circle><circle cx="246" cy="118" r="20"></circle><circle cx="246" cy="118" r="7"></circle></svg>
+  <footer class="pag-pie"><span>Reparto · Propuesta para transportistas y empresas de reparto</span><span>9</span></footer>
+</section>
+
+<!-- 10 · Planes y precios -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0010</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Planes y precios</p>
+      <h2>Un plan para cada tamaño de reparto</h2>
+    </div>
+    <div class="planes">
+      <div class="plan">
+        <div class="perforado"></div>
+        <div class="plan-cuerpo">
+          <h3>Básico</h3>
+          <p class="para">Para el transportista autónomo que empieza.</p>
+          <p class="precio"><s>59 €</s><strong>39 €</strong><small>/mes</small></p>
+          <p class="inicial">+ 199 € de pago inicial</p>
+          <p class="usuarios">1 transportista</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Pedidos, ruta y calendario</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Entregas sin cobertura</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Conexión con tu hoja de Google</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Historial y buscador</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Soporte por email</li>
+          </ul>
+          <p class="plan-boton"><span>Empezar</span></p>
+        </div>
+      </div>
+      <div class="plan plan--recomendado">
+        <div class="perforado"></div>
+        <div class="plan-cuerpo">
+          <h3>Profesional</h3>
+          <p class="para">Para quien factura cada mes o lleva una pequeña flota.</p>
+          <p class="precio"><s>99 €</s><strong>75 €</strong><small>/mes</small></p>
+          <p class="inicial">+ 399 € de pago inicial</p>
+          <p class="usuarios">Hasta 5 transportistas</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Todo lo del plan Básico</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Facturas en PDF y control de cobros</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Informes y comparativa entre meses</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Acceso propio para cada conductor</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Soporte prioritario</li>
+          </ul>
+          <p class="plan-boton"><span>Pedir demostración</span></p>
+        </div>
+        <span class="sello">Recomendado</span>
+      </div>
+      <div class="plan">
+        <div class="perforado"></div>
+        <div class="plan-cuerpo">
+          <h3>Empresa</h3>
+          <p class="para">Para empresas con varios transportistas.</p>
+          <p class="precio"><strong>A medida</strong></p>
+          <p class="inicial">Presupuesto cerrado según tu flota</p>
+          <p class="usuarios">Transportistas ilimitados</p>
+          <ul class="checks">
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Todo lo del plan Profesional</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Panel para controlar a toda la flota</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Integraciones con tu software</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Permisos por rol y tu marca</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Instalación y formación incluidas</li>
+            <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Soporte dedicado</li>
+          </ul>
+          <p class="plan-boton"><span>Hablemos</span></p>
+        </div>
+      </div>
+    </div>
+    <p class="peque">Precios promocionales, IVA no incluido. Facturación mensual y sin permanencia. El pago inicial se abona una sola vez al contratar y cubre la instalación, la conexión con tu hoja de pedidos, el alta de los transportistas y la formación. El plan Empresa se presupuesta según el número de transportistas y las integraciones que necesites.</p>
+    <ul class="garantias">
+      <li>Sin permanencia</li><li>Periodo de prueba</li><li>Formación en el alta</li><li>Soporte en español y catalán</li>
+    </ul>
+    <h3 style="font-size:21px;margin-top:4px">¿Qué plan me conviene?</h3>
+    <div class="r3">
+      <div class="punto"><h3>Repartes tú solo</h3><p>Empieza con el Básico. Si además facturas cada mes desde la app, el Profesional te ahorra montar la factura a mano.</p></div>
+      <div class="punto"><h3>Tienes de 2 a 5 conductores</h3><p>El Profesional: cada uno con su acceso y sus pedidos, y tú con los informes y los cobros de todos.</p></div>
+      <div class="punto"><h3>Llevas una flota</h3><p>El plan Empresa. Nos sentamos contigo, vemos cómo trabajáis y te presupuestamos el sistema a medida.</p></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Reparto · Propuesta para transportistas y empresas de reparto</span><span>10</span></footer>
+</section>
+
+<!-- 11 · Soporte y contacto -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Reparto</span><span class="numero">Nº 0011</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Soporte y condiciones</p>
+      <h2>Contigo antes, durante y después</h2>
+    </div>
+    <div class="r2" style="row-gap:14px">
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-herramienta"/></svg><div><h3>Instalación y configuración inicial</h3><p>Dejamos la app conectada a tu hoja, con tus datos fiscales y los accesos de cada transportista, lista para repartir.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-gorra"/></svg><div><h3>Formación</h3><p>Una sesión corta, en persona o por videollamada. La app se aprende en una mañana de reparto.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-mensaje"/></svg><div><h3>Soporte técnico</h3><p>Por email o WhatsApp según tu plan. Hablas con quien hace la app, no con un centro de llamadas.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-actualizar"/></svg><div><h3>Actualizaciones incluidas</h3><p>Mejoras y correcciones se instalan solas, sin coste y sin que tengas que tocar nada.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-calendario"/></svg><div><h3>Periodo de prueba</h3><p>Pruébala con tus pedidos reales antes de decidir. Sin compromiso.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-salida"/></svg><div><h3>Política de cancelación</h3><p>Te das de baja cuando quieras, sin permanencia. Tus datos ya están en tu hoja de Google: te los quedas.</p></div></div>
+    </div>
+    <div class="punto punto--fila" style="padding:14px 18px;border:2px solid var(--imprenta);border-radius:4px;background:var(--blanco)"><svg class="icono" viewBox="0 0 24 24"><use href="#i-escudo"/></svg><div><h3>Protección de datos</h3><p>Tus pedidos viven en tu propia cuenta de Google, no en un servidor ajeno. Cada transportista entra con su código y PIN, las conexiones van cifradas y tus precios se guardan en un documento privado aparte. Tratamiento conforme al RGPD.</p></div></div>
+
+    <div style="position:relative;flex:1">
+      <svg class="herr-f" style="right:150px;bottom:-6px;width:230px;transform:rotate(-3deg)" viewBox="0 0 300 150" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="6" y="12" width="188" height="98" rx="3"></rect><path d="M53 12 L53 110 M100 12 L100 110 M147 12 L147 110" fill="none" stroke-width="1.2" opacity=".5"></path><path d="M194 40 L248 40 L272 72 L286 78 L286 110 L194 110 Z"></path><path d="M204 48 L244 48 L262 72 L204 72 Z"></path><path d="M226 80 L226 104" fill="none"></path><rect x="278" y="96" width="14" height="10" rx="2"></rect><circle cx="56" cy="118" r="20"></circle><circle cx="56" cy="118" r="7"></circle><circle cx="104" cy="118" r="20"></circle><circle cx="104" cy="118" r="7"></circle><circle cx="246" cy="118" r="20"></circle><circle cx="246" cy="118" r="7"></circle></svg>
+      <svg class="herr-f" style="right:20px;bottom:-4px;width:100px" viewBox="0 0 160 150" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M10 40 L80 70 L80 140 L10 110 Z"></path><path d="M80 70 L150 40 L150 110 L80 140 Z"></path><path d="M80 10 L150 40 L80 70 L10 40 Z"></path><path d="M40 27 L50 23 L120 53 L110 57 Z" fill="#F5E7A8"></path><path d="M30 102 L30 80 M25 86 L30 80 L35 86 M46 108 L46 86 M41 92 L46 86 L51 92" fill="none" stroke-width="1.8"></path></svg>
+    </div>
+    <div class="contacto-f">
+      <div>
+        <h2>¿Lo vemos con tus pedidos?</h2>
+        <p class="entradilla">Pídenos una demostración con tu propia hoja de reparto. En media hora ves si encaja con tu día a día, tengas una furgoneta o veinte.</p>
+      </div>
+      <dl class="canales-f">
+        <div><dt>Email</dt><dd>marcelpaulilara@gmail.com</dd></div>
+        <div><dt>Teléfono y WhatsApp</dt><dd>+34 634 27 63 85</dd></div>
+        <div><dt>Dónde</dt><dd>Llinars del Vallès (Barcelona)</dd></div>
+      </dl>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Reparto · Propuesta para transportistas y empresas de reparto</span><span>Marcel Paulí · © 2026</span></footer>
+</section>
+</body>
+</html>
