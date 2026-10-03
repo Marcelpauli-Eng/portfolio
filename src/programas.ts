@@ -22,7 +22,7 @@ const es: Programa[] = [
   {
     id: 'talleres',
     tab: 'Talleres',
-    nombre: 'MotorSport19',
+    nombre: 'SportMotor',
     para: 'Talleres de coches, motos y furgonetas',
     lema: 'Todo tu taller, en un solo programa.',
     datos: ['Ordenador, tablet y móvil', 'Sigue sin internet', 'Registro de jornada', 'Facturas con QR'],
@@ -105,7 +105,7 @@ const ca: Programa[] = [
   {
     id: 'talleres',
     tab: 'Tallers',
-    nombre: 'MotorSport19',
+    nombre: 'SportMotor',
     para: 'Tallers de cotxes, motos i furgonetes',
     lema: 'Tot el teu taller, en un sol programa.',
     datos: ['Ordinador, tauleta i mòbil', 'Funciona sense internet', 'Registre de jornada', 'Factures amb QR'],
