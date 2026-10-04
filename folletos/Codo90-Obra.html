@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Codo90 · Folleto de obra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,600..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&display=block">
+<link rel="stylesheet" href="../src/styles/global.css">
+<link rel="stylesheet" href="folleto.css">
+<style>
+  .pag { --c: var(--azul-copia); }
+  .obras { display: flex; flex-direction: column; gap: 8px; padding-left: 16px; border-left: 1px dashed var(--raya); }
+  .obras p { font-size: 12px; line-height: 1.35; color: var(--imprenta-suave); }
+  .obras strong { display: block; font-family: var(--f-titulo); font-weight: 700; font-size: 13px; color: var(--imprenta); }
+  /* Las capturas de ordenador entre los móviles de «Durante la obra»: centradas en el alto del móvil. */
+  .paso-hoja { flex: 1; display: flex; align-items: center; margin: 6px 0; }
+  .paso-hoja .marco-f { width: 100%; }
+  .oscuro-lista { display: flex; flex-direction: column; gap: 12px; }
+  .oscuro-lista h3 { color: var(--amarilla); font-size: 16px; margin-bottom: 3px; }
+  .oscuro-lista .r2 p { font-size: 13.5px; line-height: 1.45; color: #DCE2EC; }
+  .flota td.estado, .quien { white-space: nowrap; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ok" viewBox="0 0 20 20"><path d="M4 10.5l4 4 8-9"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-sinred" viewBox="0 0 24 24"><path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 12.9a10 10 0 0 1 5-2.7M19 12.9a10 10 0 0 0-2.2-1.6M2 8.8a15 15 0 0 1 4.3-2.6M22 8.8A15 15 0 0 0 11 5M12 20h.01"/></symbol>
+  <symbol id="i-caja" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-factura" viewBox="0 0 24 24"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8zM14 2.5V8h5.5M8.5 13h7M8.5 17h4.5"/></symbol>
+  <symbol id="i-edificio" viewBox="0 0 24 24"><path d="M4 21V4h10v17M14 9h6v12M2.5 21h19M7.5 8h3M7.5 12h3M7.5 16h3M17 13h.01M17 17h.01"/></symbol>
+  <symbol id="i-capas" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
+  <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-personas" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></symbol>
+  <symbol id="i-lapiz" viewBox="0 0 24 24"><path d="M16.5 3.5l4 4L8 20l-5 1 1-5zM14 6l4 4"/></symbol>
+  <symbol id="i-lista" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M18 7a7 7 0 1 0 0 10M4 10.5h9M4 14h9"/></symbol>
+  <symbol id="i-pantallas" viewBox="0 0 24 24"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6M9 14v4"/><rect x="17" y="8" width="5" height="11" rx="1.2"/></symbol>
+  <symbol id="i-candado" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="11" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5M12 15v2.5"/></symbol>
+  <symbol id="i-enlace" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12.5l3 3 5-6"/></symbol>
+  <symbol id="i-herramienta" viewBox="0 0 24 24"><path d="M14.5 6.5a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.4-3.4a6 6 0 0 1-7.9 7.9l-6.4 6.4a2.1 2.1 0 0 1-3-3l6.4-6.4a6 6 0 0 1 7.9-7.9z"/></symbol>
+  <symbol id="i-mensaje" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+  <symbol id="i-regla" viewBox="0 0 24 24"><path d="M3 16.5L16.5 3 21 7.5 7.5 21z"/><path d="M7.5 12l2 2M10.5 9l2 2M13.5 6l2 2M6 13.5l1 1M9 10.5l1 1M12 7.5l1 1"/></symbol>
+  <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4.5M12 17.5h.01"/></symbol>
+  <symbol id="i-ojo" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7.5 9 7.5M5 9.5V21h14V9.5M10 21v-6h4v6"/></symbol>
+  <symbol id="i-codo" viewBox="0 0 24 24"><path d="M3 6h8a9 9 0 0 1 9 9v6M3 12h8a3 3 0 0 1 3 3v6M3 4.5v9M12.5 21h9"/></symbol>
+  <symbol id="i-rayo" viewBox="0 0 24 24"><path d="M13 2.5L4 14h7l-1 7.5L19 10h-7z"/></symbol>
+  <symbol id="i-pincel" viewBox="0 0 24 24"><rect x="3" y="3" width="15" height="6" rx="1.5"/><path d="M18 6h2.5v5.5H11V15M9.5 15h3v6.5h-3z"/></symbol>
+  <symbol id="i-plano" viewBox="0 0 24 24"><path d="M3 6.5l6-3 6 3 6-3v14l-6 3-6-3-6 3zM9 3.5v14M15 6.5v14"/></symbol>
+</svg>
+
+<!-- 1 · Portada -->
+<section class="pag pag--copia portada">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0001</span></header>
+  <div class="pag-cuerpo">
+    <p class="ceja">El programa para reformas y obra · fontanería, gas y calefacción</p>
+    <h1>La obra, <span class="subrayado">del plano<svg viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8C50 3 120 2 197 6" fill="none" stroke="#2448B8" stroke-width="3.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></span> a la última factura.</h1>
+    <p class="entradilla" style="font-size:16.5px;max-width:34em">Dibujas la instalación en 3D y el presupuesto sale solo, con los metros de tubo, los codos y las horas. El cliente lo gira en su móvil y lo acepta. Después, cada día de obra queda en su parte, con fotos y firma.</p>
+
+    <div style="position:relative;height:540px;margin-top:4px">
+      <div class="hero-escena" style="position:absolute;left:110px;top:-36px;width:440px;max-width:none">
+        <div class="copia copia--rosa"></div>
+        <div class="copia copia--amarilla"></div>
+        <div class="hoja">
+          <div class="perforado"></div>
+          <div class="hoja-cuerpo">
+            <div class="hoja-cabecera"><span>Presupuesto de obra</span><span class="numero">Nº 0042</span></div>
+            <div class="campo"><span class="etq">Fecha</span><span class="valor">lun 5 oct</span></div>
+            <div class="campo"><span class="etq">Cliente</span><span class="valor">Anna Soler</span></div>
+            <div class="campo"><span class="etq">Teléfono</span><span class="valor">600 100 100</span></div>
+            <div class="campo"><span class="etq">Obra</span><span class="valor">Reforma de baño y cocina</span></div>
+            <div class="campo"><span class="etq">Total</span><span class="valor">2.933,28 € sin IVA</span></div>
+            <div class="campo campo--notas"><span class="etq">Notas</span><span class="valor">Dos plantas. Metros, codos y horas, sacados del plano.</span></div>
+            <div class="firma">
+              <div class="firma-trazo"><svg viewBox="0 0 200 56" fill="none" stroke="#2448B8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42c10-30 26-34 22-8s14 18 22-6 12-14 10 6 18 6 26-12 10-6 12 8 20 2 40-10l34 4"></path><path d="M60 50c30-4 70-6 120-4"></path></svg></div>
+              <span class="etq">Aceptado por el cliente</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-movil"><div class="hero-movil-pantalla"><img src="img/obra-movil-cliente.jpg" alt=""></div></div>
+      </div>
+      <svg class="herr-f" style="left:-8px;top:420px;width:250px;transform:rotate(-4deg)" viewBox="0 0 300 100" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="56" y="58" width="236" height="22" rx="9"></rect><circle cx="276" cy="69" r="5" fill="#F5E7A8"></circle><rect x="56" y="14" width="13" height="50"></rect><path d="M6 82 L6 62 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 L62 62 L62 82 Z"></path><path d="M6 14 L68 14 L68 30 L48 30 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 Z"></path><rect x="50" y="34" width="28" height="20" rx="3"></rect><path d="M56 34 L56 54 M62 34 L62 54 M68 34 L68 54 M74 34 L74 54" fill="none" stroke-width="1.4"></path></svg>
+      <svg class="herr-f" style="left:574px;top:-10px;width:104px" viewBox="0 0 170 150" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="4" y="34" width="16" height="56" rx="3"></rect><path d="M20 50 L104 50 Q134 50 134 80 L134 104 L116 104 L116 80 Q116 68 104 68 L20 68 Z"></path><rect x="54" y="28" width="16" height="22"></rect><rect x="34" y="16" width="56" height="12" rx="6"></rect><path d="M125 116 C129 124 133 128 133 133 A8 8 0 0 1 117 133 C117 128 121 124 125 116 Z" fill="#2448B8" stroke="none"></path></svg>
+      <svg class="herr-f" style="left:580px;top:400px;width:98px" viewBox="0 0 160 170" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M8 40 L20 40 A110 110 0 0 1 130 150 L130 160 L90 160 L90 150 A70 70 0 0 0 20 80 L8 80 Z"></path><path d="M20 60 A90 90 0 0 1 110 150" fill="none" stroke-width="1.2" stroke-dasharray="6 5"></path><rect x="2" y="34" width="18" height="52" rx="2"></rect><rect x="84" y="146" width="52" height="18" rx="2"></rect></svg>
+    </div>
+
+    <div class="r4 portada-datos">
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Plano en 3D</strong><span>Con sus medidas</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Presupuesto del plano</strong><span>Metros, codos y horas</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>El cliente lo acepta</strong><span>Desde su móvil</span></div>
+      <div class="dato"><strong><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Partes de cada día</strong><span>Con fotos y firma</span></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Propuesta para reformas de baño, cocina y obra nueva</span><span>Automaittech · marcelpaulilara@gmail.com</span></footer>
+</section>
+
+<!-- 2 · El punto de partida -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0002</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">El punto de partida</p>
+      <h2>Presupuestar una reforma a ojo sale caro</h2>
+      <p class="entradilla">Un baño entero, una cocina o la instalación de un piso no se presupuestan en la puerta. Se mide, se apunta en una libreta, se echan cuentas por la noche y se manda un papel con un total. Si falta material o sobran horas, lo pones tú.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;align-items:start">
+      <div class="libreta-escena" style="max-width:none">
+        <div class="libreta-recorte">
+          <div class="libreta-pantalla"></div>
+          <div class="libreta">
+            <div class="libreta-espiral"></div>
+            <div class="libreta-hoja">
+              <p class="libreta-titulo">Esta reforma</p>
+              <ul>
+                <li><span class="libreta-frase">«Esta noche te lo paso.»<span class="tachon">«Esta noche te lo paso.»</span></span><span class="libreta-coste">Días hasta mandarlo</span></li>
+                <li><span class="libreta-frase">«Los codos, a bulto.»<span class="tachon">«Los codos, a bulto.»</span></span><span class="libreta-coste">Margen que desaparece</span></li>
+                <li><span class="libreta-frase">«Un par de días y listo.»<span class="tachon">«Un par de días y listo.»</span></span><span class="libreta-coste">Obras sin margen</span></li>
+                <li><span class="libreta-frase">«¿Y esto cómo quedará?»<span class="tachon">«¿Y esto cómo quedará?»</span></span><span class="libreta-coste">Presupuestos que no entran</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="libreta-movil"></div>
+      </div>
+
+      <div class="r2" style="row-gap:16px">
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-regla"/></svg><h3>Medir y echar cuentas en casa</h3><p>Una tarde por presupuesto: metros de tubo a mano, precios del proveedor y una hoja de cálculo que nunca cuadra a la primera.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-caja"/></svg><h3>El material, a bulto</h3><p>Los codos, las abrazaderas, la coquilla y las rozas no se cuentan uno a uno. Es lo que más se repite y lo que primero se olvida.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-reloj"/></svg><h3>Las horas, a ojo</h3><p>Se calcula «un par de días» y la obra se alarga. La diferencia entre lo presupuestado y lo trabajado no la ve nadie.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-ojo"/></svg><h3>El cliente no se lo imagina</h3><p>Un folio con un total no vende una reforma. Si no entiende qué va a pasar en su casa, pide otro presupuesto.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-alerta"/></svg><h3>Lo que pide el CTE</h3><p>Diámetros por caudal, velocidad del agua, pendiente de los desagües y llaves de corte. Repasarlo a mano en cada obra es imposible.</p></div>
+        <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-factura"/></svg><h3>Al acabar, a sumar</h3><p>Partes sueltos de varios días, material de tres viajes al almacén y una factura hecha a mano a final de mes.</p></div>
+      </div>
+    </div>
+
+    <div class="oscuro" style="margin-top:auto">
+      <p>El resultado: <strong>presupuestos que tardan días en salir</strong>, obras que se comen el margen y un cliente que no sabe por qué cuesta lo que cuesta.</p>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>2</span></footer>
+</section>
+
+<!-- 3 · La solución -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0003</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">La solución</p>
+      <h2 style="max-width:none">De la visita a la factura,<br>sin escribir nada dos veces</h2>
+      <p class="entradilla">Dibujas la instalación una vez. De ese plano salen el presupuesto, lo que el cliente ve en su móvil, el material que tienes que comprar y el coste que acompaña a la comanda hasta la factura.</p>
+    </div>
+
+    <ol class="fila-pasos" style="--n:7;margin-top:4px;column-gap:10px">
+      <li><span class="flujo-num">1</span><strong>Visita</strong><p>Mides y haces fotos</p></li>
+      <li><span class="flujo-num">2</span><strong>Plano 3D</strong><p>Con sus medidas</p></li>
+      <li><span class="flujo-num">3</span><strong>Piezas</strong><p>Se conectan solas</p></li>
+      <li><span class="flujo-num">4</span><strong>Presupuesto</strong><p>Sale del plano</p></li>
+      <li><span class="flujo-num">5</span><strong>Lo acepta</strong><p>Desde su móvil</p></li>
+      <li><span class="flujo-num">6</span><strong>Obra</strong><p>Parte de cada día</p></li>
+      <li><span class="flujo-num">7</span><strong>Factura</strong><p>Con sus albaranes</p></li>
+    </ol>
+
+    <div style="display:grid;grid-template-columns:420px minmax(0,1fr);gap:28px;align-items:center;margin-top:6px">
+      <div class="marco-f marco-f--orden"><img src="img/obra-plano-componentes.jpg" alt=""></div>
+      <div class="nota">
+        <p>«Mido el baño, lo dibujo en el coche y antes de llegar a casa el cliente ya tiene el presupuesto en el móvil.»</p>
+        <p class="peque">Así es presupuestar una reforma con Codo90: el plano hace las cuentas.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:21px;margin-top:4px">¿Para quién está pensado?</h3>
+    <div class="r3">
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-herramienta"/></svg><h3>Fontanero que hace reformas</h3><p>Cambias un baño entero o la instalación de un piso, y quieres presupuestarlo en una tarde sin dejarte nada.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-personas"/></svg><h3>Empresa de reformas</h3><p>Varias obras a la vez, cada una con sus días, su material y sus partes. Y un presupuesto que el cliente entiende.</p></div>
+      <div class="punto"><svg class="icono" viewBox="0 0 24 24"><use href="#i-edificio"/></svg><h3>Constructora o administrador</h3><p>Subcontratas la fontanería y necesitas saber qué se ha hecho, cuándo y por cuánto, sin perseguir a nadie.</p></div>
+    </div>
+  </div>
+  <svg class="herr-f" style="right:16mm;top:84px;width:96px" viewBox="0 0 170 150" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="4" y="34" width="16" height="56" rx="3"></rect><path d="M20 50 L104 50 Q134 50 134 80 L134 104 L116 104 L116 80 Q116 68 104 68 L20 68 Z"></path><rect x="54" y="28" width="16" height="22"></rect><rect x="34" y="16" width="56" height="12" rx="6"></rect><path d="M125 116 C129 124 133 128 133 133 A8 8 0 0 1 117 133 C117 128 121 124 125 116 Z" fill="#2448B8" stroke="none"></path></svg>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>3</span></footer>
+</section>
+
+<!-- 4 · El plano -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0004</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">El plano</p>
+      <h2>La instalación entera, dibujada en 3D</h2>
+      <p class="entradilla">Habitaciones con sus medidas, en varias plantas y sótanos. Pones el termo, la ducha o la caldera y las tuberías se tiran solas por el recorrido más barato, con el diámetro que aguanta el caudal y la pendiente que pide el desagüe.</p>
+    </div>
+    <figure class="captura">
+      <div class="marco-f marco-f--orden marco-f--recorte" style="--h:270px"><img src="img/obra-plano.jpg" alt="" style="object-position:center 62%"></div>
+      <figcaption><p><strong class="tinta">Reforma de baño y cocina</strong> · planta baja y planta 1.</p></figcaption>
+    </figure>
+    <div class="r2">
+      <figure class="captura"><div class="marco-f marco-f--hoja marco-f--recorte" style="--h:150px"><img src="img/obra-plano-revision.jpg" alt=""></div><figcaption><p><strong class="tinta">Revisión con las reglas del CTE.</strong> DB HS 4 y HS 5: diámetros, pendientes y llaves de corte. «Corregir todo» los arregla de una vez.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja marco-f--recorte" style="--h:150px"><img src="img/obra-plano-componentes.jpg" alt="" style="object-position:left 30%"></div><figcaption><p><strong class="tinta">104 componentes.</strong> Tubos de PVC, cobre, PEX, multicapa, PPR y gas, válvulas, bombas, calderas, sanitarios y riego.</p></figcaption></figure>
+    </div>
+    <div class="r4">
+      <div class="punto"><h3>Habitaciones de cualquier forma</h3><p>En L, en U o como sea, arrastrando o tecleando los metros.</p></div>
+      <div class="punto"><h3>El plano del cliente, de fondo</h3><p>Su foto o su PDF a escala para dibujar encima, y fuera al acabar.</p></div>
+      <div class="punto"><h3>Mover una pieza rehace el tubo</h3><p>Hasta que lo retocas a mano. «Rehacer recorrido» lo devuelve al más barato.</p></div>
+      <div class="punto"><h3>Acabados a la vista</h3><p>Suelo, azulejo y pintura de cada estancia, para que se vea cómo queda.</p></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>4</span></footer>
+</section>
+
+<!-- 5 · El presupuesto -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0005</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">El presupuesto</p>
+      <h2>Lo que cuesta la obra, contado pieza a pieza</h2>
+      <p class="entradilla">No es una estimación: es la suma de lo que hay dibujado. Cada metro de tubo con su precio, cada giro contado como un codo y las horas de montaje de cada aparato, con el material que se gasta al colocarlo.</p>
+    </div>
+    <figure class="captura">
+      <div class="marco-f marco-f--orden marco-f--recorte" style="--h:262px"><img src="img/obra-plano-presupuesto.jpg" alt="" style="object-position:center 66%"></div>
+      <figcaption><p><strong class="tinta">Presupuesto del plano.</strong> Cada tubo con sus metros y su precio, al lado del dibujo.</p></figcaption>
+    </figure>
+    <div class="r2" style="row-gap:12px">
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-regla"/></svg><div><h3>Los metros de cada tubo</h3><p>Por material y diámetro, tal como van grapados a la pared.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-codo"/></svg><div><h3>Un codo por cada giro</h3><p>Cada cambio de dirección de más de 10° se cobra como accesorio.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-reloj"/></svg><div><h3>Las horas de montaje</h3><p>Las de cada pieza y las del tubo, a tu precio por hora.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-caja"/></svg><div><h3>Lo que se gasta al montar</h3><p>Abrazaderas según el material, coquilla en el agua caliente, pasamuros y, si va empotrado, abrir y tapar las rozas.</p></div></div>
+    </div>
+    <div class="oscuro" style="margin-top:auto;padding:22px 26px 20px">
+      <ul class="cifras" style="--n:3">
+        <li><strong style="color:var(--amarilla);font-size:46px">1.661,28 €</strong><span>de materiales, contados del plano</span></li>
+        <li><strong style="color:var(--amarilla);font-size:46px">31,8 h</strong><span>de montaje a tu precio por hora</span></li>
+        <li><strong style="color:var(--amarilla);font-size:46px">2.933,28 €</strong><span>de presupuesto, en un PDF con la foto del plano</span></li>
+      </ul>
+    </div>
+    <p class="peque" style="margin-top:-8px">Cifras del plano de ejemplo: una reforma de baño y cocina en dos plantas. Cambiar los precios del catálogo no toca un presupuesto ya guardado.</p>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>5</span></footer>
+</section>
+
+<!-- 6 · El cliente -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0006</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">El cliente</p>
+      <h2>Le mandas un enlace y lo acepta desde el sofá</h2>
+      <p class="entradilla">El mismo plano que has dibujado, abierto en su móvil: lo gira con el dedo, ve dónde va cada cosa en su casa y debajo tiene el importe. Para aceptarlo solo escribe su nombre. Tú ves quién lo aceptó, cuándo y por cuánto.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:420px minmax(0,1fr);gap:28px;align-items:center">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div class="marco-f marco-f--movil"><img src="img/obra-movil-cliente.jpg" alt=""></div>
+        <div class="marco-f marco-f--movil"><img src="img/obra-movil-aceptar.jpg" alt=""></div>
+      </div>
+      <div style="display:grid;gap:12px">
+        <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-mensaje"/></svg><div><h3>Se manda por WhatsApp</h3><p>Un enlace. No hay que instalar nada ni registrarse.</p></div></div>
+        <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-casa"/></svg><div><h3>Ve su obra, no un folio</h3><p>El baño en 3D con los sanitarios donde van y los metros a la vista.</p></div></div>
+        <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-lapiz"/></svg><div><h3>Acepta con su nombre</h3><p>Queda guardado con la fecha y el importe que aceptó.</p></div></div>
+        <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-candado"/></svg><div><h3>Y se deja de compartir</h3><p>Cuando quieras, el enlace deja de abrir nada.</p></div></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:400px minmax(0,1fr);gap:30px;align-items:center;margin-top:auto">
+      <figure class="captura">
+        <div class="marco-f marco-f--hoja marco-f--recorte" style="--h:200px"><img src="img/obra-web-cliente.jpg" alt="" style="object-position:center top"></div>
+        <figcaption><p><strong class="tinta">El mismo enlace, en el ordenador.</strong> Para el administrador de la finca o el cliente que lo quiere ver en grande antes de decidir.</p></figcaption>
+      </figure>
+      <div class="nota">
+        <p>Un presupuesto que se entiende en treinta segundos se acepta mucho antes que un folio con un total al final.</p>
+      </div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>6</span></footer>
+</section>
+
+<!-- 7 · Durante la obra -->
+<section class="pag pag--copia">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0007</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Durante la obra</p>
+      <h2>Cada día de obra, con su parte</h2>
+      <p class="entradilla">La obra se vincula a su comanda y el coste del plano entra como partida. Cada jornada se cierra con lo que se ha hecho, el material que ha entrado y las horas, y el albarán sale solo.</p>
+    </div>
+    <ol class="fila-pasos" style="--n:4;column-gap:22px">
+      <li><span class="flujo-num">1</span><strong>Abres el parte</strong><div class="marco-f marco-f--movil" style="margin:6px 4px"><img src="img/codo90-movil-parte.jpg" alt=""></div><p>Con la dirección, quién abre y las notas de la vivienda a la vista.</p></li>
+      <li><span class="flujo-num">2</span><strong>Apuntas y firmas</strong><div class="marco-f marco-f--movil" style="margin:6px 4px"><img src="img/codo90-movil-firma.jpg" alt=""></div><p>Fotos de antes y después, material del catálogo, horas y la firma del cliente.</p></li>
+      <li><span class="flujo-num">3</span><strong>Sale el albarán</strong><div class="paso-hoja"><div class="marco-f marco-f--hoja"><img src="img/obra-albaran-hoja.jpg" alt=""></div></div><p>Numerado, con el trabajo, el material y la firma. Listo para mandar en PDF.</p></li>
+      <li><span class="flujo-num">4</span><strong>Y la factura</strong><div class="paso-hoja"><div class="marco-f marco-f--hoja"><img src="img/obra-factura-hoja.jpg" alt=""></div></div><p>Juntas los albaranes de la obra, aplicas el IVA y se numera sola, sin huecos.</p></li>
+    </ol>
+    <div class="oscuro oscuro-lista" style="margin-top:auto">
+      <p class="ceja" style="color:#C9D2E3">Y mientras dura la obra</p>
+      <div class="r2" style="row-gap:14px;column-gap:28px">
+        <div><h3>Obras de varios días</h3><p>Cada jornada, su parte: lo que se hizo, el material y las horas de ese día.</p></div>
+        <div><h3>Presupuestado contra gastado</h3><p>El parte enseña el coste del plano al lado de lo que llevas de verdad.</p></div>
+        <div><h3>Sin cobertura, igual</h3><p>En un sótano se cierra el parte y se envía solo al salir a la calle.</p></div>
+        <div><h3>Todo queda en la vivienda</h3><p>El historial del piso: qué se cambió, cuándo y por cuánto.</p></div>
+      </div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>7</span></footer>
+</section>
+
+<!-- 8 · Empresas -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0008</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Para empresas con varias obras a la vez</p>
+      <h2>Quién está en cada obra</h2>
+      <p class="entradilla">Si llevas varias reformas abiertas o trabajas con subcontratados, adaptamos Codo90 a vuestra forma de trabajar: desde la oficina ves en qué obra está cada uno, por qué día va y qué se ha cerrado.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <p class="etq">Ejemplo de panel a medida</p>
+      <div class="flota">
+        <div class="flota-cab"><h3>Panel de obras <span>· lunes, 5 de octubre</span></h3><span class="directo">En directo</span></div>
+        <div class="flota-cifras">
+          <div><span>Obras abiertas</span><strong>5</strong></div>
+          <div><span>Partes de hoy</span><strong>4 / 6</strong></div>
+          <div><span>Avisos</span><strong>2</strong></div>
+          <div><span>Presupuestado abierto</span><strong>18.420 €</strong></div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) 168px;gap:16px">
+          <table>
+            <thead><tr><th style="width:132px">Fontanero</th><th>Obra</th><th style="width:84px">Día</th><th style="width:84px">Estado</th></tr></thead>
+            <tbody>
+              <tr><td><span class="quien"><span class="ini">JP</span><span>Jordi Puig<small>Centro</small></span></span></td><td>Baño · C/ Cavallers 18</td><td><span class="barra"><i style="--p:60%"></i>3/5</span></td><td class="estado">En obra</td></tr>
+              <tr><td><span class="quien"><span class="ini">MR</span><span>Marta Ruiz<small>Balàfia</small></span></span></td><td>Cocina · Av. Madrid 25</td><td><span class="barra"><i style="--p:100%"></i>4/4</span></td><td class="estado estado--bien">Entregada</td></tr>
+              <tr><td><span class="quien"><span class="ini">ÀF</span><span>Àlex Ferrer<small>Pardinyes</small></span></span></td><td>Piso entero · Av. Catalunya 14</td><td><span class="barra"><i style="--p:33%"></i>3/9</span></td><td class="estado estado--mal">Falta material</td></tr>
+              <tr><td><span class="quien"><span class="ini">PC</span><span>Pau Costa<small>autónomo</small></span></span></td><td>Sala de calderas · Clínica Verdi</td><td><span class="barra"><i style="--p:50%"></i>2/4</span></td><td class="estado suave">Sin cobertura</td></tr>
+              <tr><td><span class="quien"><span class="ini">LS</span><span>Laia Serra<small>Secà</small></span></span></td><td>Bajante · C/ Sant Antoni 51</td><td><span class="barra"><i style="--p:100%"></i>2/2</span></td><td class="estado">En obra</td></tr>
+            </tbody>
+          </table>
+          <div class="obras">
+            <p class="etq">Presupuestos a la espera</p>
+            <p><strong>Baño · Rambla Ferran 30</strong>2.933,28 € · enviado hace 2 días</p>
+            <p><strong>Cocina · C/ Bisbe 7</strong>4.180,00 € · visto, sin aceptar</p>
+            <p><strong>Comunidad Av. Madrid 25</strong>6.920,50 € · aceptado por el administrador</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="r2" style="row-gap:12px">
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-pantallas"/></svg><div><h3>Quién está en cada obra</h3><p>Por qué día va, qué le queda y qué cerró ayer, sin llamar a nadie.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-enlace"/></svg><div><h3>Presupuestos enviados</h3><p>Cuáles ha abierto el cliente, cuáles ha aceptado y cuáles toca perseguir.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-candado"/></svg><div><h3>Permisos por rol</h3><p>Oficina, jefe de obra y fontanero. Los precios, solo quien tú digas.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-capas"/></svg><div><h3>Con vuestra marca</h3><p>Vuestro logo en la app, en los presupuestos y en los albaranes.</p></div></div>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>8</span></footer>
+</section>
+
+<!-- 9 · Lo que ganas -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0009</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">Lo que ganas</p>
+      <h2>Lo que cambia en la primera reforma</h2>
+    </div>
+    <div class="r2" style="row-gap:14px">
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-reloj"/></svg><div><h3>El presupuesto sale el mismo día</h3><p>Mides, dibujas y mandas. No hay noche de hoja de cálculo.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-caja"/></svg><div><h3>No falta material</h3><p>La lista sale del plano: tubo, codos, válvulas y lo que se gasta al montar.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><h3>Entran más presupuestos</h3><p>El cliente ve su baño en 3D y lo acepta con el dedo, no hay que explicarle nada.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-alerta"/></svg><div><h3>Menos sorpresas en obra</h3><p>El plano avisa de diámetros, pendientes y llaves de corte antes de picar la pared.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-lista"/></svg><div><h3>Cada día queda escrito</h3><p>Con fotos y firma: si el cliente pregunta, está todo en su vivienda.</p></div></div>
+      <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-euro"/></svg><div><h3>Se cobra antes</h3><p>El albarán sale del parte y la factura junta los albaranes de la obra.</p></div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:30px;align-items:center;margin-top:6px">
+      <div class="ticket">
+        <div class="perforado"></div>
+        <div class="ticket-cuerpo">
+          <p class="ticket-titulo">Una reforma de baño, en números</p>
+          <div class="regla"><span>Medir y montar el presupuesto a mano</span><output>3 h</output></div>
+          <div class="regla"><span>Material que no se apunta (codos, abrazaderas, coquilla)</span><output>80–150 €</output></div>
+          <div class="regla"><span>Pasar los partes de la obra a la factura</span><output>1 h</output></div>
+          <div class="ticket-total">
+            <p class="ticket-total-etq">Tiempo de oficina que vuelve a la obra, en diez reformas al año</p>
+            <p class="ticket-cifra">≈ 40 h</p>
+          </div>
+          <p class="ticket-nota">Estimación orientativa para un fontanero que hace una reforma al mes. Cada obra es distinta.</p>
+        </div>
+      </div>
+      <ul class="cifras" style="--n:1">
+        <li><strong style="font-size:48px">≈ 1.000 €</strong><span>de material que ya no se queda sin cobrar en diez reformas al año</span></li>
+      </ul>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>9</span></footer>
+</section>
+
+<!-- 10 · Cómo empezamos y contacto -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0010</span></header>
+  <div class="pag-cuerpo" style="gap:20px">
+    <div class="titular">
+      <p class="ceja">Cómo empezamos</p>
+      <h2>De la primera llamada al primer plano</h2>
+    </div>
+    <ol class="col-pasos" style="gap:10px">
+      <li><span class="paso-num">1</span><div><h3>Lo dejamos instalado</h3><p>En tu ordenador o en un servidor, con tus datos fiscales y tu precio por hora, que son los que salen en presupuestos, albaranes y facturas.</p></div><div class="nota-lado"><p class="boli">Lo hacemos nosotros</p><p class="peque">Tú solo nos dices cómo facturas y a qué precio va la hora.</p></div></li>
+      <li><span class="paso-num">2</span><div><h3>Cargamos tus precios</h3><p>Los 104 componentes vienen con precio, horas de montaje y lo que se gasta al colocarlos. Los ajustamos a lo que te cuesta a ti en tu almacén.</p></div><div class="nota-lado"><p class="boli">Y tu catálogo</p><p class="peque">Tus servicios y materiales, con el precio al que los compras.</p></div></li>
+      <li><span class="paso-num">3</span><div><h3>Dibujamos tu primera obra contigo</h3><p>Una reforma de verdad, de principio a fin: habitaciones, piezas, revisión y presupuesto en PDF. En una sesión se coge.</p></div><div class="nota-lado"><p class="boli">Con tu plano</p><p class="peque">Si el cliente te pasó un plano, lo ponemos de fondo y dibujas encima.</p></div></li>
+      <li><span class="paso-num">4</span><div><h3>A trabajar</h3><p>Presupuestos que se aceptan desde el móvil, partes de cada jornada y la factura al acabar la obra.</p></div><div class="nota-lado"><p class="boli">Del contacto al primer presupuesto</p><p class="peque">Normalmente, en menos de un día.</p></div></li>
+    </ol>
+    <ul class="garantias">
+      <li>Sin permanencia</li><li>Periodo de prueba</li><li>Formación en el alta</li><li>Soporte en español y catalán</li>
+    </ul>
+
+    <div style="position:relative;flex:1;min-height:40px">
+      <svg class="herr-f" style="right:170px;bottom:0;width:190px;transform:rotate(-4deg)" viewBox="0 0 300 100" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="56" y="58" width="236" height="22" rx="9"></rect><circle cx="276" cy="69" r="5" fill="#F5E7A8"></circle><rect x="56" y="14" width="13" height="50"></rect><path d="M6 82 L6 62 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 l3 -4 l3 4 L62 62 L62 82 Z"></path><path d="M6 14 L68 14 L68 30 L48 30 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 l-3 4 l-3 -4 Z"></path><rect x="50" y="34" width="28" height="20" rx="3"></rect><path d="M56 34 L56 54 M62 34 L62 54 M68 34 L68 54 M74 34 L74 54" fill="none" stroke-width="1.4"></path></svg>
+      <svg class="herr-f" style="right:40px;bottom:-6px;width:70px" viewBox="0 0 160 170" fill="#F9FAF6" stroke="#1B2A4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M8 40 L20 40 A110 110 0 0 1 130 150 L130 160 L90 160 L90 150 A70 70 0 0 0 20 80 L8 80 Z"></path><path d="M20 60 A90 90 0 0 1 110 150" fill="none" stroke-width="1.2" stroke-dasharray="6 5"></path><rect x="2" y="34" width="18" height="52" rx="2"></rect><rect x="84" y="146" width="52" height="18" rx="2"></rect></svg>
+    </div>
+    <div class="contacto-f">
+      <div>
+        <h2>¿Lo vemos con tu próxima reforma?</h2>
+        <p class="entradilla">Tráenos las medidas de un baño y lo dibujamos contigo en media hora. Sales con el presupuesto hecho y el enlace listo para mandárselo al cliente.</p>
+      </div>
+      <dl class="canales-f">
+        <div><dt>Email</dt><dd>marcelpaulilara@gmail.com</dd></div>
+        <div><dt>Teléfono y WhatsApp</dt><dd>+34 634 27 63 85</dd></div>
+        <div><dt>Dónde</dt><dd>Llinars del Vallès (Barcelona)</dd></div>
+      </dl>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>Automaittech · © 2026</span></footer>
+</section>
+</body>
+</html>
