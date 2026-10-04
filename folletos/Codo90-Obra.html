@@ -20,6 +20,27 @@
   .oscuro-lista h3 { color: var(--amarilla); font-size: 16px; margin-bottom: 3px; }
   .oscuro-lista .r2 p { font-size: 13.5px; line-height: 1.45; color: #DCE2EC; }
   .flota td.estado, .quien { white-space: nowrap; }
+  /* La cadena de papeles de una obra: presupuesto, partes, albaranes y factura. */
+  .cadena { display: grid; grid-template-columns: minmax(0,1fr) 24px minmax(0,1fr) 24px minmax(0,1fr) 24px minmax(0,1fr); align-items: start; }
+  .cadena-flecha { margin-top: 68px; width: 24px; height: 16px; fill: none; stroke: var(--rojo); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .eslabon { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .eslabon strong { font-family: var(--f-titulo); font-weight: 700; font-size: 14.5px; line-height: 1.2; margin-top: 10px; }
+  .eslabon > p { font-size: 12px; line-height: 1.4; color: var(--imprenta-suave); }
+  .pila { position: relative; height: 150px; }
+  .papel { position: absolute; inset: 6px 8px 0 4px; display: flex; flex-direction: column; background: var(--blanco); border-radius: 3px; }
+  .pag .papel { box-shadow: 0 0 0 1px rgba(27, 42, 74, .12), 3px 5px 0 rgba(27, 42, 74, .09) !important; }
+  .papel > .perforado { height: 9px; background-size: 9px 9px; background-image: radial-gradient(circle at 4.5px 4.5px, var(--agujero) 2px, transparent 2.4px); }
+  .papel-cuerpo { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 3px 10px 8px; }
+  .papel-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; padding-bottom: 3px; border-bottom: 1.5px solid var(--imprenta); font-family: var(--f-titulo); font-stretch: 75%; font-weight: 700; font-size: 12.5px; white-space: nowrap; }
+  .papel-cab .numero { font-size: 12px; }
+  .papel-linea { display: flex; justify-content: space-between; gap: 6px; border-bottom: 1px solid var(--raya); font-style: italic; color: var(--boli); font-size: 10.5px; line-height: 1.45; white-space: nowrap; overflow: hidden; }
+  .papel-linea--total { border: 0; border-top: 1.5px solid var(--imprenta); margin-top: auto; padding-top: 2px; font-style: normal; font-weight: 700; color: var(--imprenta); }
+  .papel-firma { margin-top: auto; width: 62%; border-bottom: 1px solid rgba(27, 42, 74, .45); line-height: 0; }
+  .papel-firma svg { width: 100%; height: auto; }
+  .papel--3 { transform: rotate(-7deg) translate(-3px, 5px); }
+  .papel--2 { transform: rotate(-4deg) translate(-1px, 2px); }
+  .papel--1 { transform: rotate(-1.5deg); }
+
 </style>
 </head>
 <body>
@@ -310,10 +331,131 @@
   <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>7</span></footer>
 </section>
 
-<!-- 8 · Empresas -->
+<!-- 8 · El proceso de la obra -->
 <section class="pag">
   <div class="perforado"></div>
   <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0008</span></header>
+  <div class="pag-cuerpo">
+    <div class="titular">
+      <p class="ceja">El proceso, paso a paso</p>
+      <h2>Del primer día de obra a la factura</h2>
+      <p class="entradilla">Una reforma dura días, entra material cada jornada y al final hay que cobrarlo todo junto. Con Codo90 cada paso deja su papel hecho, y del último sale la factura.</p>
+    </div>
+    <ol class="col-pasos" style="gap:14px">
+      <li><span class="paso-num">1</span><div><h3>El cliente acepta el presupuesto</h3><p>Desde el enlace, con su nombre. Queda guardado con la fecha y el importe, y tú lo ves al momento.</p></div><div class="nota-lado"><p class="boli">Lo que aceptó</p><p class="peque">El coste del plano acompaña a la obra hasta el final.</p></div></li>
+      <li><span class="paso-num">2</span><div><h3>La obra entra en el calendario</h3><p>Vinculas el plano a su comanda: el coste del plano entra como partida y repartes las jornadas en el calendario, arrastrando.</p></div><div class="nota-lado"><p class="boli">Con su lista de material</p><p class="peque">Tubo, codos y válvulas salen del plano, antes de ir al almacén.</p></div></li>
+      <li><span class="paso-num">3</span><div><h3>Cada jornada, su parte</h3><p>En la obra, desde el móvil: fotos de antes y después, el material que ha entrado, las horas y la firma del cliente. Aunque no haya cobertura.</p></div><div class="nota-lado"><p class="boli">Presupuestado contra gastado</p><p class="peque">Cada parte enseña lo que llevas al lado del coste del plano.</p></div></li>
+      <li><span class="paso-num">4</span><div><h3>Cada parte cerrado, un albarán</h3><p>Al cerrar el parte ya es un albarán numerado, con el trabajo, el material, las horas y la firma. No se escribe nada más.</p></div><div class="nota-lado"><p class="boli">Sin IVA</p><p class="peque">El IVA se aplica en la factura.</p></div></li>
+      <li><span class="paso-num">5</span><div><h3>Al acabar, la factura</h3><p>Marcas los albaranes de la obra y pulsas facturar. Sale una sola factura con todas las jornadas, el IVA que toca y su número del año.</p></div><div class="nota-lado"><p class="boli">En PDF</p><p class="peque">Se imprime o se manda al cliente ese mismo día.</p></div></li>
+      <li><span class="paso-num">6</span><div><h3>Y la obra queda en la vivienda</h3><p>Fotos, partes, albaranes y factura, en el historial del piso. Si el cliente llama dentro de un año, está todo ahí.</p></div><div class="nota-lado"><p class="boli">Y en el panel</p><p class="peque">Lo que falta por facturar y lo facturado del mes.</p></div></li>
+    </ol>
+    <div class="oscuro" style="margin-top:auto">
+      <p><strong>Nada se escribe dos veces:</strong> el presupuesto pasa a la obra, el parte pasa al albarán y los albaranes pasan a la factura.</p>
+    </div>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>8</span></footer>
+</section>
+
+<!-- 9 · Albaranes y facturas -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0009</span></header>
+  <div class="pag-cuerpo" style="gap:18px">
+    <div class="titular">
+      <p class="ceja">Albaranes y facturas</p>
+      <h2>El papeleo de la obra se hace solo</h2>
+      <p class="entradilla">El albarán y la factura no se rellenan: salen de lo que ya has apuntado en la obra. Cada jornada deja su albarán firmado y, al acabar, todos juntos forman una sola factura.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <p class="etq">Ejemplo: una reforma de cinco jornadas</p>
+      <div class="cadena">
+        <div class="eslabon">
+          <div class="pila">
+            <div class="papel papel--1"><div class="perforado"></div><div class="papel-cuerpo">
+              <div class="papel-cab"><span>Presupuesto</span><span class="numero">Nº 0042</span></div>
+              <div class="papel-linea"><span>Anna Soler</span></div>
+              <div class="papel-linea"><span>Baño y cocina</span></div>
+              <div class="papel-linea"><span>Aceptado</span><span>lun 5 oct</span></div>
+              <div class="papel-linea papel-linea--total"><span>Sin IVA</span><span>2.933,28 €</span></div>
+            </div></div>
+          </div>
+          <strong>Presupuesto aceptado</strong>
+          <p>Lo que el cliente aceptó, con la foto del plano.</p>
+        </div>
+        <svg class="cadena-flecha" viewBox="0 0 24 16" aria-hidden="true"><path d="M2 8h19M15 2l6 6-6 6"/></svg>
+        <div class="eslabon">
+          <div class="pila">
+            <div class="papel papel--3"><div class="perforado"></div></div><div class="papel papel--2"><div class="perforado"></div></div>
+            <div class="papel papel--1"><div class="perforado"></div><div class="papel-cuerpo">
+              <div class="papel-cab"><span>Parte</span><span class="numero">Día 5</span></div>
+              <div class="papel-linea"><span>Fotos antes y después</span></div>
+              <div class="papel-linea"><span>Material y horas</span></div>
+              <div class="papel-firma"><svg viewBox="0 0 200 56" fill="none" stroke="#2448B8" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42c10-30 26-34 22-8s14 18 22-6 12-14 10 6 18 6 26-12 10-6 12 8 20 2 40-10l34 4"/></svg></div>
+            </div></div>
+          </div>
+          <strong>Un parte por jornada</strong>
+          <p>Lo que se hizo cada día, con la firma del cliente.</p>
+        </div>
+        <svg class="cadena-flecha" viewBox="0 0 24 16" aria-hidden="true"><path d="M2 8h19M15 2l6 6-6 6"/></svg>
+        <div class="eslabon">
+          <div class="pila">
+            <div class="papel papel--3"><div class="perforado"></div></div><div class="papel papel--2"><div class="perforado"></div></div>
+            <div class="papel papel--1"><div class="perforado"></div><div class="papel-cuerpo">
+              <div class="papel-cab"><span>Albarán</span><span class="numero">Día 5</span></div>
+              <div class="papel-linea"><span>Material</span><span>cant. · precio</span></div>
+              <div class="papel-linea"><span>Mano de obra</span><span>horas</span></div>
+              <div class="papel-firma"><svg viewBox="0 0 200 56" fill="none" stroke="#2448B8" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 42c10-30 26-34 22-8s14 18 22-6 12-14 10 6 18 6 26-12 10-6 12 8 20 2 40-10l34 4"/></svg></div>
+            </div></div>
+          </div>
+          <strong>Un albarán por parte</strong>
+          <p>Sale al cerrar el parte, numerado y sin IVA.</p>
+        </div>
+        <svg class="cadena-flecha" viewBox="0 0 24 16" aria-hidden="true"><path d="M2 8h19M15 2l6 6-6 6"/></svg>
+        <div class="eslabon">
+          <div class="pila">
+            <div class="papel papel--1"><div class="perforado"></div><div class="papel-cuerpo">
+              <div class="papel-cab"><span>Factura</span><span class="numero">2026-0007</span></div>
+              <div class="papel-linea"><span>Albarán · día 1</span></div>
+              <div class="papel-linea"><span>… · día 5</span></div>
+              <div class="papel-linea"><span>Base + IVA</span></div>
+              <div class="papel-linea papel-linea--total"><span>Total</span></div>
+            </div></div>
+          </div>
+          <strong>Una factura por obra</strong>
+          <p>Junta los albaranes, suma el IVA y lleva su número del año.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="r2">
+      <figure class="captura"><div class="marco-f marco-f--hoja marco-f--recorte" style="--h:170px"><img src="img/obra-albaran-hoja.jpg" alt=""></div><figcaption><p><strong class="tinta">Albarán.</strong> El cliente y el lugar del trabajo, lo que se hizo, cada material con su cantidad y precio, las horas y la firma con fecha y hora.</p></figcaption></figure>
+      <figure class="captura"><div class="marco-f marco-f--hoja marco-f--recorte" style="--h:170px"><img src="img/obra-factura-hoja.jpg" alt=""></div><figcaption><p><strong class="tinta">Factura.</strong> Una línea por albarán, con su fecha y su concepto, la base, el IVA y el total. El detalle de cada día se queda en su albarán.</p></figcaption></figure>
+    </div>
+
+    <div class="r2">
+      <div class="punto"><h3>Albaranes</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Uno por cada parte cerrado, numerado</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Con la firma del cliente, imprimibles o en PDF</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Sin facturar o facturados, a la vista</li>
+        </ul></div>
+      <div class="punto"><h3>Facturas</h3>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Juntan los albaranes que marques</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>IVA 21, 10 o 0 % y numeración correlativa por año</li>
+          <li><svg viewBox="0 0 20 20"><use href="#ok"/></svg>Si te equivocas, se borra la última y no quedan huecos</li>
+        </ul></div>
+    </div>
+    <p class="peque">Verifactu (huella, QR y envío a Hacienda) todavía no está incluido: llegará en una actualización.</p>
+  </div>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>9</span></footer>
+</section>
+
+<!-- 10 · Empresas -->
+<section class="pag">
+  <div class="perforado"></div>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0010</span></header>
   <div class="pag-cuerpo">
     <div class="titular">
       <p class="ceja">Para empresas con varias obras a la vez</p>
@@ -359,13 +501,13 @@
       <div class="punto punto--fila"><svg class="icono" viewBox="0 0 24 24"><use href="#i-capas"/></svg><div><h3>Con vuestra marca</h3><p>Vuestro logo en la app, en los presupuestos y en los albaranes.</p></div></div>
     </div>
   </div>
-  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>8</span></footer>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>10</span></footer>
 </section>
 
-<!-- 9 · Lo que ganas -->
+<!-- 11 · Lo que ganas -->
 <section class="pag">
   <div class="perforado"></div>
-  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0009</span></header>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0011</span></header>
   <div class="pag-cuerpo">
     <div class="titular">
       <p class="ceja">Lo que ganas</p>
@@ -400,13 +542,13 @@
       </ul>
     </div>
   </div>
-  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>9</span></footer>
+  <footer class="pag-pie"><span>Codo90 · El programa para reformas y obra</span><span>11</span></footer>
 </section>
 
-<!-- 10 · Cómo empezamos y contacto -->
+<!-- 12 · Cómo empezamos y contacto -->
 <section class="pag">
   <div class="perforado"></div>
-  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0010</span></header>
+  <header class="pag-cab"><span class="marca">Codo90</span><span class="numero">Nº 0012</span></header>
   <div class="pag-cuerpo" style="gap:20px">
     <div class="titular">
       <p class="ceja">Cómo empezamos</p>
