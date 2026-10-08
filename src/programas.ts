@@ -78,7 +78,7 @@ const es: Programa[] = [
       { n: '2', t: 'empresas en el mismo calendario' },
     ],
     cta: 'Quiero verlo en mi furgoneta',
-    folleto: { pdf: 'Reparto-Folleto.pdf', info: 'PDF · 11 páginas' },
+    folleto: { pdf: 'Reparto-Folleto.pdf', info: 'PDF · 12 páginas' },
   },
 ];
 
@@ -144,7 +144,7 @@ const ca: Programa[] = [
       { n: '2', t: 'empreses al mateix calendari' },
     ],
     cta: 'Vull veure-ho a la meva furgoneta',
-    folleto: { pdf: 'Reparto-Folleto.pdf', info: 'PDF · 11 pàgines' },
+    folleto: { pdf: 'Reparto-Folleto.pdf', info: 'PDF · 12 pàgines' },
   },
 ];
 
