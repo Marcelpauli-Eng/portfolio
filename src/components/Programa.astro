@@ -1,5 +1,5 @@
 ---
-import { statSync } from 'node:fs';
+import { existsSync, statSync } from 'node:fs';
 import { Picture } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import Herramienta from './Herramienta.astro';
@@ -9,7 +9,7 @@ type Herr = [string, string, string, string, string, number];
 interface Props {
   p: Programa;
   activo: boolean;
-  t: { pantallas: string; pista: string; mas: string; folleto: string };
+  t: { pantallas: string; pista: string; mas: string; folleto: string; video: string };
   escena: { aparato: string; widths: number[]; sizes: string; herr: Herr[] };
   img: (nombre: string) => ImageMetadata;
 }
@@ -22,6 +22,9 @@ const folleto = p.folleto && {
   portada: portadas[`../assets/folletos/${p.folleto.pdf.replace('.pdf', '.png')}`].default,
   info: `${p.folleto.info} · ${(statSync(`public/folletos/${p.folleto.pdf}`).size / 1e6).toFixed(1).replace('.', ',')} MB`,
 };
+// Vídeo: basta con dejar public/videos/<nombre>.mp4 (p. ej. Codo90.mp4) y, si quieres portada, <nombre>.jpg. Sin vídeo, no hay apartado.
+const video = existsSync(`public/videos/${p.nombre}.mp4`) && `/videos/${p.nombre}`;
+const portada = video && existsSync(`public${video}.jpg`) ? `${video}.jpg` : undefined;
 ---
 <div class:list={['programa', { activo }]} id={p.id} role="tabpanel" aria-labelledby={`tab-${p.id}`} data-aparato={e.aparato}>
   <div class="ficha-cabecera">
@@ -78,6 +81,13 @@ const folleto = p.folleto && {
       {p.pasos.map((s, i) => <li><span class="flujo-num" aria-hidden="true">{i + 1}</span><strong>{s}</strong></li>)}
     </ol>
   </div>
+
+  {video && (
+    <figure class="video">
+      <figcaption>{t.video}</figcaption>
+      <video src={`${video}.mp4`} poster={portada} preload={portada ? 'none' : 'metadata'} controls playsinline></video>
+    </figure>
+  )}
 
   <ul class="cifras">
     {p.cifras.map((c) => <li><strong>{c.n}</strong><span>{c.t}</span></li>)}
