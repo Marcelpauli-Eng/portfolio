@@ -67,6 +67,7 @@ const es = {
     pista: 'Toca la pantalla para ver la siguiente.',
     mas: 'Todo lo que hace, sus pantallas y los precios, en el folleto.',
     folleto: 'Descárgate el folleto',
+    video: 'Míralo funcionar',
   },
   servicios: {
     h2: 'Lo que te hago',
@@ -174,6 +175,7 @@ const ca: typeof es = {
     pista: 'Toca la pantalla per veure la següent.',
     mas: 'Tot el que fa, les pantalles i els preus, al fullet.',
     folleto: 'Descarrega’t el fullet',
+    video: 'Mira com funciona',
   },
   servicios: {
     h2: 'El que et faig',

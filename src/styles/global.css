@@ -368,6 +368,10 @@ h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
 .cifras span { font-weight: 700; font-size: clamp(.9375rem, .85rem + .4vw, 1.0625rem); line-height: 1.35; max-width: 16em; }
 @media (min-width: 700px) { .cifras { column-gap: 24px; } }
 
+.video { margin: 0; padding-block: 32px; border-top: 1px solid var(--raya); display: grid; gap: 16px; }
+.video figcaption { font-family: var(--f-titulo); font-stretch: 125%; font-weight: 800; font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.25rem); line-height: 1.1; }
+.video video { width: 100%; aspect-ratio: 16 / 9; border-radius: 6px; background: var(--imprenta); }
+
 .mas { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; padding: 32px; border-radius: 6px; background: var(--imprenta); color: var(--blanco); }
 .mas p { font-family: var(--f-titulo); font-stretch: 125%; font-weight: 800; font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.25rem); line-height: 1.1; max-width: 16em; }
 .mas .boton { background: var(--blanco); border-color: var(--blanco); color: var(--imprenta); }
