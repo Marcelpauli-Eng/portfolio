@@ -2,19 +2,21 @@
 #
 # Desde video/reparto/, con Chrome, Node y ffmpeg (brew install ffmpeg):
 #   1. La demo de Reparto en :4340 (en .claude/launch.json, «reparto-demo»; recién arrancada, sin entregas).
-#   2. Chrome sin ventana:
+#   2. Chrome sin ventana (si no hay Chrome, vale el «Chrome for Testing» de Playwright, en ~/Library/Caches/ms-playwright):
 #      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --remote-debugging-port=9336 \
 #          --user-data-dir="$PWD/perfil-chrome" --hide-scrollbars --force-color-profile=srgb about:blank &
 #   3. node guion.mjs        → graba la app en tomas/app/ con sus rótulos
 #   4. python3 montar.py     → Reparto-como-funciona.mp4 (+ versión ligera para WhatsApp)
+#      El cierre y el logo de la esquina son los de Automaittech (marca.py), como en el tutorial de Codo90.
 import bisect, json, os, subprocess
+import marca
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 os.chdir(AQUI)
 FUNDIDO = 0.5
 X264 = ['-c:v', 'libx264', '-crf', '17', '-preset', 'medium', '-pix_fmt', 'yuv420p', '-r', '30']
 PANTALLA = (1254, 53, 450, 974)  # dónde va la grabación del móvil dentro del fondo (escenas.html, .movil .pantalla)
-SEGMENTOS = [('escena', 'intro', 7), ('toma', 'tomas/app'), ('escena', 'cliente', 8), ('escena', 'cierre', 8)]
+SEGMENTOS = [('escena', 'intro', 7), ('toma', 'tomas/app'), ('escena', 'cliente', 8), ('escena', 'cierre', 8), ('fin',)]
 SALIDA = 'Reparto-como-funciona.mp4'
 
 
@@ -84,7 +86,7 @@ os.makedirs('piezas', exist_ok=True)
 partes = []
 for i, seg in enumerate(SEGMENTOS):
     dest = f'piezas/{i:02d}.mp4'
-    (escena if seg[0] == 'escena' else toma)(dest, *seg[1:])
+    {'escena': escena, 'toma': toma, 'fin': marca.fin}[seg[0]](dest, *seg[1:])
     partes.append(dest)
     print(f'  {dest}  {duracion(dest):.1f} s', flush=True)
 
@@ -96,7 +98,10 @@ for i in range(1, len(partes)):
     cadena.append(f'[{previo}][{i}]xfade=transition=fade:duration={FUNDIDO}:offset={offset:.3f}[x{i}]')
     previo = f'x{i}'
     acumulado = offset + durs[i]
-ff(*[a for p in partes for a in ('-i', p)], '-filter_complex', ';'.join(cadena), '-map', f'[{previo}]',
+# Y el logo de Automaittech arriba a la derecha, de principio a fin.
+marca.esquina('piezas/esquina.png')
+cadena.append(f'[{previo}][{len(partes)}]overlay=0:0[final]')
+ff(*[a for p in partes for a in ('-i', p)], '-i', 'piezas/esquina.png', '-filter_complex', ';'.join(cadena), '-map', '[final]',
    '-c:v', 'libx264', '-crf', '20', '-preset', 'slow', '-pix_fmt', 'yuv420p', '-r', '30', '-movflags', '+faststart', SALIDA)
 ligera = SALIDA.replace('.mp4', '-whatsapp.mp4')
 ff('-i', SALIDA, '-vf', 'scale=1280:720', '-c:v', 'libx264', '-crf', '26', '-preset', 'slow', '-pix_fmt', 'yuv420p',
