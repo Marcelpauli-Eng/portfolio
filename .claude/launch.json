@@ -16,7 +16,7 @@
     {
       "name": "reparto-demo",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd ../Sergi-Dashboard && DEMO_MODE=true DRIVERS='demo:1234:Transportista de prueba' npx next dev --webpack -p 4340"],
+      "runtimeArgs": ["-c", "cd ../Sergi-Dashboard && DEMO_MODE=true TEMA=classic DRIVERS='demo:1234:Transportista de prueba' npx next dev --webpack -p 4340"],
       "port": 4340
     }
   ]
