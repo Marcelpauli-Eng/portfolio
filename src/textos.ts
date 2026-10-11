@@ -3,6 +3,7 @@ export type Lang = 'es' | 'ca';
 export const EMAIL = 'marcelpaulilara@gmail.com';
 // [WHATSAPP]: tu número con prefijo y sin espacios ni «+», p. ej. 34600111222. Vacío = no hay botón de WhatsApp.
 export const WHATSAPP = '34634276385';
+export const INSTAGRAM = 'automaittech';
 
 const es = {
   meta: {
@@ -93,6 +94,7 @@ const es = {
     p: 'Escríbeme y te enseño una demo de tu programa.',
     whatsapp: 'WhatsApp',
     correo: 'Correo',
+    instagram: 'Instagram',
     whatsappFalta: '[WHATSAPP]',
     dondeValor: 'Llinars del Vallès (Barcelona)',
     nombre: 'Nombre',
@@ -201,6 +203,7 @@ const ca: typeof es = {
     p: 'Escriu-me i t’ensenyo una demo del teu programa.',
     whatsapp: 'WhatsApp',
     correo: 'Correu',
+    instagram: 'Instagram',
     whatsappFalta: '[WHATSAPP]',
     dondeValor: 'Llinars del Vallès (Barcelona)',
     nombre: 'Nom',
