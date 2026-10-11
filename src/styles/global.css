@@ -415,6 +415,8 @@ h4, h5 { margin: 0; font-family: var(--f-titulo); font-weight: 700; }
 .canales div { display: grid; grid-template-columns: 7rem 1fr; gap: 12px; padding-block: 14px; border-bottom: 1px solid var(--raya); }
 .canales dt { font-family: var(--f-titulo); font-stretch: 75%; font-weight: 600; color: var(--imprenta-suave); }
 .canales dd { margin: 0; font-weight: 700; overflow-wrap: anywhere; }
+.con-icono { display: inline-flex; align-items: center; gap: 8px; }
+.con-icono svg { flex: none; }
 .falta { padding: 2px 8px; border: 1.5px dashed rgba(27, 42, 74, .5); border-radius: 6px; font-style: italic; font-weight: 400; color: var(--imprenta-suave); }
 
 .parte { position: relative; background: var(--blanco); border-radius: 3px; box-shadow: var(--sombra-objeto); }
