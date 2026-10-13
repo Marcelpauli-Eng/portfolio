@@ -1,4 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "astro"
+  "framework": "astro",
+  "headers": [
+    {
+      "source": "/(.*)\\.pkpass",
+      "headers": [{ "key": "Content-Type", "value": "application/vnd.apple.pkpass" }]
+    }
+  ]
 }

@@ -1,0 +1,70 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "pass.com.automaittech.tarjeta",
+  "teamIdentifier": "TU_TEAM_ID",
+  "serialNumber": "automaittech-tarjeta-1",
+  "organizationName": "Automaittech",
+  "description": "Tarjeta de Automaittech: programas para oficios",
+  "logoText": "Automaittech",
+  "backgroundColor": "rgb(27, 42, 74)",
+  "foregroundColor": "rgb(249, 250, 246)",
+  "labelColor": "rgb(245, 231, 168)",
+  "sharingProhibited": false,
+  "barcodes": [
+    {
+      "format": "PKBarcodeFormatQR",
+      "message": "https://www.automaittech.com",
+      "messageEncoding": "iso-8859-1",
+      "altText": "automaittech.com"
+    }
+  ],
+  "storeCard": {
+    "headerFields": [
+      { "key": "zona", "label": "ZONA", "value": "Catalunya" }
+    ],
+    "primaryFields": [
+      { "key": "lema", "label": "PROGRAMAS PARA OFICIOS", "value": "Te ahorran faena" }
+    ],
+    "secondaryFields": [
+      { "key": "oficios", "label": "TALLERES · LAMPISTAS · TRANSPORTISTAS", "value": "Órdenes, partes y facturas en el móvil" }
+    ],
+    "auxiliaryFields": [
+      { "key": "whatsapp", "label": "WHATSAPP", "value": "634 27 63 85" },
+      { "key": "instagram", "label": "INSTAGRAM", "value": "@automaittech", "textAlignment": "PKTextAlignmentRight" }
+    ],
+    "backFields": [
+      {
+        "key": "quien",
+        "label": "Automaittech",
+        "value": "Programas a medida para talleres, lampistas, fontaneros y transportistas. Órdenes, partes, albaranes y facturas desde el móvil, también sin cobertura."
+      },
+      {
+        "key": "servicios",
+        "label": "Lo que te hago",
+        "value": "• Un programa a medida, hecho a tu forma de trabajar.\n• Facturas con Verifactu, listas antes de que sea obligatorio.\n• Una app para el móvil que funciona sin cobertura.\n• Instalación y soporte: paso tus datos y te enseño a usarlo."
+      },
+      {
+        "key": "como",
+        "label": "Cómo trabajo",
+        "value": "1. Hablamos, en tu taller o en la obra.\n2. Te enseño una demo con tu forma de trabajar.\n3. Lo ajustamos: tú decides qué sobra.\n4. Lo pongo en marcha con tus datos dentro.\n5. Sigo ahí: me escribes y lo miramos."
+      },
+      {
+        "key": "demo",
+        "label": "¿Lo quieres ver con tus datos?",
+        "attributedValue": "<a href='https://wa.me/34634276385?text=Hola%2C%20quiero%20ver%20una%20demo'>Pídeme una demo por WhatsApp</a>",
+        "value": "Pídeme una demo por WhatsApp: wa.me/34634276385"
+      },
+      { "key": "web", "label": "Web", "value": "https://www.automaittech.com" },
+      { "key": "telefono", "label": "Teléfono", "value": "+34 634 27 63 85" },
+      { "key": "email", "label": "Email", "value": "marcelpaulilara@gmail.com" },
+      { "key": "ig", "label": "Instagram", "attributedValue": "<a href='https://instagram.com/automaittech'>@automaittech</a>", "value": "instagram.com/automaittech" },
+      {
+        "key": "folletos",
+        "label": "Folletos",
+        "attributedValue": "<a href='https://www.automaittech.com/folletos/SportMotor-Folleto.pdf'>Talleres</a> · <a href='https://www.automaittech.com/folletos/Codo90-Folleto.pdf'>Lampistas y fontaneros</a> · <a href='https://www.automaittech.com/folletos/Reparto-Folleto.pdf'>Transportistas</a>",
+        "value": "En la web: talleres, lampistas y fontaneros, transportistas."
+      },
+      { "key": "donde", "label": "Dónde", "value": "Llinars del Vallès (Barcelona)" }
+    ]
+  }
+}
