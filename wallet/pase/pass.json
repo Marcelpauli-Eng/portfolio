@@ -21,9 +21,9 @@
   "storeCard": {
     "secondaryFields": [
       {
-        "key": "lema",
-        "label": "TE AHORRAN FAENA",
-        "value": "Órdenes, partes y facturas en el móvil"
+        "key": "oficios",
+        "label": "PROGRAMAS PARA OFICIOS",
+        "value": "Talleres, lampistas y transportistas"
       }
     ],
     "auxiliaryFields": [
@@ -41,9 +41,27 @@
     ],
     "backFields": [
       {
-        "key": "quien",
-        "label": "Automaittech",
-        "value": "Programas a medida para talleres, lampistas, fontaneros y transportistas. Órdenes, partes, albaranes y facturas desde el móvil, también sin cobertura."
+        "key": "talonario",
+        "label": "Del talonario al móvil",
+        "value": "Los partes, órdenes y albaranes que ahora rellenas a mano, en el móvil. El cliente firma en la pantalla, nada se pasa a limpio y la factura sale sola. También sin cobertura."
+      },
+      {
+        "key": "lampistas",
+        "label": "Lampistas y fontaneros · Codo90",
+        "value": "Tu día entero, de la llamada a la factura.\nAviso → Día → Ruta → Trabajo → Firma → Albarán → Factura\n\n• Partes de trabajo con la firma del cliente\n• Albaranes y facturas desde el parte\n• Planos en 3D y presupuestos con sus medidas\n• Funciona sin cobertura",
+        "attributedValue": "Tu día entero, de la llamada a la factura.\nAviso → Día → Ruta → Trabajo → Firma → Albarán → Factura\n\n• Partes de trabajo con la firma del cliente\n• Albaranes y facturas desde el parte\n• Planos en 3D y presupuestos con sus medidas\n• Funciona sin cobertura\n\n<a href='https://www.automaittech.com/folletos/Codo90-Folleto.pdf'>Ver el folleto</a>"
+      },
+      {
+        "key": "talleres",
+        "label": "Talleres · SportMotor",
+        "value": "Todo tu taller, en un solo programa.\nCita → Entrada → Diagnóstico → Presupuesto → Reparación → Entrega → Factura\n\n• Órdenes de trabajo en la tablet, paso a paso\n• Fichajes y registro de jornada\n• Facturas con QR, sin huecos\n• Ordenador, tablet y móvil",
+        "attributedValue": "Todo tu taller, en un solo programa.\nCita → Entrada → Diagnóstico → Presupuesto → Reparación → Entrega → Factura\n\n• Órdenes de trabajo en la tablet, paso a paso\n• Fichajes y registro de jornada\n• Facturas con QR, sin huecos\n• Ordenador, tablet y móvil\n\n<a href='https://www.automaittech.com/folletos/SportMotor-Folleto.pdf'>Ver el folleto</a>"
+      },
+      {
+        "key": "transportistas",
+        "label": "Transportistas · Reparto",
+        "value": "Las entregas del día, en orden y sin papel.\nPedido → Día → Ruta → Entrega → Cobro → Factura\n\n• Las paradas en la ruta más corta\n• Entregas y cobros con un toque\n• Avisos al cliente\n• Facturas en PDF",
+        "attributedValue": "Las entregas del día, en orden y sin papel.\nPedido → Día → Ruta → Entrega → Cobro → Factura\n\n• Las paradas en la ruta más corta\n• Entregas y cobros con un toque\n• Avisos al cliente\n• Facturas en PDF\n\n<a href='https://www.automaittech.com/folletos/Reparto-Folleto.pdf'>Ver el folleto</a>"
       },
       {
         "key": "servicios",
@@ -62,11 +80,6 @@
         "value": "Pídeme una demo por WhatsApp: wa.me/34634276385"
       },
       {
-        "key": "web",
-        "label": "Web",
-        "value": "https://www.automaittech.com"
-      },
-      {
         "key": "telefono",
         "label": "Teléfono",
         "value": "+34 634 27 63 85"
@@ -77,16 +90,15 @@
         "value": "marcelpaulilara@gmail.com"
       },
       {
+        "key": "web",
+        "label": "Web",
+        "value": "https://www.automaittech.com"
+      },
+      {
         "key": "ig",
         "label": "Instagram",
         "attributedValue": "<a href='https://instagram.com/automaittech'>@automaittech</a>",
         "value": "instagram.com/automaittech"
-      },
-      {
-        "key": "folletos",
-        "label": "Folletos",
-        "attributedValue": "<a href='https://www.automaittech.com/folletos/SportMotor-Folleto.pdf'>Talleres</a> · <a href='https://www.automaittech.com/folletos/Codo90-Folleto.pdf'>Lampistas y fontaneros</a> · <a href='https://www.automaittech.com/folletos/Reparto-Folleto.pdf'>Transportistas</a>",
-        "value": "En la web: talleres, lampistas y fontaneros, transportistas."
       },
       {
         "key": "donde",

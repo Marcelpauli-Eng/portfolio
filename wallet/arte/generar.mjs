@@ -1,10 +1,10 @@
-// Dibuja las imágenes del pase con la marca de Automaittech (la de los vídeos: azul marino, rojo, azul boli,
-// amarillo y letras Barlow) y las pasa a PNG a 1x, 2x y 3x.
-//   · strip: el lema y un bloque de color por oficio, con su herramienta de la web.
+// Dibuja las imágenes del pase con la marca de Automaittech (azul marino, rojo, azul boli, las copias del talonario
+// y letras Barlow) y las pasa a PNG a 1x, 2x y 3x.
+//   · strip: «Del talonario al móvil» y un parte de trabajo con sus copias de colores.
 //   · logo e icon: la baldosa del logo (logo-automaittech.png), reducida.
 // Uso: node wallet/arte/generar.mjs   (CHROME=/ruta/a/chrome si no está en el sitio de siempre)
 // Necesita red para las letras de Google Fonts.
-import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
+import { writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -14,39 +14,33 @@ const aqui = dirname(fileURLToPath(import.meta.url));
 const pase = join(aqui, '..', 'pase');
 const chrome = process.env.CHROME ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 
-const fuente = readFileSync(join(aqui, '../../src/herramientas.ts'), 'utf8');
-const h = JSON.parse(fuente.slice(fuente.indexOf('{', fuente.indexOf('=')), fuente.lastIndexOf('}') + 1));
+const C = { navy: '#1B2A4A', papel: '#F9FAF6', rojo: '#C4232F', boli: '#2448B8', ama: '#F5E7A8', rosa: '#F4D0D6', azulc: '#DCE7F3' };
 
-const C = { navy: '#1B2A4A', papel: '#F9FAF6', rojo: '#C4232F', boli: '#2448B8', ama: '#F5E7A8', oro: '#F2C94C' };
+const B = 'font-family="Barlow Condensed"';
+const PW = 184, PH = 92;
+const copia = (dx, r, c) => `<rect x="${dx}" y="16" width="${PW}" height="${PH}" rx="3" fill="${c}" transform="rotate(${r} ${dx + PW / 2} ${16 + PH / 2})"/>`;
 
-// Una herramienta centrada en (x, y), de ancho w y girada r grados. El trazo se compensa con la escala
-// para que mida lo mismo en todas.
-function herramienta(nombre, x, y, w, r = 0) {
-  const [, , vw, vh] = h[nombre].vb.split(' ').map(Number);
-  const s = w / vw;
-  return `<g transform="translate(${x} ${y}) rotate(${r}) scale(${s}) translate(${-vw / 2} ${-vh / 2})"
-    fill="${C.papel}" stroke="${C.navy}" stroke-width="${(1.3 / s).toFixed(2)}" stroke-linejoin="round" stroke-linecap="round">${h[nombre].cuerpo}</g>`;
-}
-
-// Franja (375 × 123 pt). Arriba el lema; abajo los tres oficios, cada uno en su color.
-const oficios = [
-  { t: 'Talleres', fondo: C.rojo, letra: C.papel, dibujo: herramienta('llave', 58, 26, 84, -14) },
-  { t: 'Lampistas', fondo: C.boli, letra: C.papel, dibujo: herramienta('grifo', 60, 26, 46, 0) },
-  { t: 'Transportistas', fondo: C.oro, letra: C.navy, dibujo: herramienta('camion', 60, 27, 66, -3) },
-];
-const ancho = 112, alto = 70, hueco = 7, x0 = 14, y0 = 44;
-const bloques = oficios.map((o, i) => `
-  <g transform="translate(${x0 + i * (ancho + hueco)} ${y0})">
-    <rect width="${ancho}" height="${alto}" rx="10" fill="${o.fondo}"/>
-    ${o.dibujo}
-    <text x="10" y="${alto - 9}" fill="${o.letra}" font-family="Barlow Condensed" font-weight="700" font-size="15" letter-spacing=".3">${o.t.toUpperCase()}</text>
-  </g>`).join('');
+// Franja (375 × 123 pt): «Del talonario al móvil» y, al lado, un parte de trabajo rellenado a mano con sus copias
+// rosa, azul y amarilla, como el talonario de la web. Girada, la copia rosa llega hasta x≈356 e y≈8–115:
+// cabe entera, con margen.
 const franja = {
   w: 375, h: 123,
   svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 123">
   <rect width="375" height="123" fill="${C.navy}"/>
-  <text x="14" y="32" font-family="Barlow Condensed" font-weight="800" font-size="25.5" letter-spacing=".2"><tspan fill="${C.papel}">PROGRAMAS A MEDIDA </tspan><tspan fill="${C.ama}">PARA OFICIOS</tspan></text>
-  ${bloques}
+  ${copia(168, 5, C.rosa)}${copia(164, 2.5, C.azulc)}${copia(160, 0, C.ama)}
+  <g transform="translate(160 16) rotate(-2.5 ${PW / 2} ${PH / 2})">
+    <rect width="${PW}" height="${PH}" rx="3" fill="${C.papel}"/>
+    <g fill="#E1E4DC">${[...Array(9)].map((_, i) => `<circle cx="${14 + i * 19.5}" cy="7" r="2"/>`).join('')}</g>
+    <text x="11" y="27" ${B} font-weight="700" font-size="14" fill="${C.navy}">PARTE DE TRABAJO</text>
+    <text x="${PW - 11}" y="27" text-anchor="end" ${B} font-weight="700" font-size="14" fill="${C.rojo}">Nº 0098</text>
+    <g stroke="${C.navy}" stroke-opacity=".25" stroke-width=".7">${[41, 56, 71, 84].map((y) => `<line x1="11" x2="${PW - 11}" y1="${y}" y2="${y}"/>`).join('')}</g>
+    <text x="13" y="53" font-family="Caveat" font-size="14" fill="${C.boli}">Cambio de grifo, Bar La Plaça</text>
+    <text x="13" y="68" font-family="Caveat" font-size="14" fill="${C.boli}">1,5 h · 2 latiguillos</text>
+    <path d="M112 80 q7 -9 14 0 t14 0 t13 -4" fill="none" stroke="${C.boli}" stroke-width="1.3" stroke-linecap="round"/>
+  </g>
+  <text x="16" y="44" ${B} font-weight="700" font-size="26" fill="${C.papel}">Del talonario</text>
+  <text x="16" y="72" ${B} font-weight="700" font-size="26" fill="${C.ama}">al móvil</text>
+  <text x="16" y="98" font-family="Barlow" font-weight="500" font-size="10.5" fill="${C.papel}" fill-opacity=".8">Partes, órdenes y facturas</text>
 </svg>`,
 };
 
@@ -64,7 +58,7 @@ function png(nombre, { w, h: alto, svg }) {
   writeFileSync(join(aqui, `${nombre}.svg`), svg);
   const html = join(tmp, `${nombre}.html`);
   writeFileSync(html, `<!doctype html>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Barlow:wght@500&family=Caveat&display=block">
 <style>html,body{margin:0;background:transparent}svg{display:block;width:${w}px;height:${alto}px}</style>${svg}`);
   for (const [escala, sufijo] of [[1, ''], [2, '@2x'], [3, '@3x']]) {
     const archivo = join(pase, `${nombre}${sufijo}.png`);
