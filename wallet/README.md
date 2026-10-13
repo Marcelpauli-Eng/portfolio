@@ -10,7 +10,8 @@ La vista previa es aproximada: Wallet pone su propia letra y coloca el texto a s
 |---|---|
 | Textos, colores, QR y reverso de la tarjeta | `pase/pass.json` |
 | Imágenes ya hechas (franja, logo, icono) | `pase/*.png` |
-| Dibujo de las imágenes | `arte/generar.mjs` (usa las herramientas de `src/herramientas.ts`) |
+| Dibujo de las imágenes | `arte/generar.mjs` (herramientas de `src/herramientas.ts`, letras Barlow) |
+| Logo | `arte/logo-automaittech.png`, sacado del cierre de los vídeos (240 px; si tienes el original más grande, cámbialo aquí) |
 | Firmar y empaquetar | `firmar.sh` |
 
 ## Firmarla (una vez, en el Mac)
