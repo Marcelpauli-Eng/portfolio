@@ -22,13 +22,14 @@ const copia = (dx, r, c) => `<rect x="${dx}" y="${PY}" width="${PW}" height="${P
 
 // Franja (375 × 144 pt, la medida de Apple para esta tarjeta): «Del talonario al móvil» y, al lado, un parte de
 // trabajo rellenado a mano con sus copias rosa, azul y amarilla, como el talonario de la web.
-// Wallet amplía la franja y recorta un poco los lados según el iPhone, así que todo queda dentro de x 30–350
-// (la copia rosa, girada, llega hasta x≈347) e y 18–126. Los oficios van aquí y no en un campo del pase porque
-// Wallet junta todos los campos de debajo en una fila y no caben.
+// Todo se dibuja dentro de x 30–347 e y 18–126 y luego se amplía un 7 % centrado en la franja (queda en x 18–357,
+// y 14–130): llena el hueco sin pegarse a los bordes, que algunos iPhone recortan un poco.
+// Los oficios van aquí y no en un campo del pase porque Wallet junta los campos de debajo en una fila y no caben.
 const franja = {
   w: 375, h: 144,
   svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 144">
   <rect width="375" height="144" fill="${C.navy}"/>
+  <g transform="translate(187.5 72) scale(1.07) translate(-188.5 -72)">
   ${copia(170, 5, C.rosa)}${copia(166, 2.5, C.azulc)}${copia(162, 0, C.ama)}
   <g transform="translate(162 ${PY}) rotate(-2.5 ${PW / 2} ${PH / 2})">
     <rect width="${PW}" height="${PH}" rx="3" fill="${C.papel}"/>
@@ -45,6 +46,7 @@ const franja = {
   <g font-family="Barlow" font-weight="500" font-size="10" fill="${C.papel}" fill-opacity=".8">
     <text x="30" y="108">Para talleres, lampistas</text>
     <text x="30" y="121">y transportistas</text>
+  </g>
   </g>
 </svg>`,
 };

@@ -23,13 +23,8 @@
       {
         "key": "whatsapp",
         "label": "WHATSAPP",
-        "value": "634 27 63 85"
-      },
-      {
-        "key": "instagram",
-        "label": "INSTAGRAM",
-        "value": "@automaittech",
-        "textAlignment": "PKTextAlignmentRight"
+        "value": "634 27 63 85",
+        "textAlignment": "PKTextAlignmentCenter"
       }
     ],
     "backFields": [
