@@ -19,12 +19,11 @@
     }
   ],
   "storeCard": {
-    "auxiliaryFields": [
+    "headerFields": [
       {
         "key": "whatsapp",
         "label": "WHATSAPP",
-        "value": "634 27 63 85",
-        "textAlignment": "PKTextAlignmentCenter"
+        "value": "634 27 63 85"
       }
     ],
     "backFields": [
