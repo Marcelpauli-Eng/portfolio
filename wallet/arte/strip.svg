@@ -1,17 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 123">
-  <rect width="375" height="123" fill="#1B2A4A"/>
-  <rect x="168" y="16" width="184" height="92" rx="3" fill="#F4D0D6" transform="rotate(5 260 62)"/><rect x="164" y="16" width="184" height="92" rx="3" fill="#DCE7F3" transform="rotate(2.5 256 62)"/><rect x="160" y="16" width="184" height="92" rx="3" fill="#F5E7A8" transform="rotate(0 252 62)"/>
-  <g transform="translate(160 16) rotate(-2.5 92 46)">
-    <rect width="184" height="92" rx="3" fill="#F9FAF6"/>
-    <g fill="#E1E4DC"><circle cx="14" cy="7" r="2"/><circle cx="33.5" cy="7" r="2"/><circle cx="53" cy="7" r="2"/><circle cx="72.5" cy="7" r="2"/><circle cx="92" cy="7" r="2"/><circle cx="111.5" cy="7" r="2"/><circle cx="131" cy="7" r="2"/><circle cx="150.5" cy="7" r="2"/><circle cx="170" cy="7" r="2"/></g>
-    <text x="11" y="27" font-family="Barlow Condensed" font-weight="700" font-size="14" fill="#1B2A4A">PARTE DE TRABAJO</text>
-    <text x="173" y="27" text-anchor="end" font-family="Barlow Condensed" font-weight="700" font-size="14" fill="#C4232F">Nº 0098</text>
-    <g stroke="#1B2A4A" stroke-opacity=".25" stroke-width=".7"><line x1="11" x2="173" y1="41" y2="41"/><line x1="11" x2="173" y1="56" y2="56"/><line x1="11" x2="173" y1="71" y2="71"/><line x1="11" x2="173" y1="84" y2="84"/></g>
-    <text x="13" y="53" font-family="Caveat" font-size="14" fill="#2448B8">Cambio de grifo, Bar La Plaça</text>
-    <text x="13" y="68" font-family="Caveat" font-size="14" fill="#2448B8">1,5 h · 2 latiguillos</text>
-    <path d="M112 80 q7 -9 14 0 t14 0 t13 -4" fill="none" stroke="#2448B8" stroke-width="1.3" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 144">
+  <rect width="375" height="144" fill="#1B2A4A"/>
+  <rect x="170" y="28" width="172" height="88" rx="3" fill="#F4D0D6" transform="rotate(5 256 72)"/><rect x="166" y="28" width="172" height="88" rx="3" fill="#DCE7F3" transform="rotate(2.5 252 72)"/><rect x="162" y="28" width="172" height="88" rx="3" fill="#F5E7A8" transform="rotate(0 248 72)"/>
+  <g transform="translate(162 28) rotate(-2.5 86 44)">
+    <rect width="172" height="88" rx="3" fill="#F9FAF6"/>
+    <g fill="#E1E4DC"><circle cx="14" cy="7" r="2"/><circle cx="32" cy="7" r="2"/><circle cx="50" cy="7" r="2"/><circle cx="68" cy="7" r="2"/><circle cx="86" cy="7" r="2"/><circle cx="104" cy="7" r="2"/><circle cx="122" cy="7" r="2"/><circle cx="140" cy="7" r="2"/><circle cx="158" cy="7" r="2"/></g>
+    <text x="11" y="26" font-family="Barlow Condensed" font-weight="700" font-size="13" fill="#1B2A4A">PARTE DE TRABAJO</text>
+    <text x="161" y="26" text-anchor="end" font-family="Barlow Condensed" font-weight="700" font-size="13" fill="#C4232F">Nº 0098</text>
+    <g stroke="#1B2A4A" stroke-opacity=".25" stroke-width=".7"><line x1="11" x2="161" y1="39" y2="39"/><line x1="11" x2="161" y1="53" y2="53"/><line x1="11" x2="161" y1="67" y2="67"/><line x1="11" x2="161" y1="80" y2="80"/></g>
+    <text x="13" y="50" font-family="Caveat" font-size="13" fill="#2448B8">Cambio de grifo, Bar La Plaça</text>
+    <text x="13" y="64" font-family="Caveat" font-size="13" fill="#2448B8">1,5 h · 2 latiguillos</text>
+    <path d="M104 76 q7 -9 14 0 t14 0 t13 -4" fill="none" stroke="#2448B8" stroke-width="1.3" stroke-linecap="round"/>
   </g>
-  <text x="16" y="44" font-family="Barlow Condensed" font-weight="700" font-size="26" fill="#F9FAF6">Del talonario</text>
-  <text x="16" y="72" font-family="Barlow Condensed" font-weight="700" font-size="26" fill="#F5E7A8">al móvil</text>
-  <text x="16" y="98" font-family="Barlow" font-weight="500" font-size="10.5" fill="#F9FAF6" fill-opacity=".8">Partes, órdenes y facturas</text>
+  <text x="30" y="60" font-family="Barlow Condensed" font-weight="700" font-size="24" fill="#F9FAF6">Del talonario</text>
+  <text x="30" y="86" font-family="Barlow Condensed" font-weight="700" font-size="24" fill="#F5E7A8">al móvil</text>
+  <g font-family="Barlow" font-weight="500" font-size="10" fill="#F9FAF6" fill-opacity=".8">
+    <text x="30" y="108">Para talleres, lampistas</text>
+    <text x="30" y="121">y transportistas</text>
+  </g>
 </svg>

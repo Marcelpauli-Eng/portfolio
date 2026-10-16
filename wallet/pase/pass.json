@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "passTypeIdentifier": "pass.com.automaittech.tarjeta",
-  "teamIdentifier": "TU_TEAM_ID",
+  "teamIdentifier": "3DYPW9F6Z2",
   "serialNumber": "automaittech-tarjeta-1",
   "organizationName": "Automaittech",
   "description": "Tarjeta de Automaittech: programas para oficios",
@@ -19,13 +19,6 @@
     }
   ],
   "storeCard": {
-    "secondaryFields": [
-      {
-        "key": "oficios",
-        "label": "PROGRAMAS PARA OFICIOS",
-        "value": "Talleres, lampistas y transportistas"
-      }
-    ],
     "auxiliaryFields": [
       {
         "key": "whatsapp",
