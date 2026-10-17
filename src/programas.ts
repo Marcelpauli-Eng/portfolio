@@ -35,7 +35,7 @@ const es: Programa[] = [
       { n: '4 años', t: 'de fichajes guardados' },
     ],
     cta: 'Quiero verlo en mi taller',
-    folleto: { pdf: 'SportMotor-Folleto.pdf', info: 'PDF · 11 páginas' },
+    folleto: { pdf: 'SportMotor-Folleto.pdf', info: 'PDF · 12 páginas' },
   },
   {
     id: 'lampistas',
@@ -101,7 +101,7 @@ const ca: Programa[] = [
       { n: '4 anys', t: 'de fitxatges guardats' },
     ],
     cta: 'Vull veure-ho al meu taller',
-    folleto: { pdf: 'SportMotor-Folleto.pdf', info: 'PDF · 11 pàgines' },
+    folleto: { pdf: 'SportMotor-Folleto.pdf', info: 'PDF · 12 pàgines' },
   },
   {
     id: 'lampistas',
