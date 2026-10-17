@@ -284,6 +284,16 @@ const check = '<path d="M4 10.5l4 4 8-9"></path>';
             <div><dt>{t.contacto.correo}</dt><dd><a href={`mailto:${EMAIL}`}>{EMAIL}</a></dd></div>
             <div><dt>{t.contacto.instagram}</dt><dd><a class="con-icono" href={ig} rel="me"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={iconoIg}></svg>@{INSTAGRAM}</a></dd></div>
           </dl>
+          <a class="siguenos" href={ig} rel="me">
+            <span class="siguenos-fotos" aria-hidden="true">
+              <span class="siguenos-copia siguenos-copia--azul"></span>
+              <span class="siguenos-copia siguenos-copia--amarilla"></span>
+              <span class="siguenos-foto"><img src="/logo-automaittech.svg" alt="" width="52" height="52" /></span>
+              <span class="siguenos-celo"></span>
+            </span>
+            <span class="siguenos-texto"><strong>{t.contacto.siguenos}</strong><span>{t.contacto.siguenosSub} · @{INSTAGRAM}</span></span>
+            <svg class="siguenos-icono" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={iconoIg}></svg>
+          </a>
         </div>
 
         <!-- ponytail: FormSubmit reenvía el formulario a EMAIL sin servidor ni claves. El primer envío manda a EMAIL un correo para activarlo. Si un día hace falta más control, un endpoint propio (Vercel + Resend). -->
